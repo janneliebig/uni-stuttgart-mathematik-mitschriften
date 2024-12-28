@@ -2,5 +2,8 @@
 Studiengang Mathematik B. Sc.
 
 ## Mitschriften
-- Algebra (Wintersemester 2024/25, Prof. Marks)
-- Analysis 3 (Wintersemester 2024/25, Prof. Griesemer)
+# Wintersemester 2023/24
+- Analysis 1 (Prof. Griesemer)
+# Wintersemester 2024/25
+- Algebra (Prof. Marks)
+- Analysis 3 (Prof. Griesemer)
