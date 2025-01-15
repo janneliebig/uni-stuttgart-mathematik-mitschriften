@@ -1,0 +1,319 @@
+\section{Operationen von Gruppen auf Mengen}
+\begin{definition}
+	Sei $G$ eine Gruppe und $X \neq \emptyset$ eine Menge. Dann heißt $X$ \textbf{$G$-Menge}, wenn es eine Abbildung $* \colon G \times X \to X$, $(g,x) \mapsto g*x$ gibt mit 
+		\begin{enumerate}[label={\bfseries(O\arabic*)}]
+		\item $1_G * x = x$ für alle $x \in X$. (Das neutrale Element operiert neutral)
+		\item $g * (h * x) = (gh)*x$ für alle $g, h \in G$ und alle $x \in X$.
+	\end{enumerate} 
+	Wir sagen \textbf{$G$ operiert auf $X$} und schreiben oft $\cdot$ statt $*$.
+\end{definition}
+\begin{rem}\label{rem3_2}
+	Sei $X$ eine $G$-Menge und $g \in G$. Dann ist $\tau_g \colon X \to X$ mit $x \mapsto g\cdot x$ bijektiv mit Inverse $\tau_{g{-1}}$. Also ist $\tau_g$ Element der symmetrischen Gruppe $S_X$. Die Abbildung $\tau \colon G \to S_X$ mit $g \mapsto \tau_g$ ist Gruppenhomomorphismus, da für alle $g, h \in G$ und $x \in X$ gilt:
+	\[\tau(gh)(x) = \tau_{gh}(x) = (gh) x = g(hx) = \tau_g(\tau_h(x)) = \tau(g) \circ \tau_h(x) = \tau(g) \circ \tau(h)(x)\]
+	Umgekehrt macht jeder Gruppenhomomorphismus $\varphi \colon G \to S_X$ mit $g \mapsto \varphi_g$ $X$ zu einer $G$-Menge durch $G \times X \to X$ mit $(g,x) \mapsto \varphi_g(x)$. Denn $1_G \cdot x = \varphi_{1_G}(x) = \id(x) = x$ für alle $x \in X$ und 
+	\[g(hx) = \varphi_g(\varphi_h(x)) = (\varphi_g \circ \varphi_h)(x) = \varphi_{gh}(x) = (gh)x\]
+	für alle $g,h \in G$ und $x \in X$.
+\end{rem}
+
+Ist die Abbildung $\tau$ injektiv bzw. ist $g = 1_G$ das einzige Element aus $G$ mit $gx = x$ für alle $x \in X$, so heißt die Operation von $G$ auf $X$ \textbf{treu}.
+
+\begin{beispiel}\label{beispiel3_3}
+	\begin{enumerate}[label=(\arabic*)]
+		\item $G$ operiert auf sich selbst durch Linksmultiplikation. Sei $X = G$ und $G \times X \to X$ mit $(g,x) \mapsto gx$. \textbf{(O1)} und \textbf{(O2)} sind erfüllt, da $G$ eine Gruppe ist. Die Operation ist treu $\rightsquigarrow$ siehe Satz von Cayley (Satz \ref{satz1_7}).
+		
+		\item Sei $H \subseteq G$. Dann operiert $G$ auf $G/H$ durch $G \times (G/H) \to G/H$ mit $(g,xH) \mapsto (gx)H$. Diese Operation ist im Allgemeinen nicht treu, da für $g \in G$ gilt $(gx)H = xH$ für alle $x \in G$ genau dann, wenn $x^{-1} g x \in H$ für alle $x \in G$, was genau dann der Fall ist, wenn $g \in x H x^{-1}$ für alle $x \in G$. Für $H \unlhd G$ zum Beispiel gilt $xHx^{-1} = H$ für alle $x \in G$.
+		
+		\item Betrachte das Quadrat mit Eckpunkten $v_1, \dots, v_4$. Sei $G = \Z_4$ und $X = \{v_1, v_2, v_3, v_4\}$. Dann operiert $G$ treu auf $X$ durch Drehung, zum Beispiel
+		\begin{align*}
+			(\bar{1}, v_1) &\mapsto v_2\\
+			(\bar{1}, v_2) &\mapsto v_3\\
+			(\bar{1}, v_3) &\mapsto v_4\\
+			(\bar{1}, v_4) &\mapsto v_1.
+		\end{align*}
+		Mit Hilfe von \textbf{(O1)} und \textbf{(O2)} legt dies die gewünschte Abbildung $G \times X \to X$ fest.
+	\end{enumerate}
+\end{beispiel}
+\begin{definition}
+	Sei $X$ eine $G$-Menge. Für $x \in X$ heißt 
+	\begin{enumerate}[label=(\alph*)]
+		\item $Gx := \{gx \mid g \in G\}$ die \textbf{Bahn von $x$ unter $G$}. 
+		
+		Die Operation heißt \textbf{transitiv}, falls die Menge $X$ unter $G$ nur eine Bahn besitzt, das heißt für alle $x,y \in X$ existiert $g \in G$ mit $gx = y$.
+		\item $\stab_G(x) := \{g \in G \mid gx = x\}$ der \textbf{Stabilisator von $x$ in $G$}.
+		
+		Mit $\stab_G(x) = G$, das heißt $gx = x$ für alle $g \in G$, so heißt $x$ \textbf{Fixpunkt der Operation}. Schreibe $X^G$ für die Menge aller Fixpunkte der Operation.
+	\end{enumerate}
+\end{definition}
+\begin{rem}\label{rem3_5}
+	Sei $X$ eine $G$-Menge.
+	\begin{enumerate}[label=(\roman*)]
+		\item Definiere auf $X$ eine Äquivalenzrelation $x \sim y \;:\Leftrightarrow\; \exists g \in G : gx = y$. Als Äquivalenzklassen erhalten wir genau die Bahnen unter $G$. Für $x \in X$ gilt
+		\[[x] = \{y \in X \mid x \sim y\} = \{y \in X \mid \exists g \in G : gx = y\} = \{gx \mid g \in G\} = Gx.\]
+		Insbesondere ist $X$ die disjunkte Vereinigung von Bahnen
+		
+		\item Für $x in X$ ist $\stab_G(x) \leq G$, da
+		\begin{align*}
+			1_G &\in \stab_G(x)\\
+			\forall g,h \in \stab_G(x) &: (gh)x = g(hx) = gx = x\\
+			\forall g \in \stab_G(x) &: g^{-1}x = g^{-1}(gx) = (g^{-1}g)x = 1_G x = x.
+		\end{align*}
+		Es gilt für $a \in G$, dass $\stab_G(ax) = a\stab_G(x) a^{-1}$, da $g \in \stab_G(ax)$ genau dann, wenn $g(ax) = ax$ genau dann, wenn $(a^{-1}ga)x = x$ genau dann, wenn $a^{-1}ga \in \stab_G(x)$. Äquivalent zu $g \in a\stab_G(x) a^{-1}$.
+	\end{enumerate}
+\end{rem}
+\begin{beispiel}\label{beispiel3_6}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Die Operationen in Beispiel \ref{beispiel3_3} sind alle transitiv und, abgesehen vom trivialen Fall, fixpunktfrei.
+		
+		Im Beispiel \ref{beispiel3_3} (1) und (3) sind die Stabilisatoren trivial, also $\stab_G(x) = \{1_G\}$ für alle $x \in X$. In Beispiel \ref{beispiel3_3} (2) erhalten wir als Stabilisatoren die zu $H$ konjugierten Untergruppen.
+		
+		\item $G$ operiert auf sich selbst durch Konjugation. Sei dazu $X=G$ und $G \times X \to X$ mit $(g,x) \mapsto gxg^{-1}$. Diese Operation ist im Allgemeinen weder treu noch transitiv. Die Bahn $Gx = \{gxg^{-1} \mid g \in G\} =: C_x$ heißt \textbf{Konjugationsklasse von $x$}. Der Stabilisator $\stab_G(x) = \{g \in G \mid gx = xg\} =: C_G$ heißt \textbf{Zentralisator von $x$ in $G$}. Das Zentrum von $G$ entspricht genau der Menge $X^G$ bzw. der Vereinigung aller 1-elementigen Konjugationsklassen.
+		
+		Sei $G = \GL_n(K)$ für $n \in \N$ und einen Körper $K$. Dann enthält die Konjugationsklasse $C_{\mat{A}}$ einer Matrix $\mat{A} \in \GL_n(K)$ genau die zu $\mat{A}$ ähnlichen Matrizen in $\GL_n(K)$.
+		
+		Fixpunkte der Operation sind genau die Matrizen 
+		\[\begin{bmatrix}
+			\lambda & & \\
+			& \ddots & \\
+			& & \lambda
+		\end{bmatrix}\]
+		mit $\lambda \in K \setminus \{0\}$.
+	\end{enumerate}
+\end{beispiel}
+\begin{satz}[Bahnensatz]\label{satz3_7}
+	Sei $X$ eine $G$-Menge und $x \in X$. Dann erhalten wir die bijektive Abbildung 
+	\[Gx \to \faktor{G}{\stab_G(x)}\quad\text{mit}\quad gx \mapsto g \stab_G(x).\]
+	Ist $G$ endlich, so folgt $|G| = |Gx| \cdot |\stab_G(x)|$, die sogenannte \textbf{Bahnformel}.
+\end{satz}
+\begin{proof}
+	Die Zuordnung ist wohldefiniert und injektiv, da für alle $g, h \in G$ gilt: 
+	\[gx = hx \;\Leftrightarrow\; x=g^{-1}hx \;\Leftrightarrow\; g^{-1}h \in \stab_G(x) \;\Leftrightarrow\; g \stab_G(x) = h \stab_G(x)\]
+	Zudem ist die Abbildung surjektiv nach Konstruktion. Die Bahnformel folgt mit Satz \ref{satz1_11}.
+\end{proof}
+\begin{kor}\label{kor3_8}
+	Sei $X$ eine endliche $G$-Menge und $\{x_i\}_{i \in I}$ ein Repräsentantensystem der Bahnen von $X$ unter $G$. Dann gilt
+	\[|X| \overset{\text{Bem.} \ref{rem3_5} (i)}{=}  \sum_{i \in I} |G{x_i}| = |X^G| + \sum_{x_i \notin X^G} |G{x_i}| \overset{\text{Satz.} \ref{satz3_7}}{=} |X^G| + \sum_{x_i \notin X^G} [G: \stab_G(x_i)].\]
+	Ist $X =G$ und $G$ operiert durch Konjugation, so folgt
+	\[|G| \overset{\text{Bsp.} \ref{beispiel3_6} (2)}{=} |Z(G)| + \sum_{x_i \notin Z(G)} |C_{x_i}| = |Z(G)| + \sum_{x_i \notin Z(G)} [G : C_G(x_i)].\]
+	Die sogenannte \textbf{Klassengleichung}.
+\end{kor}
+\begin{beispiel}\label{beispiel3_9}
+	Die Gruppe $G = \GL_n(K)$ operiert treu auf $X = K^n$ durch Matrizenmultiplikation. Bahnen:
+	\[G\vec{0}_{K^n} = \{\vec{0}_{K^n}\}, \quad G\vec{e}_1 = K^n \setminus \{\vec{0}_{K^n}\}\]
+	Insbesondere gilt $K^n = G\vec{0}_{K^n} \cup G\vec{e}_1$. Zudem ist
+	\[\stab_G(\vec{e}_1) = \{\mat{A} \in \GL_n(K) \mid \mat{A}\vec{e}_1 = \vec{e}_1\} = \left\{\begin{bmatrix}
+		1 & a_2 & \dots & a_n\\
+		0 & & & \\
+		\vdots & & \mat{A}' &\\
+		0 & & &
+	\end{bmatrix} \mid \mat{A}' \in \GL_{n-1}(K)\right\}.\]
+	Sei nun $|K| = q < \infty$. Mit der Bahnformel gilt
+	\begin{align*}
+		|\GL_n(K)| &= |G\vec{e}_1| \cdot |\stab_G(\vec{e}_1)|\\
+		&= (q^n - 1) q^{n-1} \cdot |\GL_{n-1}(K)|
+	\end{align*}
+	Induktiv erhalten wir
+	\[|\GL_n(K)| = q^{\frac{n(n-1)}{2}} (q^n - 1)(q^{n-1} -1)\dots(q-1)\]
+\end{beispiel}
+\begin{center}
+	\Large{\textit{Wie helfen uns Gruppenoperationen, die Struktur endlicher Gruppen zu verstehen?}}
+\end{center}
+\begin{definition}\label{definiton3_10}
+	\begin{enumerate}[label=(\alph*)]
+		\item Eine Gruppe der $G$ der Ordnung $|G| = p^n$ für eine Primzahl $p$ und $n \in \N$ heißt \textbf{$p$-Gruppe}.
+		\item Sei $|G| = p^n \cdot q$ mit $p$ Primzahl und $\ggt(p,q) = 1$. Dann heißt $H \leq G$ \textbf{$p$-Sylowuntergruppe} von $G$, falls $|H| = p^n$. Schreibe $\syl_p(G)$ für die Menge aller $p$-Sylowuntergruppen von $G$.
+	\end{enumerate}
+\end{definition}
+\begin{rem}\label{rem3_11}
+\begin{enumerate}[label=(\roman*)]
+	\item 	Ist $G$ eine $p$-Gruppe und $X$ eine endliche $G$-Menge, so gilt $|X| \equiv |X^G| \mod p$.
+	\begin{proof}
+		Nach Korollar \ref{kor3_8} gilt für ein Repräsentantensystem $\{x_i\}_{i \in I}$ der Bahnen von $X$:
+		\[|X| \equiv |X^G| + \sum_{x_i \notin X^G} [G : \stab_G(x_i)].\]
+			Nach Satz \ref{satz1_11} teilt $[G: \stab_G(x_i) ]$ die Ordnung von $G$. Für $x_i \notin G$ ist $[G : \stab_G(x_i)] > 1$ und somit gilt
+			\[p \big| [G : \stab_G(x_i)].\]
+	\end{proof}
+	\item Für eine $p$-Gruppe $G$ ist das Zentrum $Z(G) \neq \{1_G\}$.
+	\begin{proof}
+		Die Klassengleichung aus Korollar \ref{kor3_8} liefert 
+		\[0 \equiv |G| \equiv |Z(G)| \mod p.\]
+		Also teilt $p$ die Ordnung von $Z(G)$.
+	\end{proof}	
+\end{enumerate}
+\end{rem}
+\begin{beispiel}\label{beispiel3_12}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Die abelsches Gruppen $\Z_p, \Z_p \times \Z_p$ und $\Z_{p^2}$ sind $p$-Gruppen. Die Diedergruppe $D_4$ ist eine 2-Gruppe mit $|Z(D_4)| = 2$.
+		\item $G = S_3$ mit $|G| = 2 \cdot 3$ ist keine $p$-Gruppe. Es gilt
+		\begin{align*}
+			\syl_2(G) &= \{\spn{(12)}, \spn{(13)}, \spn{(23)}\}\\
+			\syl_3(G) &= \{A_3\}.
+		\end{align*}
+		\item Sei $G = \GL_n(\Z_p)$ für $n \in \N$. Nach Beispiel \ref{beispiel3_9} gilt
+		\[|G| = p^{\frac{n(n-1)}{2}} \underbrace{(p^n - 1)(p^{n-1} - 1) \dots (p-1)}_{\equiv \pm 1 \mod p}.\]
+		Sei 
+		\[U_n := \left\{\mat{A} \in \GL_n(\Z_p) \mid \mat{A} = \begin{bmatrix}
+			\bar{1} & & * \\
+			& \ddots &\\
+			0 & & \bar{1}
+		\end{bmatrix}\right\} \leq \GL_n(\Z_p).\]
+		Da $|U_n| = p^{\frac{n(n-1)}{2}}$, ist $U_n$ $p$-Sylowuntergruppe von $\GL_n(\Z_p)$.
+	\end{enumerate}
+\end{beispiel}
+\begin{thm}[Sylow-Sätze]\label{thm3_13}
+	Sei $|G| = p^n \cdot q$ mit $p$ Primzahl und $\ggt(p,q) = 1$.
+	\begin{enumerate}[label=(\alph*)]
+		\item Zu jedem $k \in \{1, \dots, n\}$ existiert eine Untergruppe $H \leq G$ mit $|H| = p^k$.
+		\item Sei $H \leq G$ mit $|H| = p^k$ für $k \in \{1, \dots, n\}$. Sei $S \in \syl_p(G)$. Dann existiert $g \in G$ mit $H \leq gSg^{-1}$.
+		\item $|\syl_p(G)|$ teilt $q$ und $|\syl_p(G)| \equiv 1 \mod p$.
+	\end{enumerate}
+\end{thm}
+\begin{kor}\label{kor3_14}
+	Sei $G$ eine endliche Gruppe und $p$ eine Primzahl.
+	\begin{enumerate}[label=(\alph*)]
+		\item $p$ teilt $|G|$ nur dann, wenn ein $g \in G$ existiert mit $\ord(g) = p$. \textbf{Satz von Cauchy}
+		\item Sei $S \in \syl_p(G)$. Dann gilt
+		\[S \unlhd G \;\Leftrightarrow\; \syl_p(G) = \{S\}.\]
+	\end{enumerate}
+\end{kor}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item Nach Theorem \ref{thm3_13} (a) gibt es eine Untergruppe $H \leq G$ mit $|H| = p$. Nach Kapitel 2 gilt $H \cong \Z_p$. Somit existiert ein $g \in H$ mit $\ord(g) = p$.
+		\item Nach Theorem \ref{thm3_13} (b) sind alle $p$-Sylowuntergruppen konjugiert zu $S$.
+	\end{enumerate}
+\end{proof}
+\begin{proof}[Beweis der Sylowsätze]
+	\begin{enumerate}[label=(\alph*)]
+		\item \underline{Induktion über $|G| = p^n \cdot q$: } $G$ operiert auf sich selbst durch Konjugation (siehe Beispiel \ref{beispiel3_6} (2)). Sei $\{x_i\}_{i \in I}$ ein Repräsentantensystem der nicht-zentralen Konjugationsklassen. Die Klassengleichung liefert
+		\[|G| = |Z(G)| + \sum_{i \in I} [G : C_G(x_i)].\]
+		\underline{Fall 1:}
+		
+		Angenommen $p$ teilt nicht $|Z(G)|$. Da $p$ aber $|G|$ teil, existiert ein $i \in I$, so dass $p$ nicht $[G : C_G(x_i)]=\frac{|G|}{|C_G(x_i)|}$ teilt. Somit gilt $|C_G(x_i)| = p^n \cdot q'$ mit $\ggt(p, q') = 1$ und $|C_G(x_i)| < |G|$. Nach Induktionsvoraussetzung hat $C_G(x_i)$ eine Untergruppe der Ordnung $p^k$ für alle $k \in \{1, \dots, n\}$. Also gilt dies auch für $G$.
+		
+		\underline{Fall 2: }
+		
+		Angenommen $p$ teilt $|Z(G)|$. Schreibe 
+		\[Z(G) \cong \Z_{n_1} \times \dots \times \Z_{n_s}\]
+		mit $1 < n_1 \leq \dots \leq n_s$ und $n_1 \vert \dots \vert n_s$ (siehe Aufgabe M.4.1). Sei $j \in \{1, \dots, s\}$ mit $p \vert n_j$. In $\Z_{n_j}$ existiert somit ein Element der Ordnung $p$. Sei entsprechend $g \in Z(G)$ mit $\ord(g) = p$. Für $k=1$ folgt die Behauptung. Sei also $k > 1$. Da $g \in Z(G)$, folgt $\spn{g} \unlhd G$ mit
+		\[\left|\faktor{G}{\spn{g}}\right| = p^{n-1} \cdot q.\]
+		Nach Induktionsvoraussetzung existiert eine Untergruppe $U \leq G/\spn{g}$ mit $|U| = p^{k-1}$. Satz \ref{satz1_23} liefert uns eine Untergruppe $\spn{g} \leq H \leq G$ mit $H/\spn{g} = U$. Also gilt
+		\[|H| = |U| \dots |\spn{g}| = p^{k-1} \cdot p = p^k.\]
+		\item Sei $H \leq G$ mit $|H| = p^k$ für $k \leq n$. Sei $S \in \syl_p(G)$. Zu zeigen ist, dass ein $g \in G$ existiert mit $H \leq gSg^{-1}$.
+		
+		Die Gruppe $H$ operiert auf $G/S$ durch Multiplikation (vgl. Beispiel \ref{beispiel3_3} (4)). Es ist $|G/S| = q$. Mit Bemerkung \ref{rem3_11} (i) gilt für die Fixpunktmenge dieser Operation
+		\[\left|{\faktor{G}{S}}^H\right| \equiv \left|\faktor{G}{S}\right| = q \mod p.\]
+		Da nach Voraussetzung $p \nmid |(G/S)^H|$. Somit existiert ein Fixpunkt $gS \in (G/S)^H$ für $g \in G$, d.h. 
+		\[hgS = gS\]
+		für alle $h \in H$. Also $H \leq gSg^{-1}$, wie gewünscht.
+		
+		\item \underline{Zeige zunächst:} $|\syl_p(G)| \mid q$.
+		
+		$G$ operiert auf $\syl_p(G)$ durch Konjugation. Sei $S \in \syl_p(G)$. Nach Teil (b) entspricht die Bahn von $S$ unter $G$ ganz $\syl_p(G)$, d.h. die Operation ist transitiv. Der Bahnsatz liefert
+		\[|\syl_p(G)| \overset{\text{Satz \ref{satz3_7}}}{=} [G:\stab_G(S)] \big| [G:\stab_G(S)] \cdot [\stab_G(S) : S] \overset{\text{Satz \ref{satz1_11}}}{=} [G:S] = q.\]
+		\underline{Verbleibt zu zeigen:} $|\syl_p(G)| \equiv 1 \mod p$.
+
+		Sei $S \in \syl_p(G)$. $S$ operiert auf $\syl_p(G)$ durch Konjugation. Inbesondere ist $S$ auch Fixpunkt dieser Operation. Sei $S' \in \syl_p(G)$ ein weiterer Fixpunkt, d.h. 
+		\[gS'g^{-1} = S'\]
+		für alle $g \in S$. Daraus folgt
+		\[S \subseteq \stab_G(S') := \{g \in G\mid gS'g^{-1} = S'\} \quad \textbf{Normalisator von $S'$ in $G$}\]
+		\underline{Behauptung:} $S \subseteq S'$ und somit $S = S'$ wegen $|S| = |S'| < \infty$.
+		
+		Es gilt $S' \unlhd \stab_G(S')$. Somit folgt $SS' = S'S \leq \stab_G(S')$. Nach Satz \ref{satz1_21} (a) erhalten wir 
+		\[\faktor{SS'}{S'} = \faktor{S}{S \cap S'}.\]
+		Da $S$ $p$-Gruppe, ist $(SS')/S$ trivial oder auch eine $p$-Gruppe. Da $S' \leq SS' \leq G$, erhalten wir
+		\[[SS' : S'] \big| [G : SS'] \cdot [SS' : S'] \overset{\text{Satz \ref{satz1_11}}}{=} [G:S'] = q.\]
+		Da $\ggt(p,q) = 1$, folgt $p \nmid [SS' : S']$ und somit muss $|(SS')/S'| = 1$ bzw. $SS' = S'$. Also gilt $S \subseteq S'$ und somit $S = S'$ wie gewünscht.
+		
+		Damit ist $S$ der einzige Fixpunkt der Operation von $S$ auf $\syl_p(G)$ durch Konjugation. Bemerkung \ref{rem3_11} (i) liefert nun $|\syl_p(G)| \equiv 1 \mod p$.
+	\end{enumerate}
+\end{proof}
+
+Als Anwendung wollen wir die Struktur von Gruppen kleiner Ordnung besser verstehen und alle Gruppen bis Ordnung 15 klassifizieren!
+
+\begin{kor}\label{kor3_15}
+	\begin{enumerate}[label=(\alph*)]
+		\item Sei $|G| = 2p$ mit $p \neq 2$ Primzahl. Dann gilt $G \cong \Z_{2p}$ oder $G \cong D_p$ (Diedergruppe).
+		\item Sei $|G| = pq$ mit $p<q$ Primzahlen, so dass $p \nmid q-1$. Dann gilt $G \cong \Z_{pq} \cong \Z_p \times \Z_q$. 
+	\end{enumerate}
+\end{kor}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item Nach Theorem \ref{thm3_13} (c) gilt $|\syl_p(G)| \mid 2$ und $|\syl_p(G)| \equiv 1 \mod p$, also $\syl_p(G) = \{S\}$ mit $S \cong \Z_p$. Sei $S = \spn{g}$ für ein $g \in G$ und $h \in G \setminus S$ mit $\ord(h) = 2$ (ein solches $h$ existiert zum Beispiel nach Korollar \ref{kor3_14} (a)). Es folgt, dass
+		\[G = \{1_G, g, g^2, \dots, g^{p-1}, h, hg, hg^2, \dots, hg^{p-1}\}.\]
+		Da $hg \notin S$, gilt $\ord(hg) = 2p$ oder $\ord(hg) = 2$. Im ersten Fall erhalten wir $G \cong \Z_{2p}$, im zweiten $G \cong D_p$.
+		\item Nach Theorem \ref{thm3_13} (c) gilt:
+		\begin{align*}
+			|\syl_p(G)| \mid q \quad\text{und}\quad |\syl_p(G)| \equiv 1 \mod p,\\
+			|\syl_q(G)| \mid p \quad\text{und}\quad |\syl_q(G)| \equiv 1 \mod q.
+		\end{align*}
+		Insbesondere ist $|\syl_p(G)| \in \{1,q\}$. Aber $q \equiv 1 \mod p$ bedeutet $p \mid q-1$. Ein Widerspruch!
+		Daraus folgt $\syl_p(G) = \{S\}$ mit $S \cong \Z_p$. Ebenso ist $|\syl_q(G)| \in \{1,p\}$. Da $p<q$, ist $p \equiv 1 \mod q$ aber nicht möglich, d.h. $\syl_q(G) = \{H\}$ mit $H \cong \Z_q$.
+		
+		Nach Korollar \ref{kor3_14} (b) gilt $S,H \unlhd G$. Zudem ist $S \cdot H = G$ und $S \cap H = \{1_G\}$. $G$ ist also inneres direktes Produkt von $S$ und $H$. Damit folgt die Behauptung (vgl. Bemerkung \ref{rem2_9} (ii) und Aufgabe M.3.3).
+	\end{enumerate}
+\end{proof}
+\begin{beispiel}\label{beispiel3_16}
+	\mbox{}
+	\begin{center}
+		\begin{tabular}{|C{2cm}|L{8cm}|}
+			\hline
+			$|G|$ & Mögliche Isomorphietypen \\
+			\hline
+			2 & $\Z_2$ \\
+			3 & $\Z_3$ \\
+			4 & $\Z_4, \Z_2 \times \Z_2$ (siehe Aufgabe M.1.1) \\
+			5 & $\Z_5$ \\
+			6 & $\Z_6, S_3 = D_3$ (siehe Korollar \ref{kor3_15} (a)) \\
+			7 & $\Z_7$ \\
+			8 & $\Z_8, \Z_4 \times \Z_2, \Z_2 \times \Z_2 \times \Z_2, D_4, Q_8$\\
+		\end{tabular}
+	\end{center}
+	$Q_8$ heißt die \textbf{Quaternionengruppe}. Sie lässt sich zum Beispiel schreiben als Untergruppe von $\SL_2(\C)$ erzeugt von den Matrizen
+	\[\mat{A} = \begin{bmatrix}
+		i & 0\\
+		0 & -i
+	\end{bmatrix}
+	\quad\text{und}\quad\mat{B}=\begin{bmatrix}
+		0 & -1\\
+		1 & 0
+	\end{bmatrix}\]
+	Es gilt $Q_8 = \{\pm\mat{E}_2, \pm \mat{A}, \pm\mat{B}, \pm\mat{AB}\}$ und $\mat{A}^2 = \mat{B}^2 = (\mat{A}\mat{B})^2 = -\mat{E}_2$.
+	\begin{center}
+		\begin{tabular}{|C{2cm}|L{8cm}|}
+			9 & $\Z_9, \Z_3 \times \Z_3$ (siehe Aufgabe M.6.1 (b))\\
+			10 & $\Z_{10}, D_5$ (siehe Korollar \ref{kor3_15} (a))\\
+			11 & $\Z_{11}$\\
+			12 & $\Z_{12}, \Z_2 \times \Z_6, D_6, A_4, H$
+		\end{tabular}
+	\end{center}
+	Die Gruppe $H$ können wir zum Beispiel als Untergruppe von $S_3 \times \Z_4$ realisieren. Sei dazu $H = \{(\sigma, x) \mid \sgn(\sigma) = 1 \;\Leftrightarrow\; x \text{ gerade}\} \unlhd S_3 \times \Z_4$, also
+	\begin{align*}
+		H = \{&(\id, \bar{0}),
+		(\id, \bar{2}),
+		((123), \bar{0}),
+		((132), \bar{0}),
+		((123), \bar{2}),
+		((132), \bar{2}),\\
+		&((12), \bar{1}),
+		((12), \bar{3}),
+		((13), \bar{1}),
+		((13), \bar{3}),
+		((23), \bar{1}),
+		((23), \bar{3})\}
+		\end{align*}
+		$H$ wird zum Beispiel erzeugt von $a = ((123), \bar{2})$ und $b = ((12), \bar{1})$. mit $\ord(a) = 6, a^3 = b^2, ba = a^{-1} b$.
+		
+		\begin{center}
+			\begin{tabular}{|C{2cm}|L{8cm}|}
+				13 & $\Z_{13}$\\
+				14 & $\Z_{14}, D_7$ (siehe Korollar \ref{kor3_15} (a))\\
+				15 & $\Z_{15}$ (siehe Korollar \ref{kor3_15} (b))\\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{beispiel}
+
+
+
+
+
+

@@ -1,0 +1,332 @@
+\section{Ringe}
+\begin{definition}
+	Ein \textbf{Ring} $(R, + \cdot)$ ist eine Menge mit binären Verknüpfungen
+	\begin{align*}
+		+ &\colon R \times R \to R \quad\text{mit}\quad (r,s) \mapsto r+s\\
+		\cdot &\colon R \times R \to R \quad\text{mit}\quad (r,s) \mapsto r\cdot s,
+	\end{align*}
+	so dass gilt
+	\begin{enumerate}[label={\bfseries(R\arabic*)}]
+		\item $(R,+)$ ist eine abelsche Gruppe.
+		\item Für alle $a,b,c \in R$ gilt $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ (\textbf{$\cdot$ ist assoziativ}).
+		\item Für alle $a,b,c \in R$ gilt $a\cdot (b+c) = a\cdot b + a\cdot b$ und $(a+b)\cdot c = a\cdot c + b \cdot c$. (\textbf{Distributivgesetze})
+		\item Es existiert $1 \in R$ mit $a \cdot 1 = a = 1 \cdot a$ (\textbf{Ring mit Eins}).
+		\item Gilt $a \cdot b = b \cdot a$ für alle $a,b \in R$, so heißt $R$ \textbf{kommutativ}.
+	\end{enumerate}
+\end{definition}
+Für $a \cdot b$ schreiben wir auch $ab$.
+\begin{rem}\label{rem4_2}
+	\begin{enumerate}[label=(\roman*)]
+		\item Es gilt $a \cdot 0 = 0 = 0 \cdot a$ für alle $a \in R$.
+		\[a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0 \;\Rightarrow\; a \cdot 0 = 0\]
+		$0 \cdot a = 0$ folgt analog.
+		\item Es gilt $(-a)b = -(ab) = a(-b)$ für alle $a,b,c \in R$.
+		\[(-a)b + ab = (-a + a) b = 0 \cdot b = 0\]
+		Daraus folgt $(-a)b = -(ab)$ und die zweite Gleichung analog.
+		\item Das Einselement in $R$ ist eindeutig. Ist $1_R = 0_R$, so gilt $R = \{0_R\}$.
+	\end{enumerate}
+\end{rem}
+\begin{beispiel}\label{beispiel4_3}
+	\begin{enumerate}[label=(\arabic*)]
+		\item $\Z, \Q, \R, \C$ sind kommutative Ringe. $(\Z_n, +, \cdot)$ ist ein kommutativer Ring.
+		\item Sei $R$ ein kommutativer Ring. Dann heißt 
+		\[R[x] := \{a_0 + a_1 x + \dots + a_n x^n \mid n \in N_0, a_i \in R, 0 \leq i \leq n\}\]
+		\textbf{Polynomring in einer Variablen $x$ über $R$} und $f \in R[x]$ heißt \textbf{Polynom}. 
+		
+		\underline{Addition:} 
+		\[\sum_{i=0}^n a_ix^i + \sum_{i=0}^m b_ix^i := \sum_{i=0}^{\max\{m,n\}} (a_i +b_i)x^i\]
+		\underline{Multiplikation:}
+		\[\left(\sum_{i=0}^n a_ix^i\right) \cdot \left(\sum_{i=0}^n b_ix^i\right) := \sum_{i=0}^{n+m} \left(\sum_{p+q = i} a_p b_q\right)x_i,\]
+		wobei $a_i := 0$ für alle $i \geq n+1$ und $b_i := 0$ für alle $i \geq m+1$. Es gilt $0_{R[x]} = 0_R$ und $1_{R[x]} = 1_R$. Formal sind Polynome Folgen $(a_i)_{i \in \N_0}$ mit $a_i = 0$ für alle bis auf endlich viele Folgenglieder. Setze dazu 
+		\[1_R := (1,0,0,0,\dots)\quad\text{und}\quad x := (0,1,0,0,\dots).\]
+		Induktiv folgt $x^j = (\underbrace{0,\dots,0}_{j\text{ Nullen}}, 1, 0, \dots)$. Das Polynom $\sum_{i=0}^n a_i x^i $ entspricht genau der Folge $(a_i)_{i \in \N_0}$. Zwei Polynome $\sum_{i=0}^n a_i x_i$ und $\sum_{i=0}^m b_i x^i$ sind gleich genau dann, wenn $(a_i)_{i \in \N_0} = (b_i)_{i \in \N_0}$.
+		\item Sei $(G,+)$ eine abelsche Gruppe. Dann ist 
+		\[\eendm(G) := \{\varphi \colon G \to G \mid \varphi \text{ Gruppenhomomorphimus}\}\]
+		ein Ring durch 
+		\begin{align*}
+			(\varphi + \psi)(g) &:= \varphi(g) + \psi(g)\\
+			(\varphi \cdot \psi) &:= \varphi(\psi(g))
+		\end{align*}
+		für alle $\varphi, \psi \in \eendm(G), g \in G$. Es gilt $0_{\eendm(G)} = (\varphi\colon g \mapsto 0_G)$ und $1_{\eendm(G)} = \id_G$. $\eendm$ heißt \textbf{Endomorphismenring von $G$}. 
+		\item Sei $n \in \Z$. Dann ist $\Z[\sqrt{n}] := \{a + b \sqrt{n} \mid a,b \in \Z\}$, sprich $\Z$ \textbf{adjungiert} $\sqrt{n}$, ein Ring durch
+		\begin{align*}
+			(a + b \sqrt{n}) + (c + d \sqrt{n}) &:= (a+c) + (b+d)\sqrt{n}\\
+			(a + b \sqrt{n}) \cdot (c + d \sqrt{n}) &:= (ac + bdn) + (ad + bc)\sqrt{n}
+		\end{align*}
+		(vergleiche Multiplikation in $\C$). Es gilt $0_{\Z[\sqrt{n}]} = 0_\Z$ und $1_{\Z[\sqrt{n}]} = 1_\Z$. $\Z[\sqrt{-1}] = \Z[i]$ heißt \textbf{Ring der Gaußschen Zahlen}.
+		\item Seien $R$ und $S$ Ringe. Dann ist $R \times S$ ein Ring durch komponentenweise Addition und Multiplikation. Es gilt $0_{R \times S} = (0_R, 0_S)$ und $1_{R \times S} = (1_R, 1_S)$.
+	\end{enumerate}
+\end{beispiel}
+\begin{definition}
+	Seien $R$ und $S$ Ringe 
+	\begin{enumerate}[label=(\alph*)]
+		\item Eine Abbildung $\varphi \colon R \to S$ heißt \textbf{Ringhomomorphismus}, falls 
+		\begin{itemize}
+			\item $\varphi(1_R) = 1_S$.
+			\item $\varphi(a+ b) = \varphi(a) + \varphi(b)$.
+			\item $\varphi(a\cdot b) = \varphi(a) \cdot \varphi(b)$.
+		\end{itemize}
+		für alle $a,b,c \in R$. Ist $\varphi$ zusätzlich bijektiv, sprechen wir von einem \textbf{Isomorphismus}. Die Ringe $R$ und $S$ sind dann isomorph. Schreibe $R \cong S$.
+		\item $S$ heißt \textbf{Unterring} von $R$, falls $S \subseteq R$ und die Inklusionsabbildung $S \to R$ ein Ringhomomorphismus ist. Schreibe dafür $S \leq R$.
+	\end{enumerate}
+\end{definition}
+\begin{rem}\label{rem4_5}
+	\begin{enumerate}[label=(\roman*)]
+		\item Jeder Ringhomomorphismus $\varphi \colon R \to S$ ist ein Gruppenhomomorphismus bezüglich $+$. Insbesondere ist $\varphi$ injektiv genau dann, wenn
+		\[\ker(\varphi) := \{a \in R \mid \varphi(a) = 0_S\} = \{0_R\}.\]
+		(siehe Beispiel \ref{beispiel1_6} (6)).
+		\item Isomorphe Ringe betrachten wir als wesensgleich.
+		\item Sei $R$ ein Ring und $S \subseteq R$. Dann gilt 
+		\[S \leq R \text{ Unterring} \;\Leftrightarrow\; 1_R \in S, (S, +) \leq (R,+) \text{ und } a,b \in S \;\Rightarrow\; a\cdot b \in S.\]
+	\end{enumerate}
+\end{rem}
+\begin{beispiel}\label{beispiel4_6}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Es gilt $\Z \leq \Q \leq \R \leq \C$ sowie $\Z[\sqrt{n}] \leq \C$. Das \textbf{Zentrum} 
+		\[Z(R) := \{a \in R \mid ar=ra \text{ alle } r \in R\}\]
+		ist Unterring eines Rings $R$. Für $R$ kommutativ ist $R \leq R[x]$.
+		\item Sei $K$ ein Körper und $V$ ein $K$-Vektorraum mit Basis
+		\[B = (v_1, \dots, v_n)\]
+		für $n \in \N$. Dann ist $\eendm_K(V) = \{\varphi\colon V \to V \mid \varphi \text{ linear}\}$ ein Ring (vgl. Beispiel \ref{beispiel4_3} (3)). Wir erhalten einen Ringisomorphismus $\eendm_K(V) \overset{\sim}{\to} M_n(K)$ mit $\varphi \mapsto M_B(\varphi)$, wobei $M_B(\varphi)$ die darstellende Matrix von $\varphi$ bezüglich $B$ ist.
+		\item Sei $\varphi \colon R \to S$ ein Ringhomomorphismus von kommutativen Ringen und $s \in S$. Dann erhalten wir einen Ringhomomorphismus $\varphi_s \colon R[x] \to S$ durch 
+		\[\sum_i a_i x^i \mapsto \sum_i \varphi(a_i)s^i.\]
+		$\varphi_s$ heißt \textbf{Einsetzungshomomorphismus}. In der Tat gilt 
+		\begin{align*}
+			\varphi_s\left( \left(\sum_i a_i x^i\right) \cdot \left(\sum_i b_i x^i\right)\right) &= \varphi_s\left(\sum_i \left(\sum_{p=0}^i a_p b_{i-p}\right)x^i\right)\\
+			&= \sum_i \varphi\left(\sum_{p=0}^i a_p b_{i-p}\right) s^i\\
+			&= \sum_i \sum_{p=0}^i \varphi(ap)\varphi(b_{i-p}) s^i\\
+			&= \sum_i \left(\sum_i \varphi(a_i) s^i\right) \left(\sum_{i} \varphi(b_i) s^i\right)\\
+			&= \varphi_s\left(\sum_i a_ix^i\right) \varphi_s\left(\sum_i b_ix^i\right)
+		\end{align*}
+		$\varphi_s$ ist der eindeutige Ringhomomorphismus mit $\varphi_s(x) = s$, der das folgende Diagramm kommutieren lässt.
+		\[
+		\begin{tikzcd}
+			R \arrow{r}{\varphi} \arrow[swap]{d}{\text{Inklusion}} & S \\
+			R[x] \arrow{ur}{\varphi_s}
+		\end{tikzcd}
+		\]
+		Ist $R \leq S$ und $\varphi \colon R \to S$ die Inklusionsabbildung, so ist  $\im(\varphi_s) = \{\sum_{i=0}^n a_i s^i \mid n \in \N_0, a_i \in R, 0 \leq i \leq n\} =: R[s]$ (\glqq\textbf{$R$ adjungiert $S$}\grqq), der kleinste Unterring von $S$, der $R$ und $s$ enthält (vgl. Beispiel \ref{beispiel4_3} (4)). 
+		\vspace{0.5cm}
+		
+		Ist $S = \abb(R,R)$ mit punktweiser Addition und Multiplikation (siehe Aufgabe M.7.1) und $\varphi \colon R \to \abb(R,R)$ der Ringhomomorphismus mit
+		\[a \mapsto (\varphi_a \colon x \mapsto a),\]
+		So ist $\varphi_{\id_R} \colon R[x] \to \abb(R,R)$ gegeben durch 
+		\[\sum_i a_ix^i \longmapsto \left(\sum_i \varphi(a_i) \id_R^i = \sum_i \varphi_{a_i} \id_R^i : x \mapsto \sum_i a_i x^i\right)\]
+		$\varphi_{\id_R}$ schickt ein Polynom auf die zugehörige Polynomfunktion. Da $\varphi_{\id_R}$ im Allgemeinen nicht injektiv ist, müssen wir zwischen Polynomen und Polynomfunktionen unterscheiden! Zum Beispiel: $x^2 + x$ ist nicht das Nullpolynom, die zugehörige Polynomfunktion 
+		\[\Z_2 \to \Z_2 \quad\text{mit}\quad x \mapsto x^2 + x\]
+		aber die Nullfunktion.
+	\end{enumerate}
+\end{beispiel}
+Wir wollen Quotienten von Ringen betrachten. Unterringe eignen sich dazu nicht. Wir brauchen ein neues Konzept.
+\begin{definition}
+	Sei $R$ ein Ring und $(I,+) \leq (R,+)$ eine Untergruppe. Dann heißt
+	\begin{itemize}
+		\item $I$ \textbf{Linksideal}, wenn $r \cdot i \in I$ für alle $r \in R, i \in I$.
+		\item $I$ \textbf{Rechtsideal}, wenn $i \cdot r \in I$, für alle $r \in R, i \in I$.
+		\item \textbf{zweiseitiges Ideal}, wenn $I$ Links- und Rechtsideal ist.
+	\end{itemize}
+	Schreibe $I \unlhd R$ oder genauer $I \unlhd_\ell R$ bzw. $I \unlhd_r R$ bzw. $I \unlhd_2 R$. Ist $R$ kommutativ, ist diese Unterscheidung nicht notwendig! 
+\end{definition}
+\begin{rem}\label{rem4_8}
+	\begin{enumerate}[label=(\roman*)]
+		\item Ist $I \unlhd R$ und $1_R \in I$, so ist $I = R$. Insbesondere sind Ideale mit $I \lhd R$ (echt in $R$) nach unserer Definition keine Unterringe.
+		\item Seien $I,J \unlhd R$. Dann gilt $I \cap J \unlhd R$, sowie 
+		\begin{align*}
+			I + J &:= \{i+j \mid i \in I, j \in J\} \unlhd R\\
+			I \cdot J &:= \left\{\sum_{k=1}^n i_k j_k \mid n \in \N, i_k \in I, j_k \in J, 1 \leq k \leq n\right\} \unlhd R	
+		\end{align*}
+		\item Für $a_1, \dots, a_s \in R$ heißt 
+		\begin{align*}
+			(a_1, \dots, a_s) := Ra_1 + \dots + Ra_s = \{r_1a_1 + \dots + r_sa_s \mid r_i \in R\} \unlhd_\ell R
+		\end{align*}
+		\textbf{das von $a_1, \dots, a_s$ erzeugte Linksideal in $R$}. Es ist das kleinste Linksideal in $R$, das $a_1, \dots, a_s$ enthält. Analog können wir Rechtsideale und zweiseitige Ideale in $R$ erzeugen.
+		
+		Ein Ideal, das von einem Element erzeugt wird, heißt \textbf{Hauptideal}.
+	\end{enumerate}
+\end{rem}
+\begin{beispiel}\label{beispiel4_9}
+	\begin{enumerate}[label=(\arabic*)]
+		\item $\{0_R\}$ und $R$ sind Hauptideale eines Rings $R$.
+		\item Ideale in $R = \Z$ sind Hauptideale und von der Form $n\Z$ für $n \in \N_0$. 
+		\item Sei $R = M_2(K)$ für einen Körper $K$. Sei $I$ das von 
+		\[\begin{bmatrix}
+			1 & 0\\
+			0 & 0
+		\end{bmatrix} \in R\]
+		erzeugte Linksideal, d.h. 
+		\begin{align*}
+			I = R \begin{bmatrix}
+				1 & 0\\
+				0 & 0
+			\end{bmatrix} = \left\{
+			\begin{bmatrix}
+				a & 0\\
+				b & 0
+			\end{bmatrix} : a,b \in K
+			\right\}
+		\end{align*}
+		$I$ ist jedoch kein zweiseitiges Ideal in $R$, da z. B. 
+		\begin{align*}
+			\begin{bmatrix}
+				1 & 0\\
+				1 & 0
+			\end{bmatrix}
+			\cdot \begin{bmatrix}
+				1 & 1\\
+				1 & 0
+			\end{bmatrix} = \begin{bmatrix}
+			1 & 1\\
+			1 & 1
+			\end{bmatrix} \notin I.
+		\end{align*}
+		Zweiseitige Ideale in $R = M_2(K)$ sind trivial (siehe Aufgabe M.7.3).
+		\item Ist $\varphi \colon R \to S$ ein Ringhomomorphismus, so gilt 
+		\[\ker(\varphi) \unlhd_2 R \quad\text{und}\quad \im(\varphi) \leq S.\]
+		Zweiseitige Ideale sind in der Tat genau Kerne von Ringhomomorphismen (vgl. Proposition \ref{prop1_18}).
+	\end{enumerate}
+\end{beispiel}
+\begin{satz}\label{satz4_10}
+	Sei $R$ ein Ring und $I \unlhd_2 R$. Dann wird die Quotientengruppe $R/I = \{r + I \mid r \in R\}$ zu einem Ring durch
+	\begin{align*}
+		(r+I)\cdot(s+I) := rs + I\quad\text{für } r,s \in R
+	\end{align*} 
+	$(R/I, +, \cdot)$ heißt \textbf{Quotientenring von $R$ modulo $I$}. Die Abbildung $\pi \colon R \to R/I$ mit $r \mapsto r + I$ ist surjektiver Ringhomomorphismus mit $\ker(\pi) = I$.
+\end{satz}
+\begin{proof}
+	Die Multiplikation ist wohldefiniert:
+	
+	Sei $r + I = r' + I$ und $s+I = s'+I$ bzw. $r' - r \in I$ und $s - s' \in I$. Zu zeigen ist also $rs + I = r's' + I$ bzw. $rs - r's' \in I$.
+	
+	\begin{align*}
+		rs - r's' = -r'\underbrace{(s' - s)}_{\in I} - \underbrace{(r' - r)}_{\in I} s \in I,
+	\end{align*}
+	da $I \unlhd_2 R$. Die Ringaxiome für $R/I$ folgen aus den Ringaxiomen für $R$. Insbesondere ist $1_{R/I} = 1_R + I$. Die Projektion $\pi$ ist ein surjektiver Gruppenhomomorphismus mit  $\ker(\pi) = I$ nach Satz \ref{satz1_16}. Zudem gilt $\pi(1_R) = 1_{R/I}$ sowie
+	\begin{align*}
+		\pi(r\cdot s) = r \cdot s + I = (r+I)\cdot(s + I) = \pi(r) \cdot \pi(s)
+	\end{align*}
+	für alle $r,s \in R$. Also ist $\pi$ auch ein Ringhomomorphismus.
+\end{proof}
+Analog zur Gruppentheorie gilt der
+\begin{satz}[Homomorphiesatz und Isomorphiesätze]\label{satz4_11}
+	\begin{enumerate}[label=(\alph*)]
+		\item Sei $\varphi \colon R \to S$ ein Ringhomomorphismus. Dann gilt
+		\[\faktor{R}{\ker(\varphi)} \cong \im(\varphi).\]
+		\item Sei $S \leq R$ und $I \unlhd_2 R$. Dann gilt
+		\[\faktor{I+S}{I} \cong \faktor{S}{I \cap S}.\]
+		\item Seien $I \leq J$ zweiseitige Ideale in $R$. Dann gilt
+		\[\faktor{R/I}{J/I} \cong \faktor{R}{J}.\]
+	\end{enumerate}
+\end{satz}
+\begin{proof}
+	Aussagen folgen analog zu Satz \ref{satz1_20} und Satz \ref{satz1_21}. Die dort konstruierten Gruppenisomorphismen sind Ringisomorphismen. In (b) gilt zudem, dass $I+S \leq R$ nach Aufgabe S.7.3.
+\end{proof}
+\begin{beispiel}\label{beispiel4_12}
+	Betrachte den Einsetzungshomomorphismus $\varphi_i \colon \R[x] \to \C$ mit $f \mapsto f(i)$ (siehe Beispiel \ref{beispiel4_6} (3)). Wir haben durch Inklusion
+	\[
+	\begin{tikzcd}
+		\R \arrow{r}{\varphi = \text{Inklusion}} \arrow[swap]{d}{\text{Inklusion}} & \C\\
+		R[x] \arrow{ur}{\varphi_i} 
+	\end{tikzcd}
+	\]
+	mit $\im(\varphi_i) = \R[i] = \C$. Es gilt $\ker(\varphi_i) = (x^2 + 1) \unlhd \R[x]$ (dazu später mehr) und mit Satz \ref{satz4_11} (a) folgt $R[x] /(x^2 + 1) \cong \C$.
+\end{beispiel}
+\begin{satz}[Idealkorrespondenz]\label{satz4_13}
+	Sei $\varphi\colon R \to S$ ein Ringhomomorphismus. Dann gilt
+	\begin{enumerate}[label=(\alph*)]
+		\item Ist $J \unlhd S$, so gilt $\varphi^{-1}(J) = \{a \in R \mid \varphi(a) = J\} \unlhd R$.
+		\item Ist $\varphi$ surjektiv, so existiert eine Bijektion
+		\begin{align*}
+			\{I \unlhd R \mid \ker(\varphi) \subseteq I\} &\to \{\text{Ideale in } S\}\\
+			I &\mapsto \varphi(I).
+		\end{align*}
+	\end{enumerate}
+\end{satz}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item Im Beweis von Satz \ref{satz1_23} haben wir gesehen, dass
+		\[\varphi^{-1}(J), +) \leq (R,+).\]
+		Sei nun $a \in \varphi^{-1}(J)$ und $r \in R$. OBdA verstehen wir $\unlhd$ als $\unlhd_\ell$. Dann gilt
+		\[\varphi(ra) = \underbrace{\varphi(r)}_{\in S}\underbrace{\varphi(a)}_{\in J} \in J\]
+		da $J \unlhd S$. Also $ra \in \varphi^{-1}(J)$ und somit $\varphi^{-1}(J) \unlhd R$.
+		\item Die Zuordnung ist wohldefiniert , da für $I \unlhd R$ gilt:
+		\begin{align*}
+			(\varphi(I), +) \leq (S,+) 
+		\end{align*}
+		und weil $\varphi$ surjektiv ist, existiert $r \in R$, so dass $\varphi(r) = s$, gilt
+		\begin{align*}
+			s \varphi(i) = \varphi(r)\varphi(i) = \varphi(\underbrace{ri}_{\in I}) \in \varphi(I)
+		\end{align*}
+		für alle $s \in S$ und alle $i \in I$. Die Umkehrabbildung ist gegeben durch die Zuordnung aus \textbf{(a)}
+		\begin{align*}
+			S \unrhd J \mapsto \varphi^{-1}(J) \unlhd R,
+		\end{align*}
+		wobei offensichtlich $\ker(\varphi) \leq \varphi^{-1}(J)$. In der Tat gilt $\varphi(\varphi^{-1}(J)) = J$ nach Definition und da $\varphi$ surjektiv. Wir vergewissern uns noch, dass auch $I = \varphi^{-1}(\varphi(I))$.
+		
+		\glqq{}$\subseteq$\grqq: Für alle $i \in I$ gilt $i \in \varphi^{-1}(\varphi(i))$, also $I \subseteq \varphi^{-1}(\varphi(I))$.
+		
+		\glqq{}$\supseteq$\grqq: Sei $r \in \varphi^{-1}(\varphi(I))$, d.h. $\varphi(r) \in \varphi(I)$. Dann existiert $i \in I$ mit $\varphi(r) = \varphi(i)$. Somit gilt $\varphi(r-i) = \varphi(r) - \varphi(i) = 0_S$, also $r-i \in \ker(\varphi) \subseteq I$. Es folgt $r \in I$ und daher $\varphi^{-1}(\varphi(I)) \subseteq I$.
+	\end{enumerate}
+\end{proof}
+\begin{rem}\label{rem4_14}
+	Die Surjektivität von $\varphi$ aus Satz \ref{satz4_13} ist wichtig! Betrachte die Inklusion $\varphi \colon \Z \to \Q$. $I := n\Z \unlhd \Z$ für $n \in \N$. Dann ist $\varphi(I) = I$, aber kein Ideal in $\Q$, da z. B. $\frac{1}{2} \cdot n \notin I$ für $n$ ungerade.
+\end{rem}
+
+\begin{satz}\label{satz4_15}
+	Sei $R$ ein Ring und $I_1, I_2 \unlhd_2 R$ mit $I_1 + I_2 = R$. Dann gilt
+	\[\faktor{R}{I_1 \cap I_2} \cong \faktor{R}{I_1} \times \faktor{R}{I_2} \quad\text{mittels}\quad (r + I_1 \cap I_2) \mapsto (r+I_1, r+I_2)\]
+\end{satz}
+\begin{proof}
+	Die Zuordnung $r \mapsto (r + I_1, r + I_2)$ liefert einen Ringhomomorphismus $\psi \colon R/I_1 \times R/I_2$ mit $\ker(\psi) = I_1 \cap I_2$. Die Behauptung ist nun, dass $\psi$ surjektiv ist.
+	
+	Sei $(a+I_1,b+I_2) \in R/I_1 \times R/I_2$. Da $I_1 + I_2 = R$ existiert $i_1 \in I_1, i_2 \in I_2$ mit $i_1 + i_2 = 1_R$. Es gilt
+	\begin{align*}
+		\psi(i_1) = (i_1 + I_1, i_1 + I_2) = (0_R + I_1, (1_R - i_2) + I_2) = (0_R + I_1, 1_R + I_2).
+	\end{align*}
+	Analog folgt $\psi(i_2) = (1_R + I_1, 0_R + I_2)$.  Wir erhalten
+	\begin{align*}
+		\psi(b{i_1} + a{i_2}) &= \psi(b)\psi(i_1) + \psi(a)\psi(i_2)\\ 
+		&= (b+I_1, b+I_2)\cdot(0_R + I_1, 1_R + I_2) + (a+I_1, a + I_2)\cdot(1_R + I_1, 0_R +I_2)\\
+		&= (0_R + I_1, b+I_2) + (a + I_1, 0_R + I_2) \\
+		&= (a + I_1, b+I_2)
+	\end{align*}
+	Somit ist $\psi$ surjektiv. Nach Satz \ref{satz4_11} (a) folgt
+	\[\faktor{R}{I_1 \cap I_2} = \faktor{R}{\ker(\psi)} \cong \im(\psi)  = \faktor{R}{I_1} \times \faktor{R}{I_2}.\]
+\end{proof}
+\begin{kor}\label{kor4_16}
+	Sei $m \in \N$ und $m = \prod_{i=1}^t m_i$ eine Zerlegung in paarweise teilerfremde $m_i \in \N$. Dann gilt
+	\[\faktor{\Z}{m\Z} \cong \faktor{\Z}{m_1 \Z} \times \dots \times \faktor{\Z}{m_t \Z} \quad\text{mittels}\quad x + m\Z \mapsto (x+m_1\Z, \dots, x+m_t \Z).\]
+	Insbesondere gibt es zu $c_1, \dots, c_t \in \Z$ stets eine eindeutige Zahl $x$ modulo $m$ mit 
+	\[x \equiv c_i \mod m_i \quad\text{für}\quad 1 \leq i \leq t.\]
+	Genannt \textbf{Chinesischer Restsatz}.
+\end{kor}
+\begin{proof}
+	Induktion nach $t$: Für $t = 1$ ist nichts zu zeigen. Sei $ t > 1$. Es gilt 
+	\begin{align*}
+		\prod_{i=1}^{t-1} m_i \Z_i, m_t \Z \unlhd \Z
+	\end{align*}
+	mit
+	\begin{align*}
+		\prod_{i=1}^{t-1} m_i \Z + m_t \Z = \mathrm{ggT}\left(\prod_{i=1}^{t-1} m_i, m_t\right)\Z = \Z
+	\end{align*}
+	und
+	\begin{align*}
+		\prod_{i=1}^{t-1} m_i \Z \cap m_t \Z = \mathrm{kgv}\left(\prod_{i=1}^{t-1} m_i, m_t\right)\Z = m\Z.
+	\end{align*}
+	Daraus folgt, dass 
+	\begin{align*}
+		\faktor{\Z}{m\Z} \overset{\text{Satz \ref{satz4_15}}}{=} \faktor{\Z}{\prod_{i=1}^{t-1} m_i \Z} \times \faktor{\Z}{m_t \Z} \overset{\text{IV}}{=} \faktor{\Z}{m_1 \Z} \times \dots \times \faktor{\Z}{m_t \Z}
+	\end{align*}
+\end{proof}
+\begin{beispiel}\label{beispiel4_17}
+	Finde $x \in \Z$ mit $x \equiv 1 \mod 5$ und $x \equiv 0 \mod 7$. Da $\ggt(5,7) = 1$, gilt $5\Z + 7\Z = \Z$. Bestimme $a,b \in \Z$ mit $5a + 7b = 1$ (siehe Lemma von Bézout). Division mit Rest bzw. der euklidische Algorithmus liefert
+	\begin{align*}
+		7 &= 1 \cdot 5 + 2\\
+		5 &= 2\cdot 2 + 1\\
+		2 &= 1 \cdot 2 + 0
+	\end{align*}
+	und somit $1 = 5 - (2\cdot 2) = 5 - 2 \cdot (7-5) = 3 \cdot 5 - 2 \cdot 7$. Dem Beweis von Satz \ref{satz4_15} folgend, wähle nun
+	\begin{align*}
+		x := 0 \cdot 15 + 1 \cdot (-14)
+	\end{align*} 
+	mit $x = -14 \equiv 21 \mod 35$. Dies ist nun die eindeutige Zahl $x$ modulo 35 mit $x \equiv 1 \mod 5$ und $x \equiv 0 \mod 7$ (siehe Korollar \ref{kor4_16}).
+\end{beispiel}
