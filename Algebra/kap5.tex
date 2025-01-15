@@ -1,0 +1,235 @@
+\section{Einheiten, Nullteiler und euklidische Ringe}
+Im Folgenden sei $R \neq \{0_R\}$ ein Ring.
+\begin{definition}
+	Elemente der Menge $R^\times := \{a \in R \mid \exists b \in R : ab = 1_R = ba\}$ heißten \textbf{Einheiten von $R$} oder \textbf{invertierbar}. Ein Ring mit $R^\times = R \setminus \{0_R\}$ heißt \textbf{Schiefkörper}. Ein kommutativer Schiefkörper heißt \textbf{Körper}.
+\end{definition}
+\begin{rem}\label{rem5_2}
+	\begin{enumerate}[label=(\roman*)]
+		\item $(R^\times)$ bildet eine Gruppe, die \textbf{Einheitengruppe in $R$}.
+		\item Sei $R$ kommutativ. Es gilt $R$ ist genau dann ein Körper, wenn $R$ nur die Ideale $\{0_R\}$ und $R$ hat.
+		\begin{proof}
+			\glqq{}$\Leftarrow$\grqq: Sei $\{0_R\} \neq I \unlhd R$ und $x \in I \setminus \{0_R\}$. Nach Voraussetzung ist $x$ invertierbar, so dass $xx^{-1} = 1_R \in I$. Also $I=R$.
+			
+			\glqq{}$\Rightarrow$\grqq: Sei $a \in R \setminus \{0_R\}$ und $I = (a) \unlhd R$. Da $I \neq \{0_R\}$, gilt $I=R$ und somit existiert $b \in R$ mit $ab = 1_R$. Also $a \in R^\times$.
+		\end{proof}
+	\end{enumerate}
+\end{rem}
+\begin{beispiel}\label{beispiel5_3}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Es ist $\Z^\times = \{1,-1\}$ und $\Q^\times = \Q \setminus \{0\}$.
+		\item Es gilt $\Z[i]^\times = \{1,-1,i,-i\}$ (als Gruppe isomorph zu $\Z_4$).
+		\begin{proof}
+			Sei $w \in \Z[i]^\times$ und $z \in \Z[i]$ mit $wz = 1$. Komplexe Konjugation liefert $1 = 1\cdot 1 = wz \overline{wz} = |w|^2 \cdot |z|^2$, d.h. $1 = |w|^2 = |a + ib|^2 = a^2 + b^2$ für $a,b \in \Z$. Also entweder $a = \pm 1$ und $b = 0$ oder $a = 0$ und $b = \pm 1$.
+		\end{proof}
+		\item Es gilt $\Z_n^\times = \{\bar{a} \in \Z_n \mid \ggt(a,n) =1\}$ für $n > 1$. Insbesondere ist $\Z_n$ ein Körper genau dann, wenn $n$ Primzahl.
+		\begin{proof}
+			Sei $\bar{a} \in \Z_n^\times$. Dann existiert $\bar{b} \in \Z_n$ mit $\bar{a}\cdot\bar{b} = \overline{ab} = \bar{1}$, d.h. $ab \equiv 1 \mod n$. Also existiert $c \in \Z$ mit $ab + cn = 1$ und $\ggt(a,n) = 1$. Sei $\ggt(a,n) = 1$. Dann existieren $b,c \in \Z$ mit $ab + cn = 1$. Daraus folgt
+			\[\bar{a}\cdot\bar{b} = \overline{ab} = \overline{1 -cn} = \bar{1} - \overline{cn} = \bar{1}.\]
+			Also $\bar{a} \in \Z_n^\times$.
+		\end{proof}
+		Die Zuordnung $n \mapsto |\Z_n^\times|$ definiert eine Abbildung $\varphi \colon \N\to\N$, die \textbf{Eulersche $\varphi$-Funktion} genannt wird. Es gilt $\varphi(1) := 1$ sowie
+		\begin{align*}
+			&\varphi(2) = |\Z_2^\times| = 1& &\varphi(4) = |\Z_4^\times| = 2& &\varphi(6) = |\Z_6^\times| = 2&\\
+			&\varphi(3) = |\Z_3^\times| = 2& &\varphi(5) = |\Z_5^\times| = 4& &\varphi(7) = |\Z_7^\times| = 6&
+		\end{align*}
+		$\varphi$ ist multiplikativ, d.h. für $n = n_1 n_2$ mit $\ggt(n_1, n_2) = 1$ gilt:
+		\[\varphi(n) = \varphi(n_1) \cdot \varphi(n_2).\]
+		\begin{proof}
+			Nach Korollar \ref{kor4_16} gilt $\Z_n \cong \Z_{n_1} \times \Z_{n_2}$ und somit
+			\[\Z_n^\times  \cong (\Z_{n_1} \times \Z_{n_2})^\times = \Z_{n_1}^\times \times \Z_{n_2}^\times.\]
+		\end{proof}
+		Wir wollen im Folgenden wesentliche Eigenschaften von $\Z$ abstrahieren:
+		\begin{itemize}
+			\item Für alle $a,b,c \in \Z$ gilt: $a \cdot b = 0 \;\Rightarrow\; a=0 \lor b=0$.
+			\item Existenz einer Division mit Rest.
+			\item Existenz einer eindeutigen Primfaktorzerlegung.
+		\end{itemize}
+	\end{enumerate}
+\end{beispiel}
+\begin{definition}
+	Ein Element $a \in R \setminus \{0_R\}$ heißt \textbf{Nullteiler}, falls ein Element $b \in R \setminus \{0_R\}$ existiert mit $ab = 0_R$ oder $ba = 0_R$. Ein kommutativer Ring ohne Nullteiler heißt \textbf{Integritätsbereich}.
+\end{definition}
+\begin{beispiel}\label{beispiel5_5}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Jeder Körper $K$ ist Integritätsbereich, da für $a,b \in K$ mit $b \neq 0_K$ gilt: $ab = 0_K \;\Rightarrow\; abb^{-1} = 0_K b^{-1} = 0_K$. Allgemein sind Einheiten niemals Nullteiler.
+		
+		Ist $R$ Integritätsbereich und $S \leq R$, so ist auch $S$ Integritätsbereich. Insbesondere ist zum Beispiel $\Z[\sqrt{n}] \leq \C$ ein Integritätsbereich für $n \in \Z$. Endliche Integritätsbereiche sind Körper. Insbesondere ist $\Z_n$ ein Integritätsbereich genau dann, wenn $n$ Primzahl (siehe Beispiel \ref{beispiel5_3} (3)).
+		\begin{proof}
+			Betrachte $a \in R \setminus \{0_R\}$ und die Abbildung $\varphi_a \colon R \to R$ mit $r \mapsto ar$. $\varphi_a$ ist injektiv, da aus $ar_1 = ar_2$ folgt $0_R = ar_1 - ar_2 = a(r_1 - r_2)$ und somit $r_1 - r_2 = 0_R$ bzw. $r_1 = r_2$. Da $R$ endlich, ist $\varphi_a$ sogar bijektiv, d.h. es existiert $r \in R$ mit $\varphi_a(r) = ar = 1_R$. Also ist $a \in R^\times$ und $R$ ein Körper.
+		\end{proof}
+		\item Sind $R$ und $S$ nicht-triviale Ringe, so hat $R \times S$ stets Nullteiler, da $(r,0_S) \cdot (0_R, S) = 0_{R \times S}$ für $r \neq 0_R$ und $s \neq 0_S$.
+		\item Die Standardmatrizen $\mat{E}_{ij}$ sind Nullteiler in $M_n(K)$ für $n \geq 2$ und einem Körper $K$.
+	\end{enumerate}
+\end{beispiel}
+Analog zur Einbettung $\Z \to \Q$ können wir jeden Integritätsbereich $R$ in einen Körper einbetten. Betrachte dazu die Äquivalenzrelation auf $R \times R \setminus\{0_R\}$ gegeben durch
+\[(r,s) \sim (x,y) \;:\Leftrightarrow\; sx = ry.\]
+Reflexivität und Symmetrie gelten, da $R$ kommutativ ist. Für Transitivität betrachte $(a,b) \sim (r,s)$ und $(r,s) \sim (x,y)$, d.h. $br=as$ und $sx = ry$. Dann gilt $say = asy = bry = bsx = sbx$. Da $s \neq 0_R$ und $R$ Integritätsbereich, folgt $ay = bx$ und somit $(a,b) \sim (x,y)$, wie gewünscht.
+
+Schreibe $\frac{r}{s} := [(r,s)]$ für die Äquivalenzklasse von $(r,s)$. Dann ist
+\[\frac{r}{s} = \frac{x}{y} \;\Leftrightarrow\; sx = ry.\]
+$\quot(R) := \{\frac{r}{s} \mid r \in R, s \in R \setminus \{0_R\}\}$ heißt \textbf{Quotientenkörper von $R$}. 
+\begin{satz}\label{satz5_6}
+	Sei $R$ ein Integritätsbereich. Dann ist $\quot(R)$ ein Körper durch
+	\begin{align*}
+		\frac{r}{s} + \frac{x}{y} := \frac{ry + sx}{sy}\quad\text{und}\quad \frac{r}{s} \cdot \frac{x}{y} := \frac{rx}{sy}.
+	\end{align*}
+	Die Abbildung $i \colon R \to \quot(R)$ mit $r \mapsto \frac{r}{1_R}$ ist ein injektiver Ringhomomorphismus. $i$ heißt \textbf{kanonische Einbettung}.
+\end{satz}
+\begin{proof}
+	Die Operationen sind wohldefiniert:
+	
+	Sei $\frac{r}{s} = \frac{r'}{s'}$ und $\frac{x}{y} = \frac{x'}{y'}$, d.h. $sr' = rs'$ und $yx' = xy'$. Dann gilt
+	\begin{align*}
+		\frac{ry + sx}{sy} = \frac{rys'y' + sxs'y'}{sys'y'} = \frac{syr'y' + sys'x'}{sys'y'} = \frac{r'y' + s'x'}{s'y'}
+	\end{align*}
+	sowie
+	\begin{align*}
+		\frac{rx}{sy} = \frac{rxs'y'}{sys'y'} = \frac{syr'x'}{sys'y'} = \frac{r'x'}{s'y'}.
+	\end{align*}
+	Die Ringaxiome sind leicht nachzurechnen. Es gilt $0_{\quad(R)} = \frac{0_R}{1_R}$, $1_{\quot(R)} = \frac{1_R}{1_R}$ und für $\frac{r}{s} \in \quot(R)$ mit $r,s \neq 0_R$ ist $-\frac{r}{s} = \frac{-r}{s}$ und $\left(\frac{r}{s}\right)^{-1} = \frac{s}{r}$. Damit wird $\quot(R)$ zum Körper. Die Abbildung $i$ ist offensichtlich ein Ringhomomorphismus und injektiv, da $\frac{r}{1_R} = \frac{s}{1_R}$ genau dann gilt, wenn $r = s$.
+\end{proof}
+\begin{rem}\label{rem5_7}
+	Wir können $R$ als Unterring von $\quot(R)$ betrachten. $\quot(R)$ ist der kleinste Körper (eindeutig bis auf Isomorphie), der $R$ enthält.
+\end{rem}
+
+
+Zurück zu Polynomen und weiter mit
+\begin{definition}\label{definition5_8}
+	Sei $R$ ein kommutativer Ring und $f = \sum a_i x^i \in R[x]$. Der \textbf{Grad von $f$} ist gegeben durch $\deg(f) := \max\{i \mid a_i \neq 0_R\}$. Setze $\deg(0_{R[x]}) := -\infty$. Ist $\deg(f) = n$, so heißt $a_n$ \textbf{Leitkoeffizient} von $f$. Das Polynom heißt \textbf{normiert}, falls der Leitkoeffizient $1_R$ ist.
+\end{definition}
+
+\begin{rem}\label{rem5_9}
+	\begin{enumerate}[label=(\roman*)]
+		\item Seien $f$ und $g$ Polynome in $R[x]$. Dann gilt
+		\begin{align*}
+			\deg(f + g) &\leq \max\{\deg(f), \deg(g)\}\\
+			\deg(f\cdot g) &\leq \deg(f) + \deg(g).
+		\end{align*}
+		Ist das Produkt der Leitkoeffizienten von $f$ und $g$ ungleich $0_R$, so gilt $\deg(f\cdot g) = \deg(f) + \deg(g)$ - \textbf{Gradformel} genannt.
+		Dies ist stetis erfüllt, wenn $R$ Integritätsbereich ist. Andererseits gilt zum Beispiel in $\Z_6 [x]$:
+		\[\deg((\bar{2}x^7 + \bar{1})\cdot(\bar{3}x^2)) = \deg(\bar{3}x^2) = 2 < 9 = \deg(\bar{2}x^7 + \bar{1}) + \deg(\bar{3}x^2).\]
+		\item $R$ ist Integritätsbereich genau dann, wenn $R[x]$ Integritätsbereich (siehe Gradformel und Beispiel 5.5 (1)). In desem Fall gilt $R[x]^\times = R^\times$.
+		\begin{proof}
+			Sei $f \in R[x]^\times$, d.h. es existiert $g \in R[x]$ mit $f \cdot g = 1_{R[x]}$. DIe Gradformel liefert $\deg(f) = \deg(g) = 0$, d.h. $f = a_0 \in R$ und $g = b_0 \in R$ mit $a_0 b_0 = 1_R$.
+		\end{proof} 
+	\end{enumerate}
+\end{rem}
+
+% Satz 5.10
+\begin{satz}[Division mit Rest in Polynomringen]\label{satz5_10}
+	Seien $f,g \in R[x]$, wobei der Leitkoeffizient $b_m$ von $g$ eine Einheit in $R$ ist. Dann existieren eindeutige $q,r \in R[x]$ mit $\deg(r) < m$.
+\end{satz}
+\begin{proof}
+	\textbf{Existenz: } Induktion nach $n := \deg(f)$.
+	
+	Ist $n < m$, wähle $q = 0_{R[x]}$ und $r=f$. Sei also $n \geq m$. Für $f = \sum_i a_i x^i$ setze $f_1 := f - a_n b_m^{-1} x^{n-m} g \in R[x]$. Dann ist $\deg(f_1) < \deg(f)$. Nach Induktionsvoraussetzung existieren $q_1, r_1 \in R[x]$ mit $\deg(r_1) < m$ und $f_1 = q_1 \cdot g + r_1$. Es folgt, dass 
+	\begin{align*}
+	f = f_1 + a_n b_m^{-1} x^{n-m} g &= q_1 g + r_1 + a_n b_m^{-1} x^{n-m} g\\
+	&= 	\underbrace{(q_1 + a_n b_m^{-1} x^{n-m})}_{=: q} g + \underbrace{r_1}_{=:r}
+	\end{align*}
+	\textbf{Eindeutigkeit: } Angenommen, $f = q\cdot g + r = q' g + r'$ mit $\deg(r), \deg(r') < m$. Dann ist $(q- q')g = r' - r$. Es folgt 
+	\begin{align*}
+		m > \deg(r'-r) = \deg((q - q')\cdot g) = \deg(q-q') + \underbrace{\deg(g)}_{=m}
+	\end{align*}
+	(Gradformel). Daraus folgt $q-q' = 0_{R[x]}$ und somit $q = q'$ und somit $r=r'$.
+\end{proof}
+Wir interessieren uns allgemeiner für Ringe, die eine Division mit Rest zulassen.
+% Definition 5.11.
+\begin{definition}[Euklidische Ringe]
+	Ein Integritätsbereich $R$ heißt \textbf{euklidischer Ring} oder kurz \textbf{euklidisch}, wenn es eine Abbildung $\delta \colon R \setminus \{0\} \to \N_0$ gibt, so dass für alle $a,b \in R$ mit $b\neq 0_R$ existieren $q,r \in R$ mit $a = q\cdot b + r$ und $r= 0_R$ oder $\delta(r) < \delta(b)$. Wir nennen $\delta$ \textbf{Gradfunktion}.
+\end{definition}
+\begin{beispiel}\label{beispiel5_12}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Sei $K$ ein Körper und seien $a,b \in K$ mit $b \neq 0_K$. Dann ist
+		\[a= (\underbrace{ab^{-1}}_{=:q})b + \underbrace{0_K}_{=:r}.\]
+		Also ist $K$ euklidisch mit beliebiger Gradfunktion
+		\item $\Z$ mit $\delta(n) := |n|$ für $n \in \Z\setminus\{0\}$ ist euklidisch.
+		\begin{proof}
+			Seien $a,b \in \Z$ mit $b \neq 0$. Sei $r := \min\{m \in \N_0 \mid m = a-nb, n \in \Z\}$. Wähle $q := \frac{a-r}{b} \in \Z$. Es folgt $a = qb + r$ mit $0 \leq r < |b|$.
+		\end{proof}
+		Die Eindeutigkeit von $q$ und $r$ bei der Division mit Rest ist weder gefordert noch ist sie hier gegeben! Zum Beispiel gilt
+		\[7 = 2 \cdot 3 + 1 = 3 \cdot 3 + (-2).\]
+		\item Ist $K$ ein Körper, so ist $K[x]$ euklidisch mit $\delta(f) := \deg(f)$ für $f \in K[x] \setminus \{0_{K[x]}\}$ (siehe Satz \ref{satz5_10}).
+		\item $\Z[i]$ mit $\delta(a + bi) := a^2 + b^2$ für $a+bi \in \Z[i] \setminus \{0\}$ ist euklidisch. 
+		\begin{proof}
+			Für alle $z = x+yi \in \C$ existieren $a,b \in \Z$ mit $|x-a| \leq 1/2$ und $|y-b| \leq 1/2$.  Dann gilt $|z-(a+bi)|^2 = |(x-a) + (y-b)i|^2 \leq 2 \cdot 1/4 < 1$. Insbesondere gibt es für $f,g \in \Z[i]$ mit $g \neq 0$ ein $q := a + bi \in \Z[i]$, so dass 
+			\begin{align*}
+				\left|\frac{f}{g} - q\right|^2 < 1.
+			\end{align*}
+			Setze $r := f - qg \in \Z[i]$. Falls $r \neq 0$, so gilt $\delta(r) = |f-qg|^2 < |g|^2 = \delta(g)$, wie gewünscht. 
+		\end{proof}
+		Dies lässt sich veranschaulichen mit $f = 2+i$, $g = -1 -i$. $fg^{-1} = -3/2 + 1/2 i$.
+		% TODO Bild Komplexe Zahlenebene
+		Wähle z.B. $q_1 = -1 + i$ und $r_1 = f-q_1 g = 2+i -2= i$ oder $q_2 = -2$ und $r_2 = (2+i)-(2+ 2i) = -i$.
+	\end{enumerate}
+\end{beispiel}
+\begin{definition}
+	Ein Integritätsbereich $R$ heißt \textbf{Hauptidealring}, wenn jedes Ideal $I \unlhd R$ ein Hauptideal ist, d.h. $I = (r)$ für ein $r \in R$.
+\end{definition}
+\begin{satz}\label{satz5_14}
+	Jeder euklidische Ring ist Hauptidealring.
+\end{satz}
+\begin{proof}
+	Sei $R$ euklidisch mit $\{0_R\} \neq I \unlhd R$. Wähle $b \in I \setminus \{0_R\}$ mit $\delta(b)$ minimal. Es gilt $(b) \subseteq I$. Sei nun $a \in I$. Dann existieren $q,r \in R$ mit $a = qb + r$ und $r = 0_R$ oder $\delta(r) < \delta(b)$. Da $r = a - qb \in I$ und $\delta(b)$ minimal, folgt  $r = 0_R$. Somit ist $a = qb \in (b)$ und $(b) = I$.
+\end{proof}
+\begin{beispiel}\label{beispiel5_15}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Ein Körper $K, \Z, K[x]$ und $\Z[i]$ sind Hauptidealringe nach Beispiel \ref{beispiel5_12}.
+		\item $\Z[x]$ ist kein Hauptidealring und insbesondere nicht euklidisch. 
+		\begin{proof}
+			Betrachte $I := (2,x) \unlhd \Z[x]$. Da $1 \notin I$, ist $I \neq \Z[x]$. Angenommen $I = (f)$ für ein Polynom $f \in \Z[x] \setminus \{0\}$. Dann existiert $g \in \Z[x]$ mit $f \cdot g = 2$. Mit der Gradformel folgt $\deg(f) = 0$, also $f = a_0 \in \Z$ mit $a_0 \mid 2$. Da $I \neq \Z[x]$, ist $a_0 \in \{\pm 1\}$ ausgeschlossen. Also $a_0 \in \{\pm 2\}$. Aber dann gilt $x \notin (a_0) = (f) = I$. Ein Widerspruch.
+		\end{proof}
+		\item $\Z\left[\frac{1}{2} + \frac{1}{2}\sqrt{-19}\right]$ ist nicht euklidisch, aber ein Hauptidealring,
+		
+		$\Z\left[\frac{1}{2} + \frac{1}{2}\sqrt{-11}\right]$ hingegen ist euklidisch.
+		\begin{proof}[Beweisidee]
+			Sei $w = \frac{1}{2} + \frac{1}{2}\sqrt{-19} \in \C$. Dann gilt $w \bar{w} = \frac{1}{4} + \frac{19}{4} = \frac{20}{4} = 5$, sowie $w + \bar{w} = 1$. Für $a,b \in \Z$ folgt
+			\begin{align*}
+				(a+bw) \cdot \overline{(a+bw)} &= (a+bw)\cdot(a+b\bar{w}) = a^2 + ab(w+\bar{w}) + b^2 w\bar{w} = a^2 + ab + 5b^2\\
+				&= \frac{1}{2}(a+b)^2 + \frac{1}{2}a^2 + \frac{9}{2} b^2 \geq 0.
+			\end{align*}
+			Die Abbildung $N \colon \Z[w] \to \N_0$ mit $a + bw \mapsto a^2 + ab + 5b^2$ ist multiplikativ, da komplexe Konjugation multiplikativ ist. 
+			
+			\textbf{Behauptung: } $\Z[w]^\times = \{\pm 1\}$. 
+			
+			Sei $x \in \Z[w]^\times$ und $y \in \Z[w]$ mit $xy = 1$. Dann gilt
+			\begin{align*}
+				1 = N(1) = N(xy) = N(x)N(y).
+			\end{align*}
+			Also $N(x)= 1$. Schreibe $x = a + bw$. Dann folgt
+			\begin{align*}
+				\frac{1}{2}(a+b)^2 + \frac{1}{2}a^2+ \frac{9}{2}b^2 = 1
+			\end{align*}
+			und somit $b = 0$ und $a \in \{\pm 1\}$. Das zeigt die Behauptung. 
+			
+			Angenommen, $\Z[w]$ ist euklidisch mit Gradfunktion $\delta \colon \Z[w] \setminus \{0\} \to \N_0$ Wähle $x \in \Z[w] \setminus \{\pm 1, 0\}$ mit $\delta(x)$ minimal. Sei $y \in \Z[w]$. Dann existiert $q,r \in \Z[w]$ mit $y = q x + r$ und $r = 0$ oder $\delta(r) < \delta(x)$. Nach Wahl von $x$ muss $r=0$ oder $r \in \{\pm 1\}$. Somit gilt für den Quotientenring $\Z[w] / (x)$: $|\Z[w] / (x)| \in \{2,3\}$. Daraus folgt
+			\[\faktor{\Z[w]}{(x)} \cong \Z_2\quad\text{oder}\quad \faktor{\Z[w]}{(x)} \cong \Z_3\]
+			(Isomorphie von Ringen!). Wir führen dies zu einem Widerspruch!
+			
+			Für $w = \frac{1}{2} + \frac{1}{2}\sqrt{-19}$ gilt
+			\begin{align*}
+				w^2 - w + 5 = \frac{1}{4} + \frac{1}{2}\sqrt{-19} - \frac{19}{4} - \frac{1}{2} - \frac{1}{2}\sqrt{-19} + 5 = 0.
+			\end{align*}
+			Insbesondere gilt für $\bar{w} = w + (x) \in \Z[w] /(x)$ (Überstrich heißt hier Restklasse) : $\bar{w}^2 - \bar{w} + \bar{5} = \bar{0}$. Aber kein Element in $\Z_2$ oder $\Z_3$ erfüllt diese Gleichung:
+			
+			\underline{in $\Z_2$:} $\bar{0}^2 - \bar{0} + \bar{5} =  \bar{1}$ und $\bar{1}^2 - \bar{1} + \bar{5} = \bar{1}$.
+			
+			\underline{in $\Z_3$: } $\bar{0}^2 - \bar{0} + \bar{5} = \bar{2}$, $\bar{1}^2 - \bar{1} + \bar{5} = \bar{2}$ und $\bar{2}^2 - \bar{2} + \bar{5} = \bar{1}$.
+			
+			Ein Widerspruch. Insbesondere liefert die obige Abbildung $N \colon \Z[w] \to \N_0$ mit $a + bw \mapsto a^2 + ab + 5b^2$ keine gewünschte Gradfunktion. Mit Hilfe dieser Funktion lässt sich aber zeigen, dass $\Z[w]$ Hauptidealring ist. Dazu verallgemeinert man das Vorgehen aus dem Beweis vom Satz \ref{satz5_14}. Für $w' = \frac{1}{2} + \frac{1}{2}\sqrt{-11} \in \C$ liefert die Abbildung $N' : \Z[w'] \to \N_0$ mit $a + bw' \mapsto (a+bw')(a+b\bar{w'})$ aber eine Gradfunktion, die $\Z[w']$ zum euklidischen Ring macht. Dabei gilt
+			\begin{align*}
+				w' \cdot \bar{w'} = \frac{1}{4} + \frac{11}{4} = \frac{12}{4} = 3.
+			\end{align*}
+			und 
+			\begin{align*}
+				(a + bw')(a+b\bar{w'}) = a^2 + ab(w' + \bar{w'}) + b^2 w' \bar{w'} = a^2 + ab + 3b^2 \geq 0.
+			\end{align*}
+			Nun können wir ähnlich argumentieren wie in Beispiel \ref{beispiel5_12} (4).
+		\end{proof}
+	\end{enumerate}
+\end{beispiel}
+
+
+
+
+
