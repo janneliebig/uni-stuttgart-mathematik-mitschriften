@@ -1,0 +1,304 @@
+\section{Integration in $\R^d$}
+\subsection{Grundlegende Definitionen}
+Ein $d$-dim. \textbf{Quader} $Q \subset \R^d$ ist eine Menge der Form
+\[Q= \prod_{k=1}^d [a_n, b_n]\]
+mit $a_k, b_k \in \R$ und $a_k < b_k$. Der Inhalt $|Q|$ von $Q$ ist das Produkt der Zahlen
+\[|Q| = \prod_{k=1}^{d} (b_k - a_k).\]
+Eine \textbf{Partition} $P = (P_1, \dots, P_d)$ eines Quaders $Q$ ist ein $d$-Tupel von Partitionen $P_k$ der Intervalle $[a_k, b_k]$. Durch $P$ wird $Q$ in endlich viele \textbf{Teilquader} zerlegt. Mit $P$ bezeichnen wir auch die Familie der Teilquader. Es gilt für jede Partition $P$ von $Q$
+\[|Q| = \sum_{A\in P} |A|.\]
+Die \textbf{Feinheit} einer Partition $P$ ist die Zahl
+\[\Delta P = \max_{A \in P} \left(\max_{x,y \in A} |x-y|\right).\]
+Sind $P, P'$ zwei Partitionen von $Q$, wobei jeder Teilquader von $P'$ Teilmenge eines Quaders von $P$ ist (d.h. $P_i \subset P_i'$ für alle $i$), dann heißt $P'$ \textbf{feiner} als $P$.
+
+Die \textbf{gemeinsame Verfeinerung} $P''$ zweier Partitionen $P, P'$ von $Q$ ist definiert durch $P''=P_i \cup P_i'$. Sie ist feiner als $P$ und feiner als $P'$.
+
+Die \textbf{Unter}- und \textbf{Obersumme} von $f$ zu Partition $P$ sind definiert durch
+\begin{align*}
+	\underline{S}(f, P) &= \sum_{A\in P} m_A(f) |A|\\
+	\overline{S}(f,P) &= \sum_{A\in P} M_A (f) |A|,
+\end{align*}
+wobei
+\begin{align*}
+	m_A(f) &:= \inf_{x \in A} f(x),\\
+	M_A(f) &:= \sup_{x \in A} f(x).
+\end{align*}
+Offensichtlich gilt 
+\[\underline{S}(f,P) \leq \overline{S}(f,P)\]
+\begin{lem}\label{lem2_1}
+	Ist $P'$ feiner als $P$, dann gilt
+	\[\underline{S}(f,P) \leq \underline{S}(f,P'),\quad \overline{S}(f,P') \leq \overline{S}(f,P).\]
+\end{lem}
+\begin{lem}\label{lem2_2}
+	Sind $P,P'$ zwei Partitionen von $Q$, dann gilt 
+	\[\underline{S}(f,P) \leq \overline{S}(f,P').\]
+\end{lem}
+Nach Lemma \ref{lem2_2} gilt 
+\[\sup_P \underline{S}(f,P) \leq \inf_{P'} \overline{S}(f,P').\]
+Wenn diese Zahlen endlich und gleich sind, dann heißt $f$ \textbf{Riemann-integrierbar} auf $Q$ und der gemeinsame Wert heißt \textbf{Integral} von $f$ auf $Q$. Er wird mit
+\[\int_Q f\d V \quad\text{oder}\quad \int_Q f(x) \d x\]
+bezeichnet. Wir schreiben dafür auch $I(f)$. 
+
+Ist $f$ \textit{un}beschränkt, dann ist $\underline{S}(f,P)$ oder $\overline{S}(f,P)$ unendlich, also $f$ \textit{nicht} integrierbar.
+
+Die \textbf{maximale Schwankung} (Oszillation) von $f$ in $A$ ist die Zahl
+\[o(f,A) := \sup_{x,y \in A} |f(x) - f(y)|.\]
+Es gilt 
+\begin{align*}
+	M_A(f) - m_A(f) &= \sup_{x \in A} f(x) - \inf_{y \in A} f(x) = \sup_{x,y\in A} (f(x) - f(y))\\
+	&= \sup_{x,y \in A} |f(x) - f(y)| = o(f,A)
+\end{align*}
+\begin{satz}\label{satz2_3}
+	Eine beschränkte Funktion $f \colon Q \to \R$ ist genau dann integrierbar, wenn zu jedem $\varepsilon > 0$ eine Partition $P$ existiert mit
+	\[\overline{S}(f,P) - \underline{S}(f,P) < \varepsilon\]
+	bzw. 
+	\[\sum_{A\in P} o(f,A) |A| < \varepsilon.\]
+\end{satz}
+\begin{satz}\label{satz2_4}
+	Sind $f,g \colon Q \to \R$ integrierbar und ist $\lambda \in \R$, dann sind auch $f+g, \lambda f, |f|, f\cdot g$ und (falls $|g| \geq c > 0$) $f/g$ integrierbar. Es gilt
+	\begin{enumerate}[label=(\alph*)]
+		\item\label{satz2_4_a} $\displaystyle \int_Q (f+g)\d V = \int_Q f \d V + \int_Q g \d V$ und $\displaystyle\int_Q \lambda f \d V = \lambda \int_Q f \d V$.
+		\item $\displaystyle \abs{\int_Q f \d V} \leq \int_Q \abs{f} \d V \leq \snorm{f} |Q|$.
+		\item\label{satz2_4_c} $\displaystyle f \leq g \quad\Rightarrow\quad \int_Q f \d V \leq \int_Q g \d V$.
+	\end{enumerate}
+\end{satz}
+\begin{satz}\label{satz2_5}
+	Sei $f_n \colon Q \to \R$ eine Folge integrierbarer Funktionen $f_n \to f$ gleichmäßig für $n \to \infty$. Dann ist $f$ integrierbar und 
+	\[\int_Q f \d V = \lim_{k\to \infty} \int_Q f_n \d V.\]
+\end{satz}
+\begin{kor}
+	Jede Regelfunktion $f \colon [a,b] \to \R$ ist integrierbar und
+	\[\int_{[a,b]} f \d V = \int_a^b f(x) \d x.\]
+\end{kor}
+\begin{satz}\label{satz2_7}
+	Ist $f \colon Q \to \R$ stetig auf dem Quader $Q \subset \R^d$, dann ist $f$ integrierbar und zu jedem $\varepsilon > 0$ existiert ein $\delta > 0$, so dass 
+	\[\Delta P < \delta \quad\Rightarrow\quad \abs{\sum_{A\in P} f(\xi_A) |A| - \int_Q f \d V} < \varepsilon\]
+	für jede Wahl von $\xi_A \in A$. In diesem Sinn gilt
+	\[\lim_{\Delta P \to 0} \sum_{A \in P}f(\xi_A)|A| = \int_Q f \d V.\]
+\end{satz}
+
+\subsection{Der Satz von Fubini}
+Für jede beschränkte Funktion $f \colon Q \to \R$, integrierbar oder nicht, sei
+\begin{align*}
+	\overline{\int_Q} f \d V &:= \inf_P \overline{S}(f,P)\\
+	\underline{\int_Q} f \d V &:= \sup_P \underline{S}(f,P)
+\end{align*}
+\begin{thm}\label{thm2_8}
+	Seien $Q_1 \subset \R^n, Q_2 \subset \R^m$ abgeschlossene Quader und sei $f \colon Q_1 \times Q_2 \to \R$ integrierbar. Dann sind auch die Funktionen
+	\begin{align*}
+		x &\mapsto 	\overline{\int_{Q_2}} f(x,y) \d y, \underline{\int_{Q_2}} f(x,y) \d y\\
+		y &\mapsto 	\overline{\int_{Q_1}} f(x,y) \d V, \underline{\int_{Q_1}} f(x,y) \d x\\
+	\end{align*}
+	integrierbar und 
+	\begin{align*}
+		&\int\limits_{Q_1 \times Q_2} f \d V \\
+		&= \int_{Q_2} \d y \overline{\int_{Q_1}} \d y f(x,y) = \int_{Q_2} \d y \underline{\int_{Q_1}} \d x f(x,y)\\
+		&= \int_{Q_1} \d x \overline{\int_{Q_2}} \d y f(x,y) = \int_{Q_1} \d x \underline{\int_{Q_2}} \d y f(x,y).
+	\end{align*}
+\end{thm}
+\begin{rem}
+	Die Funktionen $x \mapsto f(x,y)$ auf $Q_1$ und $y \mapsto f(x,y)$ auf $Q_2$ sind im Allgemeinen nicht integrierbar. Wenn sie es sind, dann gilt
+	\[\int_{Q_1 \times Q_2} f \d V = \int_{Q_1} \d x \int_{Q_2} \d y f(x,y) = \int_{Q_2} \d y \int_{Q_1} \d x f(x,y).\]
+	Wenn $f$ nicht beschränkt und damit nicht integrierbar, dann gilt das nicht.
+\end{rem}
+\begin{kor}\label{kor2_9}
+	Ist $f \colon [a_1,b_1] \times \dots \times [a_n, b_n] \to \R$ stetig, dann gilt
+	\[\int_Q f \d V = \int_{a_1}^{b_1} \d x_1 \int_{a_2}^{b_2} \d x_2 \dots \int_{a_n}^{b_n} \d x_n f(x_1, \dots, x_n),\]
+	wobei die Reihenfolge der Integrationen keine Rolle spielt.
+\end{kor}
+\begin{beispiel}
+	Wir integrieren die Funktion $f(x,y,z) = \cos(x+y+z)$ über den Würfel $Q = [-\frac{\pi}{2}, \frac{\pi}{2}]^3 \subset \R^3$.
+	\[\int_Q f \d V = \int_{-\frac{\pi}{2}} \d x \int_{-\frac{\pi}{2}} \d y \int_{-\frac{\pi}{2}} \d z \cos(x+y+z),\]
+	wobei
+	\begin{align*}
+		\int_{-\frac{\pi}{2}} \cos(x+y+z)\d y &= \sin(x+y+z)\big|_{z = -\frac{\pi}{2}}^{z = \frac{\pi}{2}}\\ 
+		&= \sin\left(x+y+\frac{\pi}{2}\right) - \sin\left(x+y-\frac{\pi}{2}\right) = 2 \cos(x+y).
+	\end{align*}
+	Also
+	\begin{align*}
+		\int_Q f \d V = 2 \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \d x \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \d y \cos(x+y) = 4 \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \d x \cos(x) = 8
+	\end{align*}
+\end{beispiel}
+
+\subsection{Nullmengen}
+Eine Menge $M \subset \R^d$ heißt $d$-dim. \textbf{Nullmenge} (oder Jordan-Nullmenge), wenn zu jedem $\varepsilon > 0$ endlich viele Quader $Q_1, \dots, Q_N \subset \R^d$ existieren mit
+\[M \subset \bigcup_{i=1}^N Q_i\quad\text{und}\quad \sum_{i=1}^N |Q_i| < \varepsilon.\]
+\begin{rem}
+	\begin{itemize}
+		\item Ist $M$ eine Nullmenge, dann gibt es zu jedem $\varepsilon>0$ einen Quader $Q_i$ mit
+		\[M \subset \bigcup_{i=1}^N Q_i^\circ , \quad \sum |Q_i| < \varepsilon.\]
+		\item Jede endliche Punktmenge $M \subset \R^d$ ist eine Nullmenge.
+		\item Eine endliche Vereinigung von Nullmengen ist wieder eine Nullmenge.
+	\end{itemize}
+\end{rem}
+\begin{satz}\label{satz2_10}
+	Ist $f \colon Q \to \R$ beschränkt und $f(x) = 0$ für $x \in Q \setminus M$, wobei $M$ eine Nullmenge ist, dann ist $f$ integrierbar und 
+	\[\int_Q f \d V = 0.\]
+\end{satz}
+\begin{kor}\label{kor2_11}
+	Ist $f \colon Q \to \R$ integrierbar, $g \colon Q \to \R$ beschränkt und $g=f$ bis auf eine Nullmenge, dann ist auch $g$ integrierbar und
+	\[\int_Q g \d V = \int_Q f \d V.\]
+\end{kor}
+\begin{thm}\label{thm2_12}
+	Ist $f \colon Q \to \R$ beschränkt und stetig bis auf eine Nullmenge, dann ist $f$ integrierbar.
+\end{thm}
+\begin{kor}\label{kor2_13}
+	Sei $\Omega \subset \R^n$ und sei $\partial\Omega$ eine Nullmenge. Dann ist $\chi_\Omega \colon Q \to \R$ für einen Quader $Q$ integrierbar.
+\end{kor}
+\subsection{Messbare Mengen}
+Nach Korollar \ref{kor2_13} können wir das Volumen einer beschränkten Menge $\Omega \subset \R^n$ definieren durch
+\[|Q| := \int_Q \chi_\Omega \d V,\]
+für einen Quader $Q \supset \Omega$, sofern $\partial \Omega$ eine Nullmenge ist. Das ist unabhängig von der Wahl von $Q$. Das motiviert die Definition:
+
+Eine beschränkte Menge $\Omega \subset \R^d$ heißt (Jordan)-\textbf{messbar}, wenn $\partial \Omega$ eine $d$-dim. Nullmenge ist.
+\begin{itemize}
+	\item Jede Nullmenge $M \subset \R^d$ ist messbar.
+	\item Sind $A,B \subset \R^d$ messbar, dann auch $A\cup B, A \cap B$ und $A \setminus B$.
+	\item Jeder Quader $Q = [a_1, b_1] \times \dots \times [a_n, b_n]$ ist messbar.
+	\item Für $\Omega = [0,1] \cap \Q$ ist $\partial\Omega = [0,1]$ keine Nullmenge. Also ist $\Omega$ nicht messbar.
+\end{itemize}
+Wir brauchen weitere Kriterien für Messbarkeit:
+\begin{satz}\label{satz2_14}
+	Sei $K \subset \R^{d-1}$ kompakt ($d \geq 2$) und $f \colon K \to \R$ stetig. Dann ist der Graph $\Gamma(f) \subset \R^d$ eine $d$-dimensionale Nullmenge.
+\end{satz}
+Eine Menge $\Omega \subset \R^d$ heißt \textbf{Normalbereich} bezüglich der $d$-Achse, wenn es eine \textit{kompakte, messbare} Menge $\Omega' \subset \R^{d-1}$ und stetige Funktionen $\alpha, \beta \colon \Omega' \to \R$ gibt mit
+\[\Omega = \{(x', x_d) \mid x' \in \Omega', \alpha(x') \leq x_d \leq \beta(x')\}.\]
+Normalbereiche bezüglich anderer Achsen werden analog definiert.
+\begin{satz}\label{satz2_15}
+	Jeder Normalbereich ist messbar.
+\end{satz}
+\begin{folgerung}
+	Jedes beschränkte Gebiet $\Omega \subset \R^d$, das sich als endliche Vereinigung von Normalbereichen schreiben lässt, ist messbar.
+\end{folgerung}
+
+\subsection{Integration über allgemeine Bereiche}
+Sei $\Omega \subset\R^d$ beschränkt. Eine Funktion $f \colon D \to \R$, $D \supset \Omega$ heißt \textbf{über $\Omega$ integrierbar}, wenn die Funktion
+\[\chi_\Omega f(x) := \begin{cases}
+	f(x) & x \in \Omega\\
+	0 & x \in \R^n \setminus \Omega
+\end{cases}\] 
+über einen (und dann jeden) Quader $Q \supset \Omega$ integrierbar ist. Das Integral von $f$ über $\Omega$
+\[\int_Q f\d V := \int_Q \chi_\Omega f \d V\]
+ist unabhängig von der Wahl von $Q$. Für messbare $\Omega \subset \R^d$ gilt
+\begin{enumerate}[label=(\arabic*)]
+	\item Ist $f$ definiert und integrierbar auf einem Quader $Q\supset \Omega$, dann ist $f$ über $\Omega$ integrierbar. (Denn $\chi_\Omega f$ ist integrierbar über $Q$ (Satz \ref{satz2_4}))
+	\item Sind $f, g$ über $\Omega$ integrierbar und $\lambda \in \R$, dann sind auch $f+g, \lambda f, |f|, f\cdot g$ und $f/g$ (falls $|g| \geq c > 0$ auf $\Omega$) über $\Omega$ integrierbar und es gelten \ref{satz2_4_a} bis \ref{satz2_4_c} von Satz \ref{satz2_4} mit $Q \to \Omega$.
+	\item Sind die Funktionen $f_n \colon D \to \R$ über $\Omega$ integrierbar und $f_n \to f$ gleichmäßig auf $\Omega$, dann ist $f$ über $\Omega$ integrierbar und 
+	\[\int_\Omega f \d V = \lim_{k\to \infty} \int_\Omega f_n \d V.\]
+	\item Ist $f$ auf $\Omega$ beschränkt und $f(x)$ für $x \in \Omega \setminus M$ mit einer Nullmenge $M$, dann ist $f$ über $\Omega$ integrierbar und
+	\[\int_\Omega f \d V = 0.\]
+	\item Ist $f$ auf $\Omega$ beschränkt und stetig bis auf eine Nullmenge, dann ist $f$ über $\Omega$ integrierbar.
+\end{enumerate}
+Für beliebige $\Omega \subset \R^n \times \R^m$ definieren wir
+\begin{align*}
+	\Omega_x &:= \{y \in \R^m \mid (x,y) \in \Omega\},\\
+	\Omega'  &:= \{x \in \R^n \mid \Omega_x \neq \emptyset\}.
+\end{align*}
+Sei $f_x(y) = f(x,y)$.
+\begin{thm}[Fubini]\label{thm2_16}
+	Sei $f \colon \Omega \to \R$ über $\Omega \subset \R^n \times \R^m$ integrierbar. Falls $f_x$ für jedes $x \in \Omega'$ über $\Omega_x$ integrierbar ist, dann gilt
+	\[\int_\Omega f \d V = \int_{\Omega'} \d x \int_{\Omega_x} \d y f(x,y)\]
+\end{thm}
+\begin{kor}[Prinzip von Cavalieri]\label{kor2_17}
+	Sind $\Omega \subset \R^n \times \R^m$ und $\Omega_x \subset \R^m$ messbar für alle $x \in \R^n$, dann ist $x \mapsto |\Omega_x|$ über $\Omega'$ integrierbar und 
+	\[|\Omega| = \int_{Q'} |Q_x| \d x.\]
+\end{kor}
+Zwei Mengen $A,b \subset \R^d$ nennt man \textbf{nicht-überlappend}, wenn $A \cap B$ eine Nullmenge ist.
+\begin{satz}\label{satz2_18}
+	Sind $\Omega_1, \Omega_2 \subset \R^d$ messbar und nicht-überlappend, dann gilt
+	\[\int_{\Omega_1 \cup \Omega_2} f \d V = \int_{\Omega_1} f \d V + \int_{\Omega_2} f \d V\]
+	sofern einer der beiden Seiten existiert.
+\end{satz}
+
+\subsection{Eigenschaften des Volumens}
+Wir wollen eine mehrdimensionale Version der Substitutionsformel
+\[\int_{\varphi(a)}^{\varphi(b)} f(u) \d u = \int_a^b f(\varphi(u)) \varphi'(u) \d u\]
+herleiten. Dazu müssen wir zuerst studieren, wie sich das Volumen einer messbaren Menge $\Omega \subset \R^d$ unter differenzierbaren und insbesondere linearen Abbildungen verhält. Per Definition
+\begin{align*}
+	|\Omega| &= \int_Q \chi_\Omega \d V = \sup_P \underline{S}(\chi_\Omega, P) = \inf_P \overline{S}(\chi_\Omega, P)
+\end{align*}
+wobei 
+\begin{align*}
+	\underline{S}(\chi_\Omega, P) &= \sum_{A \in P, A\subset\Omega} |A|\\
+	\overline{S}(\chi_\Omega, P) &= \sum_{A \in P, A \cap \Omega \neq \emptyset} |A|
+\end{align*}
+Also
+\begin{align*}
+	|\Omega| = \sup_P \sum_{A \in P, A \subset \Omega} |A| = \int_P \sum_{A \in P, A \cap \Omega \neq \emptyset} |A|
+\end{align*}
+und $\Omega$ ist genau dann messbar, wenn diese beiden Zahlen gleich sind.
+\begin{rem}
+	\begin{enumerate}
+		\item Ist $\Omega \subset \R^d$ messbar und $a \in \R^d$, dann ist auch $\Omega + a = \{x + a \mid x \in \Omega\}$ messbar und $|\Omega + a| = |\Omega|$.
+		\item Ist $\Omega \subset \R^d$ messbar und $L \colon \R^d \to \R^d$ linear, dann ist auch $L\Omega$ messbar.
+	\end{enumerate}
+\end{rem}
+Sei $W = [0,d]^d \subset \R^d$ und $L \colon \R^d \to \R^d$ eine lineare Abbildung. Sei 
+\[\chi_L := |LW|.\]
+Wenn $L$ nicht invertierbar ist, dann ist $LW$ eine Nullmenge (Übung). Sonst ist $LW$ messbar.
+\begin{satz}\label{satz2_19}
+	Für jede messbare Menge $\Omega \subset \R^d$ gilt 
+	\[|L\Omega| = \chi_L |\Omega|.\]
+\end{satz}
+\begin{satz}\label{satz2_20}
+	Es gilt
+	\[\chi_L = |\det L|.\]
+\end{satz}
+\begin{thm}\label{thm2_21}
+	Ist $\Omega \subset \R^d$ messbar und $L \in M(d \times d, \R)$, dann ist $L\Omega$ messbar und 
+	\[|L\Omega| = |\det L| |\Omega|.\]	
+\end{thm}
+
+\subsection{Die Transformationsformel}
+Aus der Analysis 2 ist bekannt, dass
+\[\int_{\varphi(a)}^{\varphi(b)} f(x) \d x = \int_a^b f(\varphi(u)) \varphi'(u) \d u.\]
+Ist $\varphi$ \textit{monoton} und $I = [a,b]$, dann ist obige Gleichung äquivalent zu
+\begin{equation}
+	\int_{\varphi(I)} f(x) \d x = \int_I f(\varphi(u)) |\varphi'(u)| \d u.
+\end{equation}
+\begin{lem}\label{lem2_22}
+	Sei $\varphi \colon D \subset \R^n \to \R^n$ ein $\CF^1$-Diffeomorphismus und sei $M \subset D$ kompakt. Dann gilt:
+	\begin{enumerate}[label=(\alph*)]
+		\item $|M| = 0 \;\Rightarrow\; |\varphi(M)| = 0$.
+		\item $\varphi(\partial M) = \partial\varphi(M)$.
+		\item $M$ messbar $\;\Rightarrow\; \varphi(M)$ messbar.
+	\end{enumerate}
+\end{lem}
+\begin{satz}\label{satz2_23}
+	Sei $\varphi \colon D \subset \R^n \to \R^n$ ein $\CF^1$-Diffeomorphismus und sei $Q \subset D$ ein (kompakter) Quader. Dann ist $\varphi(Q)$ messbar und 
+	\[|\varphi(Q)| = \int_Q |\det\varphi'(u)| \d u.\]
+\end{satz}
+\begin{thm}\label{satz2_24}
+	Sei $\varphi \colon D \subset \R^n \to \R^n$ eine $\CF^1$-Abbildung, $A \subset D$ eine kompakte messbare Menge und $N \subset A$ eine Nullmenge mit
+	\begin{enumerate}[label=(\alph*)]
+		\item $\varphi(A)$ ist messbar.
+		\item $\varphi$ ist injektiv auf $A \setminus N$.\label{trafo_b}
+		\item $\varphi'(u)$ ist invertierbar für $u \in A \setminus N$. \label{trafo_c}
+	\end{enumerate}
+	Dann gilt für jede stetige Funktion $f \colon \varphi(A) \to \R$
+	\[\int_{\varphi(A)} f(x) \d x = \int_A f(\varphi(u)) |\det \varphi'(u)| \d u.\]
+\end{thm}
+\begin{rem}
+	\ref{trafo_b} und \ref{trafo_c} garantieren, dass $\varphi$ auf jeder offenen Menge $U \subset A \setminus N$ ein Diffeomorphismus $\varphi \colon U \to \varphi(U)$ ist (Theorem \ref{thm1_2}, Korollar \ref{kor1_3}).
+\end{rem}
+\paragraph{Kugelkoordinaten. } Die Abbildung $\phi \colon \R^3 \to \R^3$ definiert durch
+\[\phi(r, \vartheta, \varphi) := \begin{bmatrix}
+	r \sin\vartheta\cos\varphi\\
+	r \sin\vartheta\sin\varphi\\
+	r\cos\vartheta
+\end{bmatrix}\]
+ist stetig differenzierbar und bildet $Q_R = [0,R] \times [0,\pi] \times [0,2\pi]$ auf $B_R$ ab. Es gilt
+\begin{align*}
+	\phi'(r, \vartheta, \varphi) &= (\partial_r \phi, \partial_\vartheta, \partial_\varphi \phi)\\
+	&= \begin{bmatrix}
+		\sin\vartheta\cos\varphi & r\cos\vartheta\cos\varphi & -r\sin\vartheta\sin\varphi\\
+		\sin\vartheta\sin\varphi & r\cos\vartheta\cos\varphi & r\sin\vartheta\cos\varphi\\
+		\cos\vartheta & -r\sin\vartheta & 0
+	\end{bmatrix}
+\end{align*}
+und 
+\[\det \phi'(r, \vartheta, \varphi) = r^2 \sin \vartheta \neq 0\]
+in $Q_R \setminus \partial Q_R$. Also gilt
+\begin{align*}
+	\int_{B_R} f \d V &= \int_{Q_R} f(\phi(r, \vartheta, \varphi)) r^2 \sin\vartheta d(r,\vartheta,\varphi)\\
+	&= \int_0^R \d r \int_0^\pi \d\vartheta \int_0^{2\pi} \d\varphi f(\phi(r,\vartheta,\varphi)) r^2 \sin \vartheta.
+\end{align*}

@@ -1,0 +1,454 @@
+\section{Integration über Untermannigfaltigkeiten des  $\R^d$}
+\subsection{Das Volumen eines $k$-Spats}
+Das $k$-Spat oder $k$-dim. Parallelotop aufgespannt durch $k$ Vektoren $v_1, \dots, v_k \in \R^n$ ($k \leq n$) ist die Menge
+\[P(v_1, \dots, v_k) := \left\{x \in \R^n \;\Biggr|\; x = \sum_{i=1}^k t_i v_i, t_i \in [0,1]\right\}.\]
+Für $k = n$ hat $P(v_1, \dots, v_n)$ das Volumen $|\det(v_1 \dots v_n)|$ (Theorem \ref{thm2_21}). Für $k < n$ ist $P(v_1, \dots, v_k)$ eine $n$-dim. Nullmenge. Wir definieren nun einen $k$-dimensionalen Inhalt
+\[|P(v_1, \dots, v_k)|_k := |\det(v_1, \dots, v_k, v_{k+1}, \dots, v_n)|\]
+wobei $v_{k+1}, \dots, v_n$ orthonormiert (d.h. paarweise orthogonal und normiert) und $\perp$ zu $\{v_1, \dots, v_k\}$ sind.
+\begin{satz}\label{satz3_1}
+	Ist $A \in M(n \times k)$ die Matrix mit Spalten $v_1, \dots, v_k \in \R^n$, dann gilt
+	\[|P(v_1, \dots, v_k)|_k = \sqrt{\det(A^\top A)}\]
+	wobei $(A^\top A)_{ij} = \scprod{v_i}{v_j}$.
+\end{satz}
+Die Formel
+\[|P(v_1, v_2)|_2 = |v_1 \land v_2|\]
+für $v_1, v_2 \in \R^3$ wollen wir jetzt auf den $\R^n$ verallgemeinern. Seien $v_1, \dots, v_{n-1} \in \R^n$. Dann ist die Abbildung 
+\[\R^n \to \R, \quad v \mapsto \det(v, v_1, \dots, v_{n-1})\]
+linear. Somit existiert ein eindeutig bestimmter Vektor $w \in \R^n$ mit
+\[\det(v, v_1, \dots, v_{n-1}) = \scprod{v}{w}\]
+für alle $v \in \R^n$. Man definiert
+\[v_1 \land v_2 \land \dots \land v_{n-1} := w.\]
+Dann gilt $v_1 \land v_2 \land \dots \land v_{n-1} \perp \{v_1, \dots, v_{n-1}\}$, denn 
+\[\det(v, v_1, \dots, v_{n-1}) = \scprod{v}{v_1 \land v_2 \land \dots \land v_{n-1}}.\]
+Mit dem Entwicklungssatz für die Determinante folgt
+\[\sum_{k=1}^n v_k w_k = \sum_{k=1}^n (-1)^{k+1} v_k \det(A_k)\]
+wobei wir $A_k$ durch Streichen der $k$-ten Zeile/Spalte von $A$ bekommen. Es gilt also
+\[v_1 \land \dots \land v_{n-1} = \sum_{k=1}^n w_k e_k = \sum_{k=1}^n (-1)^{k+1} e_k \det A_k.\]
+\begin{satz}\label{satz3_2}
+	Für $n - 1$ Vektoren $v_1, \dots, v_{n-1} \in \R^n$ gilt
+	\[|P(v_1, \dots, v_{n-1})|_{n-1} = |v_1 \wedge \dots \wedge v_{n-1}|.\]
+\end{satz}
+\begin{kor}\label{kor3_3}
+	Ist $A \in M(n\times k)$ und $Q \subset \R^k$ ein Quader, dann gilt
+	\[|AQ|_k = \sqrt{\det(A^\top A)} |Q|_k\].
+\end{kor}
+
+\subsection{Karten und Parameterdarstellungen von Untermannigfaltigkeiten}
+Sei $M \subset \R^n$ eine beliebige Menge. $U \subset M$ heißt relativ offen in $M$, wenn zu jedem $p \in U$ ein $\varepsilon > 0$ existiert mit
+\[\B_\varepsilon(p) \cap M \subset U.\]
+\begin{lem}
+	$U$ ist genau dann offen in $M$, wenn eine offene Menge $U' \subset \R^n$ existiert mit $U = U' \cap M$.
+\end{lem}
+Sei $M$ eine $k$-dim. Untermannigfaltigkeit. Eine \textbf{lokale Parameterdarstellung von $M$} ist eine $\CF^1$-Abbildung
+\[\gamma \colon \Omega \subset \R^k \to M\]
+mit $\Omega$ offen, die regulär ist (d.h. $\gamma'(u))$ hat vollen Rang für alle $u \in \Omega$). Für $k=1$ ist $\gamma$ eine reguläre Kurve. Die Menge $\Omega$ heißt \textbf{Parameterbereich} und die Variablen $u_1, \dots, u_k$ heißen \textbf{Parameter}. Die Spur $\gamma(\Omega)$ von $\gamma$ ist offen in $M$ (siehe Später). Falls $\gamma \colon \Omega \to U = \gamma(\Omega) \subset M$ ein Homöomorphismus ist, dann heißt die Umkehrung $\gamma^{-1} \colon U \to \Omega \subset \R^k$ eine \textbf{Karte von $M$}. $U$ heißt \textbf{Kartenbereich}. Die Zahlen $\gamma^{-1}(P)_1, \dots, \gamma^{-1}(P)_k \in \R$ heißen \textbf{lokale Koordinaten von $P$}. Die Abbildungen $(\gamma^{-1}_1, \dots, (\gamma^{-1})_k$ heißen auch \textbf{Koordinatensystem}.
+\begin{beispiel}
+	\begin{enumerate}
+		\item In $M = \R^2$ haben wir z. B. die kartesischen Koordinaten (Karte), $p \mapsto (x_1(p), x_2(p)) \in \R^2$ sowie die Polarkoordinaten $U = \R^2 \setminus \{(x,0) \mid x \leq 0\}, p \mapsto (r, \varphi) \in \R^2$.
+		
+		\item Für $M = \S^2 = \{x \in \R^3 \mid |x| = 1\}$ ist 
+		\[\gamma \colon (0,\pi) \times \R \to M, \quad (\vartheta, \varphi) \mapsto \begin{bmatrix}
+			\sin\vartheta\cos\varphi\\
+			\sin\vartheta\sin\varphi
+		\end{bmatrix}\]
+		eine \textit{lokale Parameterdarstellung} von $M$, denn der Rang von $\gamma'(\vartheta, \varphi)$ ist 2. $\gamma$ ist nur injektiv, wenn $\R$ mit $(0,2\pi)$ ersetzt wird. $\gamma$ eingeschränkt auf $\Omega := (0, \pi) \times (0,2\pi)$ ist ein Homöomorphismus, also $\gamma^{-1} \colon \gamma(\Omega) \to \Omega$ eine Karte von $\S^2$.
+	\end{enumerate}
+\end{beispiel}
+\begin{satz}\label{satz3_5}
+	Sei $\Omega \subset \R^k$ offen und $\gamma \colon \Omega \to \R^n$ eine $\CF^1$-Abbildung, die regulär ist. Dann gibt es zu jedem Punkt $u_0 \in \Omega$ eine offene Umgebung $\Omega_0 \subset \Omega$, so dass $\gamma(\Omega_0)$ eine $k$-dimensionale Untermannigfaltigkeit von $\R^n$ und
+	\[\gamma \colon \Omega_0 \to \gamma(\Omega_0)\]
+	ein Homöomorphismus ist.	
+\end{satz}
+\begin{thm}\label{thm3_6}
+	Eine Menge $M \subset \R^n$ ist genau dann eine $k$-dimensionale Untermannigfaltigkeit, wenn zu jedem Punkt $p \in M$ eine Umgebung $U \subset M$, offen in $M$, existiert und eine Parameterdarstellung
+	\[\gamma \colon \Omega \subset \R^k \to M\]
+	existiert, die $\Omega$ homöomorph auf $U$ abbildet.
+\end{thm}
+\begin{satz}[Kartenwechsel/Koordinatentransformation]\label{satz3_7}
+	Sei $M \subset \R^n$ eine $k$-dimensionale Untermannigfaltigkeit und seien
+	\[\gamma_i^{-1} \colon U_i \to \Omega_i, \quad i = 1,2\]
+	zwei Karten mit $U_1 \cap U_2 \neq \emptyset$. Dann ist $V_i = \gamma_i^{-1}(U_1 \cap U_2)$ offen in $\R^k$ und
+	\[\gamma_2^{-1} \circ \gamma_1 \colon V_1 \to V_2\]
+	ist ein Diffeomorphismus.
+\end{satz}
+
+\subsection{Integration über ein Kartengebiet}
+Sei $M \subset \R^n$ eine $k$-dim. Untermannigfaltigkeit und $f \colon M \to \R$ stetig. Wir wollen $\int_M f \d S$ definieren. Das geschieht mittels Karten. Zur Motivation der folgenden Definition untersuchen wir erst, wie der $k$-dim. Inhalt unter eine Parameterdarstellung verändert wird. Sei 
+\[\gamma \colon \Omega \subset \R^k \to M\]
+eine lokale Parameterdarstellung und sei $W \subset \Omega$ ein kleiner Würfel mit Eckpunkt $u_0 \in W$. Dann gilt für $u \in W$
+\[\gamma(u) \cong \gamma(u_0) + \gamma'(u_0)(u-u_0)\]
+($\cong$ bedeutet \textit{ungefähr}). In diesem Sinn
+\[\gamma(W) \cong \gamma(u_0) + \gamma'(u_0) (W - u_0).\]
+Als Approximation für den zu definierenden Inhalt von $\gamma(W)$ nehmen wir den $k$-dim. Inhalt des $k$-Spats $\gamma'(u_0)(W - u_0)$. Es ist
+\[|\gamma'(u_0)(W- u_0)|_k = \sqrt{\det \gamma'(u_0)^\top \gamma'(u_0)} |W - u_0|_k = \sqrt{g(u_0)} |W|_k\]
+mit der Gram'schen Determinante $g(u_0) =  \gamma'(u_0)^\top \gamma'(u_0)$. Die Matrix $ \gamma'(u_0)^\top \gamma'(u_0)$ hat bezüglich der Standard-ONB $e_1, \dots, e_k$ von $\R^k$ die Komponenten
+\[g_{ij}(u) = \scprod{e_i}{\gamma'(u)^\top \gamma'(u) e_i} = \scprod{\gamma'(u)e_i}{\gamma'(u)e_j} = \scprod{\partial_i \gamma(u)}{\partial_j \gamma(u)}.\]
+Für $k = n-1$ ist
+\[\sqrt{g(u)} = |\partial_1 \gamma(u) \wedge \dots \wedge \partial_{n-1} \gamma(u)|\]
+nach Korollar \ref{kor3_3}. 
+
+$M$ ist $k$-dim. Untermannigfaltigkeit von $\R^n$, $\gamma$ homöomorphe Parameterdarstellung
+\[\gamma \colon \Omega \to U \subset M \subset \R^n\]
+und $g$ die Gram'sche von $\gamma$. $\Omega$ offen in $\R^k$. 
+\[\int_U f \d S = \int_\Omega f(\gamma(u)) \sqrt{g(u)} \d u\]
+für $f \colon U \to \R$ stetig, für welche $f \circ \gamma \sqrt{g}$ über $\Omega$ integrierbar ist. Ist $\sqrt{g}$ über $\Omega$ integrierbar, dann
+\[|U|_k = \int_U \d S = \int_\Omega \sqrt{g(u)} \d u.\]
+\begin{rem}
+	\begin{enumerate}
+		\item Ist $f$ stetig und der Träger von $f$
+		\[\supp(f) := \overline{\{x \in U | f(x) \neq 0\}}^{\R^n}\]
+		(Abschluss in $\R^n$) eine kompakte Teilmenge von $U$ ist. Dann ist $f \circ \gamma \sqrt{g}$ integrierbar über $\Omega$.
+		\item Die Abbildung $f \mapsto \int_U f \d S \in \R$ ist linear.
+		\item Das Integral $\int_U f \d S$ ist unabhängig von der Wahl der h. P. $\gamma$.
+	\end{enumerate}
+\end{rem}
+\begin{satz}\label{satz3_8}
+	Sei $f \colon \R^n \to \R$ stetig und $R > 0$. Dann ist
+	\[\int_{|x| \leq R} f \d V = \int_0^R \d r \int_{\S_r^{n-1}} f(x) \d S(x) = \int_0^R \d r r^{n-1} \int_{\S^{n-1}} f(rx) \d S(x).\]
+\end{satz}
+Für $f$ identisch 1 bekommt man
+\[|\B_R(0)| = |\S^{n-1}| \frac{R^n}{n}\]
+also $n|\B_1(0)| = |\S^{n-1}|$.
+
+\subsection{Zerlegung der Eins}
+Bisher können wir über Kartengebiete integrieren. D. h.
+\[\int_U f \d V = \int_\Omega (f \circ \gamma)\sqrt{g} \d u\]
+für $U \subset M \subset \R^n$ und $\gamma(\Omega) = U$. 
+
+\begin{thm}\label{thm3_9}
+	Folgende Aussagen über $K \subset \R^n$ sind äquivalent
+	\begin{enumerate}[label=(\alph*)]
+		\item $K$ ist (folgen-) kompakt.
+		\item $K$ ist abgeschlossen und beschränkt.
+		\item\label{thm3_9_c} Zu jeder Familie $(U_i)_{i\in I}$ von offenen Mengen $U_i \subset \R^n$ mit
+		\[K \subset \bigcup_{i \in I} U_i\]
+		gibt es endliche viele Indices $i_1, \dots, i_N \in I$, so dass
+		\[K \subset \bigcup_{k = 1}^N U_{i_k}.\]
+	\end{enumerate}
+	Für \ref{thm3_9_c} sagt man auch: Jede offene Überdeckung von $K$ hat eine endliche Teilüberdeckung.
+\end{thm}
+Der Träger (\textit{support}) einer Funktion $f \colon D \subset \R^n \to \C$ ist die Menge
+\[\supp(f) = \overline{\{x \in D \mid f(x) \neq 0\}} (\subset \bar{D}).\]
+Für $k \in \N, D \subset \R^n$ offen definiert man
+\begin{align*}
+	\CF_0^k (D) &:= \{f \in \CF^k (D) \mid \supp(f) \subset D \land \supp(f) \text{ kompakt}\}\\
+	\CF_0^\infty &:= \bigcap_{k=0}^\infty \CF_0^k (D)
+\end{align*}
+\begin{thm}\label{thm3_10}
+	Sei $K \subset \R^n$ eine kompakte Menge und $\mathscr{O}$ eine offene Überdeckung von $K$. Dann gibt es endlich viele Funktionen $\alpha_1, \dots, \alpha_N \in \CF_0^\infty (\R^n)$ mit
+	\begin{enumerate}[label=(\alph*)]
+		\item $0 \leq \alpha_i \leq 1$.
+		\item $\displaystyle \sum_{i=1}^N \alpha_i = 1$ auf $K$.
+		\item $\supp(\alpha_i) \subset U$ für ein $U \in \mathscr{O}$.
+	\end{enumerate}
+\end{thm}
+
+\subsection{Integration über kompakte Untermannigfaltigkeiten}
+\begin{lem}\label{lem3_11}
+	Zu jeder kompakten Untermannigfaltigkeit $M \subset \R^n$ gibt es eine Überdeckung 
+	\[M = \bigcup_{i=1}^N U_i\]
+	durch endlich viele Kartengebiete $U_i$ sowie zugehörige Funktionen $\alpha_1, \dots, \alpha_N \in \CF_0^\infty (\R^n)$ mit $\supp(\alpha_i) \cap M \subset U_i$ und $\sum_{i=1}^N \alpha_i = 1$ auf $M$.
+\end{lem}
+Ist $f \colon M \to \R$ stetig auf der kompakten Untermannigfaltigkeit $M \subset \R^n$, dann definiert man
+\[\int_M f \d S := \sum_{i=1}^N \int_{U_i} (f \alpha_i) \d S,\]
+wobei $U_i \subset M$ und $\alpha_i \in \CF_0^\infty (\R^n), i = 1, \dots, N$ durch Lemma \ref{lem3_11} gegeben sind. Der Wert des Integrals ist unabhängig von der Wahl der Zerlegung der Eins.
+\begin{satz}\label{satz3_12}
+	Sei $M \subset \R^n$ eine kompakte Untermannigfaltigkeit, $\Omega \subset \R^k$ offen und messbar, $\gamma \colon \Omega \to \gamma(\Omega) \subset M$ eine h. P., welche auf einer offenen Umgebung von $\bar{\Omega}$ definiert und stetig differenzierbar ist. Falls $\gamma(\bar{\Omega}) = M$, dann gilt für jede stetige Funktion $f \colon M \to \R$
+	\[\int_M f \d S = \int_{\bar{\Omega}} (f \circ \gamma)(u) \sqrt{g(u)} \d u.\]
+\end{satz}
+
+\subsection{Der Satz von Gauß}
+Sei $D \subset \R^n$ offen und $F \colon D \to \R^n$ ein stetig differenzierbares Vektorfeld. Die \textbf{Divergenz} von $F$ ist die Funktion $\div F \colon D \to \R$ gegeben durch
+\[(\div F)(x) = \sum_{i=1}^n \partial_i F_i(x) =: \nabla \cdot F(x).\]
+Wir berechnen jetzt den \textit{Fluss} von $F$ durch den Rand $\partial Q$ eines Quaders $Q \subset \R^2$, d.h. wir integrieren $\scprod{F}{N}$ über $\partial Q$ mit $|N| = 1$ (siehe Vorlesung). Es gilt
+\begin{align*}
+	\int_{\partial Q} \scprod{F}{N} \d S &= \int_c^d F_1(b,y) \d y - \int_c^d F_1(a,y) \d y + \int_a^b F_2(x,d) \d x - \int_a^b F_2(x,c) \d x\\
+	&= \int_c^d F_1(b,y) - F_1(a,y) \d y + \int_a^b F_2(x,d) - F_2(x,c) \d x\\
+	&= \int_c^d \left(\int_a^b \partial_1 F_1(x,y) \d x\right) \d y + \int_a^b \left(\int_c^d \partial_2 F_2(x,y) \d y\right) \d x\\
+	&= \int_Q (\partial_1 F_1 + \partial_2 F_2) \d(x,y)\\
+	&= \int_Q (\div F) \d V.
+\end{align*}
+(Eine Art Verallgemeinerung des Hauptsatzes der Differential- und Integralrechnung.)
+
+Sei $A \subset \R^n$ kompakt. $A$ hat \textbf{glatten Rand}, wenn zu jedem $p \in \partial A$ eine Umgebung $U \subset \R^n$ und eine $\CF^1$-Funktion $\varphi \colon U \to \R$ existiert mit
+\begin{enumerate}[label=(\alph*)]
+	\item $A \cap U = \{x \in U \mid \varphi(x) \leq 0\}$,
+	\item $\nabla \varphi(x) \neq 0$.
+\end{enumerate}
+Es gilt
+\[\partial A \cap U = \{x \in U \mid \varphi(x) = 0\}.\]
+Daraus folgt, dass $\partial A$ eine $(n-1)$-dim. Untermannigfaltigkeit von $\R^n$ ist.
+\begin{satz}\label{satz3_13}
+	Sei $A \subset \R^n$ kompakt mit glattem Rand. Dann gibt es zu jedem Punkt $p \in A$ genau einen Vektor $N(p) \in \R^n$ mit
+	\begin{enumerate}[label=(\alph*)]
+		\item $N(p) \perp T_p(\partial A)$,
+		\item $|N(p)| = 1$,
+		\item $p + t N(p) \notin A$ für $t \in (0,\varepsilon)$ und $\varepsilon > 0$ klein genug.
+	\end{enumerate}
+\end{satz}
+Das Vektorfeld $p \mapsto N(p)$ ist stetig und heißt \textbf{äußeres Einheitsnormalenfeld}.
+\begin{lem}\label{lem3_14}
+	Ist $U \subset \R^n$ offen und $F \colon U \to \R^n$ ein stetig differenzierbares Vektorfeld mit $\supp(F) \subset U$, dann gilt
+	\[\int_U \div F \d V = 0.\]
+\end{lem}
+\begin{lem}\label{lem3_15}
+	Sei $U = W \times (\alpha, \beta)$ wobei $W \subset \R^{n-1}$ offen ist. Sei $h \colon W \to (\alpha, \beta)$ eine $\CF^1$-Funktion. Wenn 
+	\begin{align*}
+		A &:= \{(x', x_n) \in U \mid x_n \leq h(x')\}\\
+		M &:= \{(x', x_n) \in U \mid x_n = h(x')\},
+	\end{align*}
+	dann gilt für jedes Vektorfeld $F \in \CF_0^1 (U)$
+	\[\int_A \div F \d V = \int_M \scprod{F}{N} \d S.\]
+\end{lem}
+\begin{thm}\label{thm3_16}
+	Sei $A \subset \R^n$ mit glattem Rand und sei $N \colon \partial A \to \R^n$ das äußere Einheitsnormalenfeld auf $\partial A$. Dann gilt für jedes $\CF^1$-Vektorfeld $F \colon U \to \R^n$ auf einer offenen Menge $U \supset A$
+	\[\int_A \div F \d V = \int_{\partial A} \scprod{F}{N} \d S.\]
+\end{thm}
+\begin{rem}
+	\begin{enumerate}
+		\item Der Satz gilt im Allgemeinen nicht, wenn $A$ nicht kompakt ist. Er gilt aber auch für viele kompakte Mengen mit Ecken und Kanten (z.B. Quader) (nachzuschlagen in Königsberger oder Blatter).
+		\item Man schreibt auch manchmal
+		\[\int_{\partial A} \vec{F} \cdot \vec{\d S}\]
+	\end{enumerate}
+\end{rem}
+\begin{rem}
+	Aus Theorem \ref{thm3_16} folgt für $F \in \CF^1$
+	\[\div F(x) = \lim_{R \to 0} \frac{1}{|\overline{\B_R(x)}|} \int_{\overline{\B_R(x)}} \div F \d V = \lim_{R \to 0} \frac{1}{|\overline{\B_R(x)}|} \int_{\partial \B_R(x)} \scprod{F}{N} \d S,\]
+	was den Namen \textit{Quellstärke} von $F$ für $\div F$ erklärt.
+\end{rem}
+\paragraph{Satz von Green. } Sei $A \subset \R^2$ kompakt mit glattem Rand und sei $F \colon \partial A \to \R^2$ stetig. Wir definieren das Kurvenintegral von $F$ längs des \textbf{positiv orientierten Randzyklus} von $A$ durch
+\[\int_{\partial A} F \d x := \int_{\partial A} \scprod{F}{T},\]
+wobei $T = JN$ und 
+\[J = \begin{bmatrix}
+	0 & -1\\
+	1 & 0
+\end{bmatrix}.\]
+\begin{thm}[Satz von Green]\label{thm3_17}
+	Sei $A \subset \R^2$ kompakt mit glattem Rand und sei $F \colon U \to \R^2$ ein $\CF^1$-Vektorfeld auf $U \supset A$. Dann gilt
+	\[\int_{\partial A} F \cdot \d x = \int_A (\partial_1 F_2 - \partial_2 F_1) \d V.\]
+	Anwendung:
+	\[|A| = \int_{\partial A} x \d y = - \int_{\partial A} y \d x\]
+\end{thm}
+\begin{rem}
+	Bei erfüllter Integrabilitätsbedingung $\partial_1 F_2 - \partial_2 F_1 = 0$ reduziert sich die Aussage von Theorem \ref{thm3_17} auf Theorem 13.9, 13.8 oder 13.10 aus der Analysis 2.
+\end{rem}
+\begin{folgerung}
+	
+	\[|A| = \int_{\partial A} x \d y = - \int_{\partial A} y \d x\]
+	folgt aus Theorem \ref{thm3_17} mit $F(x,y) = \begin{bmatrix}
+		0\\
+		x
+	\end{bmatrix}$ bzw. $F(x,y) = \begin{bmatrix}
+	-y\\
+	0
+	\end{bmatrix}$ und
+	\[\int_{\partial A} F \cdot \d x := \int_{\partial A} F_1 \d x + F_2 \d y.\]
+\end{folgerung}
+\subsection{Laplace-Operator und harmonische Funktionen}
+Sei $D \subset \R^n$ offen und $f \in \CF^2(D)$. Dann ist $\Delta f$ (sprich Laplace von $f$) die Funktion
+\[\Delta f = \sum_{k=1}^n \frac{\partial^2 f}{\partial x_k^2} = \div(\nabla f) \colon D \to \R\]
+und $\Delta = \sum_{k=1}^n \partial_k^2$ heißt \textbf{Laplace-Operator}. Falls $\Delta f = 0$, dann heißt $f$ \textbf{harmonisch}. Jede lineare Funktion $f \colon \R^n \to \R, f(x) = \scprod{a}{x} + b, a \in \R^n, b \in \R$ ist harmonisch. Auch
+\begin{align*}
+	f(x) &= \ln |x| \quad x \in \R^2 \setminus \{0\}\\
+	f(x) &= \frac{1}{|x|^{n-2}} \quad x \in \R^n \setminus  \{0\}.
+\end{align*}
+Im Folgenden ist $B_R := \overline{\B_R(0)}$ und $S_R := \partial \B_R(0)$. 
+\begin{thm}\label{thm3_18}
+	Sei $f \in \CF^2 (D)$ harmonisch und $\overline{\B_R(0)} \subset D \subset \R^n$, wobei $n \geq 2$. Dann gilt
+	\begin{align*}
+		f(p) &= \frac{1}{|S_R|} \int_{S_R} f(p+x) \d S(x)\\
+		&= \frac{1}{|B_R|} \int_{B_R} f(p+x) \d V(x)
+	\end{align*}
+\end{thm}
+\begin{kor}\label{kor3_19}
+	Ist $f \in \CF^2(D)$ und $p \in D \subset \R^n$, dann gilt
+	\[\Delta f(p) = \lim_{R \to 0} \frac{2n}{R^2} \frac{1}{|S_R|} \int_{S_R} [f(p+x) - f(p)] \d S(x).\]
+\end{kor}
+\begin{rem}
+	Die rechte Seite verschwindet, wenn $f$ die Mittelwerteigenschaft aus Theorem \ref{thm3_18} hat. Eine $\CF^2$-Funktion ist also genau dann harmonisch, wenn sie die Mittelwerteigenschaft hat.
+\end{rem}
+Eine Teilmenge $\Omega \subset \R^n$ heißt Gebiet, wenn $\Omega$ offen und zusammenhängend ist. 
+\begin{thm}[Maximumsprinzip]\label{thm3_20}
+	Sei $f \in \CF^2(\Omega)$ harmonisch und $\Omega \subset \R^n$ ein Gebiet. Falls $p \in \Omega$ existiert mit
+	\[f(p) = \sup_{x \in \Omega} f(x),\]
+	dann ist $f$ konstant.
+\end{thm}
+\begin{kor}\label{kor3_21}
+	Eine harmonische Funktion $f \in \CF^2 (\Omega) \cap \CF(\bar{\Omega})$ auf einem beschränkten Gebiet $\Omega \subset \R^n$ nimmt ihr Maximum und ihr Minimum auf dem Rand an.
+\end{kor}
+\begin{thm}
+	Ist $\Omega \subset \R^n$ offen und hat $f \in \CF(\Omega)$ die Mittelwerteigenschaft aus Theorem \ref{thm3_18}, dann ist $f \in \CF^\infty (\Omega)$.
+\end{thm}
+\begin{folgerung}
+	Eine harmonische Funktion ist beliebig oft differenzierbar (siehe Bemerkung zu Korollar \ref{kor3_19}).
+\end{folgerung}
+\paragraph{Dirichlet-Problem. } Sei $\Omega \subset \R^n$ ein \textit{beschränktes} Gebiet und seien $\rho \in \CF(\Omega)$ und $f \in \CF(\partial \Omega)$ gegebene Funktionen. Wir betrachten das Randwertproblem
+\begin{align*}
+	\begin{cases}
+		\Delta u = \rho & \text{in } \Omega\\
+		u = f & \text{auf } \partial\Omega
+	\end{cases}
+\end{align*}
+mit gesuchter Funktion $u \in \CF^2(\Omega) \cap \CF(\bar{\Omega})$ - das \textbf{Dirichlet-Problem}.
+\begin{satz}
+	Das Dirichlet-Problem hat höchstes eine Lösung.
+\end{satz}
+
+\subsection{Der Satz von Stokes}
+Der \textit{Satz von Stokes} ist die räumliche Version des Satzes von Green:
+\[\underbrace{\int_{\partial A} F \cdot \d x}_{\text{Zirkulation von $F$ längs $\partial A$}} = \int_A \underbrace{\partial_1 F_2 - \partial_2 F_1}_{\text{Wirbeldichte von $F$})} \d V.\]
+\begin{beispiel}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Für $F(x,y) = \frac{1}{2} (-y, x)^\top$ ist die Wirbeldichte gerade $\partial_1 F_2 - \partial_2 F_1 = 1$.
+		\item Für
+		\[F(x,y) = \begin{bmatrix}
+			\frac{-y}{x^2 + y^2}\\
+			\frac{x}{x^2 + y^2}
+		\end{bmatrix} = \nabla \varphi,\]
+		mit dem Polarwinkel $\varphi$, $\partial_1 F_2 - \partial_2 F_1 = \partial_1 \partial_2 \varphi - \partial_2 \partial_1 \varphi = 0$. 
+	\end{enumerate}
+\end{beispiel}
+Sei $F \colon D \subset \R^3 \to \R^3$ ein $\CF^1$-Vektorfeld. Die \textbf{Rotation} (englisch: \textit{curl}) von $F$ ist das Vektorfeld
+\[\rot F (x) = \begin{bmatrix}
+	\partial_2 F_3 - \partial_3 F_2\\
+	\partial_3 F_1 - \partial_1 F_3\\
+	\partial_1 F_2 - \partial_2 F_1
+\end{bmatrix} = \begin{bmatrix}
+\partial_1\\\partial_2\\\partial_3
+\end{bmatrix} \wedge \begin{bmatrix}
+F_1\\F_2\\F_3
+\end{bmatrix} = \nabla \wedge F.\]
+\begin{itemize}
+	\item $\rot F(x)$ heißt \textbf{Wirbeldichte} von $F$ im Punkt $x \in D$.
+	\item Falls $F = \nabla f$, dann ist $\rot F \equiv 0$.
+\end{itemize} 
+\begin{lem}\label{lem3_24}
+	Sei $F \colon D \subset \R^3 \to \R^3$ ein $\CF^1$-Vektorfeld und $a \in \R^3$. Dann gilt
+	\[(F'(x) - F'(x)^\top)a = \rot F(x) \wedge a.\]
+\end{lem}
+\paragraph{Der Satz von Stokes für ein Parallelogramm. } Sei
+\[P = \{x_0 + ta + sb \mid t,s \in [0,1]\} \subset \R^3\]
+mit $x_0, a,b \in \R^3$ fest. Sei $\partial P$ die ein Mal im positiven Sinn (Gegenuhrzeigersinn von \glqq{}oben\grqq betrachtet) durchlaufene Kurve bestehend aus den vier Kanten von $P$. Wir berechnen die Zirkulation
+\[\int_{\partial P} F \cdot \d x\]
+von $F$ längs $\partial P$ für  ein $\CF^1$-Vektorfeld $F \colon D \subset \R^3 \to \R^3$ mit $D \supset P$. Es gilt
+\begin{equation}
+	\int_{\partial P} F \d x = \dots = \int_P \scprod{\rot F}{N} \d S\label{stokes_para}.
+\end{equation}
+In Worten: \glqq{}Die Zirkulation von $F$ längs $\partial P$ ist gleich der Fluss von $\rot F$ durch $P$.\grqq
+
+$N$ definiert dabei die positive Flussrichtung und den positiven Umlaufsinn von $\partial P$. Falls $P \subset \R^2 \times \{0\}$ und $\scprod{a \wedge b}{e_3}$, dann ist $N = e_3$ und
+\[\scprod{\rot F}{N} = \partial_1 F_2 - \partial_2 F_1.\]
+Also reduziert sich \eqref{stokes_para} auf den Satz von Green.
+\begin{kor}\label{kor3_25}
+	Ist $F \colon U \subset \R^3 \to \R^3$ ein $\CF^1$-Vektorfeld, $a,b \in \R^3, N = a\wedge b, x \in U$ und $P_\varepsilon(x) = \{x + t \varepsilon a + s \varepsilon b\mid s,t \in [0,1]\}$, dann gilt
+	\[\scprod{\rot F(x)}{N} = \lim_{\varepsilon \to 0} \frac{1}{|P_\varepsilon|} \int_{\partial P_\varepsilon(x)} F \cdot \d x\]
+	wobei $\partial P_\varepsilon$ im positiven Sinn durchlaufen wird.
+\end{kor}
+Korollar \ref{kor3_25} rechtfertigt die Bezeichnung \textit{Wirbeldichte} für $\rot F$.
+\begin{lem}\label{lem3_26}
+	Sei $\gamma \colon \Omega \subset \R^2 \to \R^3$ eine Parameterdarstellung der Klasse $\CF^2$, $F \colon U \to \R^3$ ein stetig differenzierbares Vektorfeld und $U \supset \gamma(\Omega)$. Wird $f \colon \Omega \to \R^2$ definiert durch
+	\[f_k(u) := \scprod{\rot F(\gamma(u))}{\partial_1 \gamma(u) \wedge \partial_2 \gamma(u)},\]
+	dann gilt
+	\[(\partial_1 f_2 - \partial_2 f_1)(u) = \scprod{\rot F(\gamma(u))}{\partial_1 \gamma(u) \wedge \partial_2 \gamma(u)}.\]
+\end{lem}
+\begin{lem}\label{lem3_27}
+	Ist $f \colon \R^2 \to \R^2$ ein $\CF^1$-Vektorfeld mit kompakten Träger, dann gilt
+	\[\int_{H^2} \partial_1 f_2 - \partial_2 f_1 \d u = \int_\R f_2 (0,u_2) \d u_2,\]
+	wobei $H^2 := \{(u_1, u_2) \mid u_1 \leq 0\}$.
+\end{lem}
+Im Satz von Green ist $A \subset \R^2$ kompakt mit glattem Rand. An der Stelle von $\R^2$ tritt jetzt eine 2-dim. Untermannigfaltigkeit $M \subset \R^3$.
+
+Eine kompakte Teilmenge $A \subset M$ hat glatten Rand, wenn zu jedem $p \in A$ ein Flachmacher $\phi \colon U' \to V'$ von $M$ existiert mit $U' \ni p$ und 
+\[\phi(A \cap U') = (H^2 \times \{0\}) \cap V'.\]
+Wir nennen $\phi$ einen \textbf{randadaptierten Flachmacher} von $M$.
+\begin{beispiel}
+	Für $M = \S^2 \subset \R^3$ ist $A = M$ kompakt mit glattem Rand $\partial A = \emptyset$.
+	
+	Für $M = \{(x,y,z) \in \R^3 \mid x^2 + y^2 = 1\}$ ist $A = \{(x,y,z) \in \R^3 \mid x^2 + y^2 = 1, a \leq z \leq b\}$ kompakt mit glattem Rand.
+\end{beispiel} 
+Ein Punkt $p \in A \cap U$ heißt \textbf{Randpunkt} von $A$, falls $\phi_1(p) = 0$, d.h. $\phi(p) = (0,u_2,0)$. Das ist unabhängig von der Wahl von $\phi$ (ausgeführt in Jänich Band 2). Der Rand $\partial A$ von $A$ ist die Menge der Randpunkte von $A$.
+\begin{satz}\label{satz3_28}
+	Sei $A \subset M$ kompakt mit glattem Rand in der 2-dim. Untermannigfaltigkeit $M \subset \R^3$. Dann ist $\partial A$ eine 1-dim. Untermannigfaltigkeit von $\R^3$.
+\end{satz}
+Sei $f \colon M \to \R$ stetig mit $\supp(f) \subset U = \gamma(\Omega)$, wobei $\gamma$ h.P. ist, und $A \subset M$ kompakt mit glattem Rand, dann setzt man 
+\[\int_Af \d S = \int_{\gamma^{-1}(A \cap U)} (f \circ \gamma)\sqrt{g_\gamma} \d u.\]
+Eine 2-dim. UNtermannigfaltigkeit $M \subset \R^3$ heißt \textbf{orientierbar}, wenn ein stetiges Einheitsnormalenfeld auf $M$ existiert, d. h. eine stetige Abbildung
+\[N \colon M \to \R^3\]
+mit $|N(p)| = 1$ und $N(p) \perp T_pM$ für alle $p \in M$. Das Paar $(M,N)$ heißt orientierte Untermannigfaltigkeit von $\R^3$.
+
+Eine Parameterdarstellung $\gamma \colon \Omega \to U \subset M$ von $(M,N)$ heißt orientierungserhaltend, wenn für alle $u \in \Omega$
+\[\frac{\partial_1 \gamma(u) \wedge \partial_2 \gamma(u)}{|\partial_1 \gamma(u) \wedge \partial_2 \gamma(u)|} = N(\gamma(u)).\]
+\paragraph{Induzierte Orientierung von $\partial A$. } Sei $A \subset M$ kompakt mit glattem Rand und $M \subset \R^3$ orientiert. Zu $p \in \partial A$ definieren wir den \textbf{positiv gerichteten Tangentialvektor} $T(p) \in T_p \partial A$ wie folgt.
+
+Ist $p \in U' \subset \R^3$ und $\phi \colon U' \to V'$ ein Rand-adaptierter Flachmacher von $M$ mit
+\[\scprod{\phi'(p)N(p)}{e_3} > 0\]
+und $\det \phi'(p) > 0$. Dann setzen wir
+\[T(p) = \frac{\phi'(p)^{-1} e_2}{|\phi'(p)^{-1} e_2|} = \frac{\partial_2 \gamma(u)}{|\partial_2 \gamma(u)|},\]
+wobei $\gamma \colon \Omega \to U' \cap M$ die zu $\phi$ gehörige Parameterdarstellung von $M$ ist und $(u,0) = \phi(p)$. D.h. $\Omega = \{(u_1, u_2) \mid (u_1,u_2,0) \in V'\}$ und $\gamma(u_1, u_2) = \phi^{-1}(u_1, u_2,0)$. Nach Wahl von $\phi$ ist $\gamma$ orientierungserhaltend.
+\paragraph{Satz von Stokes. } 
+\begin{rem}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Da $M$ von der Klasse $\CF^2$ ist, sind auch die Parameterdarstellungen von der Klasse $\CF^2$.
+		\item Für $A \subset \R^2$ kompakt mit glattem Rand folgt aus Theorem (?) wieder der Satz von Green.
+		\item Ist $\partial A$ die Spur einer einfach geschlossenen $\CF^1$-Kurve $\sigma$ mit $\scprod{\dot{\sigma}(t)}{T(\dot{\sigma}(t))} > 0$, dann gilt
+		\begin{align*}
+			\int_{\partial A} \scprod{F}{T} \d s &= 
+			\int_a^b \scprod{F(\sigma(t))}{\frac{\dot{\sigma}(t)}{|\dot{\sigma}(t)|}}  |\dot{\sigma}(t)| \d t\\ &= 
+			\int_a^b \scprod{F(\sigma(t))}{\dot{\sigma}(t)} \d t= \int_\sigma F \cdot \d x.
+		\end{align*}
+	\end{enumerate}
+\end{rem}
+Besteht $\partial A$ aus $N$ einfach geschlossenen $\CF^1$-Kurven $\sigma_i$ mit korrekter Orientierung, dann 
+\[\int_{\partial A} \scprod{F}{T} \d s = \sum_{i=1}^N \int_{\sigma_i} F(x) \cdot \d x.\]
+\begin{thm}[Stokes 1854]\label{thm3_29}
+	Sei $(M,N)$ eine orientierte, 2-dim. Untermannigfaltigkeit von $\R^3$ (der Klasse $\CF^2$) und sei $A \subset M$ kompakt mit glattem Rand. Sei $F \colon U \to \R^3$ ein $\CF^1$-Vektorfeld mit $U \supset A$ offen. Dann gilt
+	\[\int_{\partial A} \scprod{F}{T} \d s = \int_A \scprod{\rot F}{N} \d S,\]
+	wobei $T \colon \partial A \to \R^3$ der positiv gerichtete Tangentialvektor an $\partial A$ ist.
+\end{thm}
+
+\subsection{Die Maxwellschen Gleichungen}
+Die Maxwellschen Gleichungen lauten
+\begin{align}
+	\div B &= 0\label{maxwell1}\\
+	\div E &= 4 \pi \rho \label{maxwell2}\\
+	\rot E + \frac{1}{c} \partial_t B &= 0\label{maxwell3}\\
+	\rot B - \frac{1}{c} \partial_t E &= 4\pi J\label{maxwell4}.
+\end{align}
+$E,B \colon \R^3 \times \R \to \R^3$ sind das elektrische und das magnetische Feld $\rho \colon \R^3\times \R \to \R$ ist die Ladungsdichte. $J \colon \R^3\times \R \to \R^3$ ist die Stromdichte und $c > 0$ ist die Lichtgeschwindigkeit. $\rot$ und $\div$ beziehen sich auf die räumlichen Koordinaten $(x_1, x_2, x_3) \in \R^3$ bezüglich fester Zeit $t\in \R$.
+
+Wir nehmen an, $E,B,J,\rho$ seien von der Klasse $\CF^1$ und lösen \eqref{maxwell1} bis \eqref{maxwell4}. 
+Sei $M \subset \R^3$ eine 2-dim. orientierte Untermannigfaltigkeit und sei $A \subset M$ kompakt mit glattem Rand. Aus \eqref{maxwell3} folgt mit Stokes das \textbf{Induktionsgesetz}
+\begin{align*}
+	\int_{\partial A} E \cdot \d x = \int_A \scprod{\rot E}{N} \d S = -\frac{1}{c} \int_A \scprod{\frac{\partial B}{\partial t}}{N} \d S = -\frac{1}{c} \frac{\d}{\d t} \int_A \scprod{B}{N} \d S.
+\end{align*}
+Aus \eqref{maxwell4} folgt mit Stokes das \textbf{Ampèresche Gesetz}
+\begin{align*}
+	\int_{\partial A} B \cdot \d x = \int_A \scprod{\rot B}{N} \d S = \frac{1}{c} \int_A \scprod{4\pi J + \partial_t E}{N} \d S.
+\end{align*}
+Wir wollen nun die homogenen Maxwell-Gleichungen \eqref{maxwell1} und \eqref{maxwell3} lösen. Dazu brauchen wir
+\begin{satz}\label{satz3_30}
+	Sei $D \subset \R^3$ offen und sternförmig. Ist $B \colon D \to \R^3$ ein $\CF^1$-Vektorfeld mit $\div B \equiv 0$, dann existiert ein $\CF^1$-Vektorfeld $A \colon D \to \R^3$ mit
+	\[B = \rot A.\]
+\end{satz}
+\begin{rem}
+	\begin{itemize}
+	\item $A$ heißt \textbf{Vektorpotential} von $B$ (vgl. Analysis 2, Satz 13.5). 
+	\item Das Vektorpotential $A$ ist durch $B$ nicht eindeutig bestimmt. Für jede $\CF^2$-Funktion $\chi \colon D \to \R$ gilt $\rot(\nabla \chi) = 0$ und somit
+	\[\rot(A + \nabla \chi) = \rot(A).\]
+	Diese Freiheit in der Wahl von $A$ nennt man \textbf{Eichfreiheit}.
+	\end{itemize}
+\end{rem}
+Auf Grund von Satz \ref{satz3_30} macht man den Ansatz
+\begin{equation}\label{maxwellansatz}
+	B = \rot A.
+\end{equation}
+Zur Lösung der ersten Maxwell-Gleichung, wobei $A \colon \R^3 \times \R \to \R^3$ zwei Mal stetig differenzierbar sei. Wegen $\div(\rot A) = 0$ ist dann die erste MG automatisch erfüllt und die zweite wird zu 
+\[0 = \rot E + \frac{1}{c} \frac{\partial}{\partial t} (\rot A) = \rot\left(E + \frac{1}{c} \frac{\partial A}{\partial t}\right).\]
+Nach Satz 13.5 der Analysis 2 existiert ein skalares Potential $\phi \colon \R^3 \times \R \to \R$ mit
+\[E + \frac{1}{c} \frac{\partial A}{\partial t} = -\nabla \phi\]
+bzw.
+\begin{equation}\label{maxwellansatz2}
+	E = -\nabla \phi - \frac{1}{c} \frac{\partial A}{\partial t}.
+\end{equation}
+Durch die Ansätze \eqref{maxwellansatz}, \eqref{maxwellansatz2} werden homogenen Maxwell-Gleichungen automatisch gelöst und es bleiben noch die inhomogenen Maxwell-Gleichungen. Dabei kann man sich die Freiheit zu Nutze machen , diese Gleichungen durch eine geeignete Eichtransformation
+\[A \mapsto A + \nabla \chi, \quad \phi \mapsto \phi - \frac{1}{c} \frac{\partial \chi}{\partial t}\]

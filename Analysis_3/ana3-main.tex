@@ -1,0 +1,109 @@
+% Algebra - Main Datei
+\documentclass[12pt,a4paper]{article}
+\input{pakete}
+
+% hyperref
+\hypersetup{
+	unicode=false,
+	pdftoolbar=true,
+	pdfmenubar=true,
+	pdffitwindow=false,
+	pdfstartview={FitH},
+	pdftitle={Analysis III},
+	pdfnewwindow=true,
+	colorlinks=true,
+	linkcolor=blue,
+	citecolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan, 
+	linktoc=all,     
+}
+\hypersetup{linktocpage}
+
+\geometry{
+	left=3.0cm, 
+	right=3.0cm}
+
+\newcommand{\C}{\mathbb{C}} % Die Menge der komplexen Zahlen
+\newcommand{\R}{\mathbb{R}} % Die Menge der reellen Zahlen
+\newcommand{\Q}{\mathbb{Q}} % Die Menge der rationalen Zahlen
+\newcommand{\Z}{\mathbb{Z}} % Die Menge der ganzen Zahlen
+\newcommand{\N}{\mathbb{N}} % Die Menge der natürlichen Zahlen
+\newcommand{\K}{\mathbb{K}} % Der Körper der reellen oder komplexen Zahlen
+\renewcommand{\S}{\mathbb{S}}
+\newcommand{\B}{\mathbb{B}}
+
+\newcommand{\vektor}[1]{\underline{#1}}
+\newcommand{\skalarprodukt}[2]{\langle #1, #2 \rangle}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\iu}{\mathrm{i}}
+\newcommand{\id}{\mathrm{id}}
+\renewcommand{\Re}{\mathbf{Re}}
+\renewcommand{\Im}{\mathbf{Im}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\pot}{\mathfrak{P}}
+\newcommand{\CD}{\mathscr{C}}
+\newcommand{\rot}{\mathrm{rot}}
+
+
+\newcommand{\im}[1]{\mathrm{im}(#1)}
+%\renewcommand{\vec}[1]{\mathbf{#1}} % Vektor
+\newcommand{\mat}[1]{\mathbf{#1}} % Matrix
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % Adjustable norm
+\newcommand{\snorm}[1]{{\left\lVert#1\right\rVert}_\infty} % sup norm
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\scprod}[2]{\left\langle#1,#2 \right\rangle}
+
+\newcommand{\CF}{\mathscr{C}} % Continuous and differentiable function
+\renewcommand{\div}{\mathrm{div}}
+
+
+\newtheorem{thm}{Theorem}[section]
+\theoremstyle{plain}
+\newtheorem{satz}[thm]{Satz}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{kor}[thm]{Korollar}
+%\newtheorem{definition}[thm]{Definition}
+%\newtheorem{rem}[thm]{Bemerkung}
+
+\newtheorem*{rem}{Bemerkung}
+\newtheorem*{folgerung}{Folgerung}
+
+\theoremstyle{plain}
+\newtheorem*{bemerkung}{Bemerkung}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{definition}
+\newtheorem*{beispiel}{Beispiel}
+
+\theoremstyle{plain}
+
+% Beweisende: Schwarzes Quadrat
+%\renewcommand{\qedsymbol}{$\blacksquare$}
+
+
+%\setlength{\parindent}{0cm}
+
+\begin{document}
+	\input{title}
+	
+	Diese Zusammenfassung enthält nicht alles, was in der Vorlesung vorgetragen wurde. Der Fokus liegt vor allem auf Definition, Sätzen und einigen wenigen Bemerkungen. Für Hinweise auf Fehler und Kritik bin ich stets dankbar.
+	
+	\tableofcontents
+	
+	\include{kap1}
+	
+	\include{kap2}
+	
+	\include{kap3}
+	
+	\include{kap4}
+	
+\end{document}

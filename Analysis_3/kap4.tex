@@ -1,0 +1,105 @@
+\section{Normierte Räume}
+\subsection{Elementare Eigenschaften}
+Sei $X$ ein Vektorraum über $\K \in \{\R, \C\}$. Eine \textbf{Norm} ist eine Abbildung $\rho \colon X \to \R$ mit folgenden Eigenschaften: Für alle $x,y \in X, \lambda \in \K$ gilt
+\begin{enumerate}[label={\bfseries(N\arabic*)}]
+	\item $\rho(x) \geq 0$ und $\rho(x) = 0 \;\Leftrightarrow\; x = 0$.
+	\item $\rho(\lambda x) = |\lambda| \rho(x)$.
+	\item\label{norm3} $\rho(x+y) \leq \rho(x) + \rho(y)$.
+\end{enumerate}
+Das Paar $(X, \rho)$ heißt \textbf{normierter Raum}. Wir schreiben im Folgenden meist $|x|$ oder $\norm{x}$ statt $\rho(x)$ und $X$ statt $(X,\rho)$. Aus \ref{norm3} folgt außerdem für alle $x,y \in X$
+\[\abs{\norm{x} - \norm{y}} \leq \norm{x-y}.\]
+Durch eine Norm wird ein Abstand $\norm{x-y}$ zwischen zwei Vektoren $x,y \in X$ und somit auch \textbf{Konvergenz} definiert: Die Folge $(x_n)$ konvergiert gegen $x \in X$, wenn $\lim_{n \to \infty} \norm{x_n-x} = 0$.
+
+Jede konvergente Folge ist eine \textbf{Cauchy-Folge}, d.h. $\norm{x_m -x_n} < \varepsilon$, falls $n, m \geq N_\varepsilon$. Wenn jede Cauchy-Folge konvergiert, dann heißt der normierte Raum $X$ vollständig oder \textbf{Banachraum}.
+\begin{beispiel}
+	\begin{enumerate}[label=(\arabic*)]
+		\item $\R^n$ mit $|x| = \left(\sum |x_n|^2\right)^{1/2}$ ist ein Banachraum (Thm. 11.6, Analysis 2).
+		\item $\C^n$ mit $|z| = \left(\sum |z_n|^2\right)^{1/2}$ ist ein Banachraum (da norm-isomoprh zu $\R^{2n}$).
+		\item $M(m \times n, \C$ mit $\norm{A} = \left(|A_{ik}|^2\right)^{1/2}$ ist ein Banachraum.
+		\item $\CF([a,b])$ mit $\norm{f} = \snorm{f}$ ist ein normierter Raum. Konvergenz einer Folge $(f_n)$ in $\CF([a,b])$ entspricht gleichmäßiger Konvergenz. 
+		\item\label{bsp5} Ist $X$ ein endlich-dimensionaler Vektorraum mit Basis $\{x_1, \dots, x_n\}$, dann wird durch
+		\[\norm{\sum \alpha_k x_k} := \left(\sum |a_k|^2\right)^{1/2}\]
+		eine Norm definiert.
+	\end{enumerate}
+\end{beispiel}
+Aus Satz 10.1 und Theorem 10.2 folgt
+\begin{thm}\label{thm4_1}
+	Der Vektorraum $\CF([a,b])$ versehen mit der Supremumsnorm ist vollständig.
+\end{thm}
+Eine Reihe $\sum_{n=0}^\infty x_n$ mit Gliedern $x_n \in X$ heißt konvergent, wenn $\lim_{N \to \infty} \sum_{n=0}^N x_n$ existiert. Sie heißt \textbf{absolut konvergent}, wenn $\sum \norm{x_n} < \infty$.
+\begin{thm}\label{thm4_2}
+	In einem Banachraum ist jede absolut konvergente Reihe konvergent.
+\end{thm}
+Eine Teilmenge $D \subset X$ eines normiertes Raums heißt \textbf{offen}, wenn zu jedem $x_0 \in D$ ein $\varepsilon > 0$ existiert, so dass
+\[\B_\varepsilon(x_0) := \{x \in X \mid \norm{x-x_0} < \varepsilon\} \subset D.\]
+$D$ heißt \textbf{abgeschlossen}, wenn $X \setminus D$ offen ist und $D$ heißt \textbf{kompakt}, wenn jede Folge aus $D$ eine in $D$ konvergente Teilfolge hat.
+\begin{satz}\label{satz4_3}
+	Eine Teilmenge $M$ eines normierten Raumes $X$ ist genau dann abgeschlossen, wenn für jede konvergente Folge $(x_n)$ aus $M$ gilt
+\[\lim_{n \to \infty} x_n = 0 \quad\Rightarrow\quad x \in M.\]
+\end{satz}
+\begin{thm}\label{thm4_4}
+	Sei $X$ ein Banachraum, sei $M \subset X$ abgeschlossen und $f \colon M \to M$ eine Abbildung mit
+	\[\norm{f(x) - f(y)} \leq L \norm{x-y}\]
+	für $x,y \in M$ und $L<1$. Dann existiert genau ein $x^* \in M$ mit $f(x^* = x^*$. Außerdem konvergiert die rekursiv definierte Folge $x_{n+1} = f(x_n)$ für jeden Startpunkt $x_0 \in M$ gegen $x^*$.
+\end{thm}
+Zwei Normen $\norm{\cdot}_1, \norm{\cdot}_2$ heißen \textbf{äquivalent}, wenn Konstanten $c,d \in \R$ existieren, so dass für alle $x \in X$
+\begin{align*}
+	\norm{x}_1 &\leq c \norm{x}_2\\
+	\norm{x}_2 &\leq d \norm{x}_1.
+\end{align*}
+Aussagen über Konvergenz, Vollständigkeit, Offenheit etc. hängen nicht von der Wahl äquivalenter Normen ab.
+\begin{thm}\label{thm4_5}
+	In einem endlich-dimensionalen Vektorraum sind alle Normen äquivalent.
+\end{thm}
+Wegen Theorem \ref{thm4_5} und Beispiel \ref{bsp5} übertragen sich die Eigenschaften der normierten Räume $\R^N, \C^N$ auf alle endlich-dimensionalen normierten Räume. Insbesondere gilt
+\begin{satz}\label{satz4_6}
+	Jeder endlich-dimensionale normierte Raum ist vollständig.
+\end{satz}
+\subsection{Beschränkte lineare Abbildungen}
+Im Folgenden ist $X$ immer ein normierter Raum. Wir betrachten lineare Abbildungen $A \colon X \to X$ und schreiben $Ax := A(x)$ und $AB := A \circ B$. $A$ heißt \textbf{beschränkt}, falls ein $c \in \R$ existiert mit
+\begin{equation}
+	\norm{Ax} \leq c \norm{x}\label{4_2beschraenkt}
+\end{equation}
+für alle $x \in X$, sonst heißt $A$ unbeschränkt.
+\begin{satz}\label{satz4_7}
+	Folgende Aussagen sind äquivalent:
+	\begin{enumerate}[label=(\alph*)]
+		\item $A$ ist beschränkt.
+		\item $A$ ist stetig.
+		\item $A$ ist stetig in $0\in X$.
+	\end{enumerate}
+\end{satz}
+Sei $\mathscr{L}(X)$ die Menge der beschränkten linearen Abbildungen $A \colon X \to X$. Für $A \in \mathscr{L}$ ist
+\begin{equation}\label{4_2norm}
+	\norm{A} := \sup_{\norm{x} = 1} \norm{Ax}
+\end{equation}
+endlich und $c := \norm{A}$ ist die kleinste Zahl, für welche \eqref{4_2beschraenkt} gilt. Der Vektorraum $\mathscr{L}(X)$ und \eqref{4_2norm} definieren eine Norm in $\mathscr{L}(X)$, die \textbf{Operatornorm}.
+Außerdem gilt
+\begin{equation}\label{4_2ungleichung}
+	\norm{AB} \leq \norm{A}\cdot\norm{B}
+\end{equation}
+für $AB \in \mathscr{L}(X)$.
+\begin{rem}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Ist $A \colon \R^n \to \R^n$ gegeben durch die Matrix $(A_{ik})$ und $\R^n$ durch $|x| = \left(\sum |x_i|^2\right)^{1/2}$ normiert, dann gilt
+		\[\norm{A} \leq \left(\sum |A_{ik}|^2\right)^{1/2} =: \norm{A}_2,\]
+		denn $|Ax| \leq \norm{A}_2 |x|$ (Analysis 2, Kapitel 12.4).
+		\item Ist $X$ endlich-dimensional, dann ist jede lineare Abbildung $A \colon X \to X$ beschränkt.
+		\item In $\CF_0^\infty(\R)$ mit $\norm{f} = \snorm{f}$ ist die lineare Abbildung $f \mapsto f'$ unbeschränkt.
+	\end{enumerate}
+\end{rem}
+\begin{satz}\label{satz4_8}
+	Sind $A_n, B_n \in \mathscr{L}(X)$ und $A_n \to A, B_n \to B$ für $n \to \infty$, dann gilt $A_n B_n \to AB$ für $n \to \infty$.
+\end{satz}
+\begin{thm}\label{thm4_9}
+	Ist $X$ vollständig, dann ist auch $\mathscr{L}(x)$ vollständig.
+\end{thm}
+\subsection{Die Exponentialabbildung}
+In diesem Kapitel ist $X$ ein Banachraum.
+\begin{satz}\label{satz4_10}
+	Seien $A_k, B_\ell \in \mathscr{L}(X), k, \ell \in \N_0$. Sind $\sum A_k, \sum B_l$ absolut konvergent und $c_n = \sum_{k=0}^n A_k B_{n-k}$, dann ist auch $\sum c_n$ absolut konvergent und
+	\[\left(\sum_{k\geq0} A_k\right)\left(\sum_{\ell \geq 0} B_\ell\right) = \sum_{n \geq 0} c_n.\]
+\end{satz}
+Für $A \in \mathscr{L}(X)$ definiert man $A^0 = 1$, wobei $1x = x$, $A^{n+1} = AA^n$ und
+\[\exp(A) := \sum_{n = 0}^\infty \frac{1}{n!} A^n.\]
+Wegen $\norm{A^n} \leq \norm{A}^n$ ist diese Reihe absolut konvergent und $\norm{\exp(A)} \leq e^{\norm{A}}$.

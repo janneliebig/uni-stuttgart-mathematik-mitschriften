@@ -1,0 +1,131 @@
+\section{Implizite Funktionen und Untermannigfaltigkeiten des $\R^d$}
+\subsection{Der Satz über die Umkehrabbildung}
+Sei $f \colon \emptyset \neq D \subset \R^d \to \R^d$ eine beliebige Abbildung. Ein Punkt $x^* \in D$ heißt \textbf{Fixpunkt von $f$}, wenn 
+\[f(x^*) = x^*.\]
+Falls $L<1$ existiert, so dass $|f(x) - f(y)| \leq L |x-y|$, dann hat $f$ \textit{höchstens einen} Fixpunkt.
+
+\begin{satz}\label{satz1_1}
+	Sei $\emptyset \neq M \subset \R^d$ abgeschlossen und $f \colon M \to M$ mit 
+	\[|f(x) - f(y)| \leq L |x-y|\]
+	für alle $x,y \in M$, wobei $L < 1$. Dann hat $f$ genau einen Fixpunkt.
+\end{satz}
+Dieser Satz lässt sich auf beliebige vollständige metrische Räume $(M, d)$ verallgemeinern ($\to$ Funktionalanalysis).
+
+Wir erinnern uns an Satz 7.5 der Analysis 1. Ist $f \colon (a,b) \to \R$ streng monoton und differenzierbar in $x_0$ mit $f'(x_0) \neq 0$, dann ist $f^{-1}$ in $y_0 = f(x_0)$ differenzierbar und
+\[(f^{-1})'(y_0) = \frac{1}{f'(x_0)} = \frac{1}{f'(f^{-1}(y_0))}.\]
+Das verallgemeinern wir zu
+\begin{thm}\label{thm1_2}
+	Sei $D \subset \R^n$ offen und $f \colon D \to \R^n$ stetig differenzierbar. Ist $a \in D$ ein Punkt, in dem $f'(a)$ invertierbar ist, dann existieren offene Umgebungen $U$ von $a$ und $V$ von $f(a)$ so, dass gilt
+	\begin{enumerate}[label=(\alph*)]
+		\item $f \colon U \to V$ ist bijektiv,
+		\item $f^{-1} \colon V \to U$ ist stetig differenzierbar.
+	\end{enumerate}
+	Insbesondere ist $f'(x)$ invertierbar für alle $x \in U$ und wenn $y = f(x)$, dann gilt
+	\[(f^{-1})'(y) = f'(x)^{-1}.\]
+\end{thm}
+\begin{kor}\label{kor1_3}
+	Ist $D \subset \R^n$ offen, $f \colon D \to \R^n$ stetig differenzierbar und $f'(x)$ invertierbar für alle $x \in D$, dann ist $f(D)$ offen.
+\end{kor}
+Sind $U, V \subset \R^n$ offen, $f \colon U \to V$ bijektiv und sowohl $f$ als auch $f^{-1}$ von der Klasse $\CF^k$, dann nennt man $f$ einen
+\begin{itemize}
+	\item $\CF^k$-\textbf{Diffeomorphismus}, wenn $k \geq 1$,
+	\item \textbf{Homöomorphismus}, wenn $k=0$.
+\end{itemize}
+Theorem \ref{thm1_2} verallgemeinert sich zu
+\begin{thm}\label{thm1_4}
+	Ist $D \subset \R^d$ offen, $f \colon D \to \R^d$ von der Klasse $\CF^k$ und $f'(a)$ invertierbar, dann existieren offene Umgebungen $U$ von $a$ und $V$ von $f(a)$, so dass $f \colon U \to V$ ein $\CF^k$-Diffeomorphismus ist.
+\end{thm}
+\subsection{Der Satz über implizite Funktionen}
+Wir wollen $x^3 + y^3 - 3xy = 0$ lokal durch den Graphen einer Funktion $y=g(x)$ beschreiben, so dass $f(x,g(x)) = 0$. Das ist nur möglich in der Nähe einer Lösung $(a,b)$, wo die Tangente nicht vertikal ist, d. h. $\nabla f(a,b)$ nicht horizontal bzw. $\partial_2 f(a,b) \neq 0$. Falls $\partial_2 f(a,b) \neq 0$, dann erwarten wir die Existenz einer Funktion
+\[g \colon (a-\varepsilon, a + \varepsilon) \to \R\]
+mit $f(x,g(x)) = 0$. Falls $g$ differenzierbar ist (und $f$ auch), dann bekommen wir
+\[0 = \frac{\d}{\d x} f(x,g(x)) = \partial_1 f(x,g(x)) + \partial_2 f(x, g(x)) g'(x)\quad\Rightarrow\quad g'(x) = -\frac{\partial_1 f(x,g(x))}{\partial_2 f(x,g(x))}.\]
+Allgemein betrachten wir nun ein Gleichungssystem
+\begin{align*}
+	f_1(x_1, \dots, x_n, y_1, \dots, y_m) &= 0\\
+	&~\vdots\\
+	f_m(x_1, \dots,x_n, y_1, \dots, y_m) &= 0
+\end{align*}
+in der Nähe einer Lösung $(a,b) \in \R^n \times \R^m$. Für $x$ nahe $a$ wollen wir diese Gleichungen nach den $m$ Unbekannten $y_1, \dots, y_m$ auflösen. D.h. wir suchen eine Funktion
+\[g \colon \B_\varepsilon(a) \subset \R^n \to \R^m,\quad x \mapsto y = g(x)\]
+mit $f(x,g(x)) = 0$ für $x \in \B_\varepsilon(a)$, wobei $f = (f_1, \dots, f_m)^\top$. Für $(h_1, h_2)^\top \in \R^n \times \R^m$ gilt
+\[f'(x,y) \begin{bmatrix}
+	h_1\\
+	h_2
+\end{bmatrix} = \partial_1 f(x,y)h_1 + \partial_2 f(x,y)h_2.\]
+\begin{thm}\label{thm1_5}
+	Sei $D \subset \R^{m+n}$ offen und $f \colon D \to \R^m$ eine $\CF^k$-Abbildung ($k\geq 1$). Falls $f(a,b) = 0$ und die $m \times m$-Matrix $\partial_2 f(a,b)$ invertierbar ist, dann gibt es offene Umgebungen $U \subset \R^n$ und $V \subset \R^m$ von $a$ und $b$ und eine $\CF^k$-Abbildung $g \colon U \to V$, so dass für $(x,y) \in U \times V$ gilt
+	\[f(x,y) \quad\Leftrightarrow\quad y = g(x).\]
+\end{thm}
+\begin{rem}
+	Die Jacobi-Matrix $g'(x)$ bekommt man durch implizite Differentiation aus $f(x,g(x))$. D.h. man nutzt $f(x,g(x)) = 0$ und leitet nach $x$ ab. Es folgt
+	\[g'(x) = -\partial_2 f(x,g(x))^{-1} \partial_1 f(x,g(x)).\]
+	Hinweis: Für alle $h \in \R^n$ gilt
+	\[0 = \frac{\d}{\d t} f(x + th, g(x+th)) =\dots\]
+\end{rem}
+
+\subsection{Untermannigfaltigkeiten des $\R^n$}
+Eine Menge $\emptyset \neq M \subset \R^n$ heißt \textbf{$k$-dimensionale Untermannigfaltigkeit} von $\R^n$, falls es zu jedem Punkt $p \in M$ eine Umgebung $U \subset \R^n$ von $p$ und eine $\CF^1$-Abbildung
+\[\varphi \colon U \to \R^{n-k}\]
+existiert mit
+\begin{enumerate}[label=(\alph*)]
+	\item $M \cap U = \{x \in U \mid \varphi(x) = 0\}$
+	\item $\D\varphi(p) \colon \R^n \to \R^{n-k}$ ist surjektiv.
+\end{enumerate}
+Ist $\varphi$ von der Klasse $\CF^m$, so heißt $M$ eine \textbf{$k$-dimensionale Untermannigfaltigkeit der Klasse $\CF^m$}. $(n-1)$-dimensionale Untermannigfaltigkeiten heißen \textbf{Hyperflächen} und eindimensionale Untermannigfaltigkeiten heißen \textbf{Kurven}.
+\begin{rem}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Surjektivität von $\D \varphi(p)$ ist äquivalent dazu, dass $\varphi'(p)$ Rang $n-k$ hat.
+		\item Ist $A \colon \R^n \to \R^{n-k}$ linear und surjektiv, dann ist 
+		\[M = \{x \in \R^n \mid Ax = 0\}\]
+		ein linearer Unterraum von $\R^n$ der Dimension $n - (n-k) = k$ (Rang-Defekt-Formel).
+	\end{enumerate}
+\end{rem}
+\begin{thm}\label{thm1_6}
+	Sei $\varphi \colon D \subset \R^n \to \R^{n-k}$ von der Klasse $\CF^1$, $a\in \R^{n-k}$ und 
+	\[M := \{x \in D \mid \varphi(x) = a\}.\]
+	Falls $\D\varphi(x) \colon \R^n \to \R^{n-k}$ surjektiv ist für alle $x \in M$, dann ist $M$ eine $k$-dimensionale Untermannigfaltigkeit von $\R^n$ (oder leer).
+\end{thm}
+\begin{rem}
+	$x \in D$ heißt \textbf{regulärer Punkt} von $\varphi$, wenn $\D\varphi(x)$ surjektiv ist. Der Punkt $a$ heißt \textbf{regulärer Wert} von $\varphi$, da alle $x \in \varphi^{-1}(\{a\})$ reguläre Punkte von $\varphi$ sind.
+\end{rem}
+Jede Untermannigfaltigkeit ist der Graph einer $\CF^1$-Abbildung.
+\begin{satz}\label{satz1_7}
+	Sei $M \subset \R^n$ eine $k$-dimensionale Untermannigfaltigkeit und $p \in M$. Nach Umnummerierung der Koordinaten gibt es eine offene Umgebung $U_1 \times U_2 \subset \R^k \times \R^{n-k}$ von $p$ und eine $\CF^1$-Abbildung $g \colon U_1 \to U_2$, so dass
+	\[M \cap (U_1 \times U_2) = \{(x_1, x_2) \in U_1 \times U_2 \mid p = g(x)\}\]
+\end{satz}
+Jede $k$-dimensionale Untermannigfaltigkeit $M \subset \R^n$ ist lokal diffeomorph zu einem Stück der $k$-dimensionalen Ebene
+\[E_k := \{x \in \R^n \mid x_{k+1} = \dots = x_n = 0\}.\]
+\begin{satz}\label{satz1_8}
+	Eine Menge $M \subset \R^n$ ist genau dann eine $k$-dim. Untermannigfaltigkeit, wenn es zu jedem Punkt $p \in M$ eine offene Umgebung $U \subset \R^n$ und einen Diffeomorphismus $F \colon U \to V$ gibt mit
+	\[F(M\cap U) = V \cap E_k.\]
+	$F$ heißt \textbf{Flachmacher} von $M$ um $p$.
+\end{satz}
+Sei $M \subset \R^n$ eine $k$-dimensionale Untermannigfaltigkeit und $p \in M$. Ein Vektor $v \in \R^n$ heißt \textbf{Tangentialvektor} an $M$ im Punkt $p$, wenn es eine $\CF^1$-Kurve $\gamma \colon (-\varepsilon, \varepsilon) \to M$ gibt mit
+\[\gamma(0) = p\quad\text{und}\quad \dot{\gamma}(0) = v.\]
+Die Menge $T_pM$ der Tangentialvektoren an $M$ im Punkt $p$ heißt \textbf{Tangentialraum von $M$ in $p$}. Wir stellen uns die Vektoren $v \in T_pM$ im Punkt $p \in M$ angeheftet vor.
+
+\begin{satz}\label{satz1_9}
+	Sei $M \subset \R^n$ eine $k$-dimensionale Untermannigfaltigkeit, $p \in M$ und $F \colon U \to V$ ein Flachmacher von $M$ um $p$. Dann gilt
+	\[T_pM = \D F(p)^{-1} E_k.\]
+	Insbesondere ist $T_p M$ ein Vektorraum der Dimension $k$.
+\end{satz}
+\begin{satz}\label{satz1_10}
+	Sei $M = \varphi^{-1}(\{a\}) \subset \R^n$ wobei $\varphi \colon D \subset \R^n \to \R^{n-k}$ eine $\CF^1$-Abbildung mit regulärem Wert $a \in \R^{n-k}$ ist. Dann gilt für alle $p \in M$
+	\begin{enumerate}[label=(\alph*)]
+		\item $T_pM = \ker \D \varphi(p)$,
+		\item $(T_p M)^\perp = \mathrm{span}\{\nabla \varphi_1 (p), \dots, \nabla \varphi_{n-k}(p)\}$.
+	\end{enumerate}
+\end{satz}
+
+\subsection{Extrema unter Nebenbedingungen}
+Seien $f, \varphi_1, \dots, \varphi_m \colon D \subset \R^n \to \R$ und $a_1, \dots, a_m \in \R$ gegeben und sei
+\[M = \{x \in D \mid \varphi_1(x) = a_1, \dots, \varphi_m(x) = a_m\}.\]
+Wir suchen die Punkte $x_0 \in M$ wo $f\restriction M$ lokal extremal ist, d.h. wo für alle $x \in M \cap \B_\varepsilon (x_0)$ gilt
+\[f(x_0) \leq f(x) \quad\text{oder}\quad f(x_0) \geq f(x)\]
+für ein $\varepsilon > 0$. Man sagt dann, $f$ sei in $x_0$ \textbf{bedingt lokal extremal} oder \textbf{lokal extremal unter den Nebenbedingungen} $\varphi_1 = a_1, \dots, \varphi_m = a_m$. Der Punkt $x_0 \in M$ heißt \textbf{lokaler Extremalpunkt} unter den Nebenbedingungen $\varphi_1 = a_1, \dots, \varphi_m = a_m$.
+
+\begin{thm}\label{thm1_11}
+	Sei $f \colon D \subset \R^n \to \R$ differenzierbar und seien $\varphi_1, \dots, \varphi_m \in \CF^1(D)$. Ist $f$ im Punkt $x_0 \in D$ lokal extremal unter den Nebenbedingungen $\varphi_1 = a_1, \dots, \varphi_m = a_m$ und sind $\nabla\varphi_1(x_0), \dots, \nabla \varphi_m(x_0)$ linear unabhängig, dann existieren $\lambda_1, \dots, \lambda_m \in \R$ mit
+	\[\nabla f(x_0) = \sum_{k=1}^m \lambda_k \nabla \varphi_k(x_0).\]
+\end{thm}
