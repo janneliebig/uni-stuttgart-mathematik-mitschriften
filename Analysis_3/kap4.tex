@@ -103,3 +103,45 @@ In diesem Kapitel ist $X$ ein Banachraum.
 Für $A \in \mathscr{L}(X)$ definiert man $A^0 = 1$, wobei $1x = x$, $A^{n+1} = AA^n$ und
 \[\exp(A) := \sum_{n = 0}^\infty \frac{1}{n!} A^n.\]
 Wegen $\norm{A^n} \leq \norm{A}^n$ ist diese Reihe absolut konvergent und $\norm{\exp(A)} \leq e^{\norm{A}}$.
+\begin{satz}\label{satz4_11}
+	Seien $A, B, C \in \mathscr{L}(X)$, wobei $C$ bijektiv und $C^{-1} \in \mathscr{L}(X)$. Dann gilt
+	\begin{enumerate}[label=(\alph*)]
+		\item $\exp(C^{-1}AC) = C^{-1}\exp(A) C$.
+		\item Falls $AB = BA$, dann gilt
+		\[\exp(A + B) = \exp(A) + \exp(B).\]
+		\item $\exp(-A) = \exp(A)^{-1}$.
+	\end{enumerate}
+\end{satz}
+\begin{satz}\label{satz4_12}
+	Sei $A \in \mathscr{L}(X)$. Für alle $t \in \R$ gilt dann
+	\[\frac{\d}{\d t} e^{At} = A e^{At}.\]
+\end{satz}
+\begin{beispiel}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Ist $A = \mathrm{diag}(\lambda_1, \dots, \lambda_n)$, dann ist
+		\[A^k = \mathrm{diag}(\lambda_1^k, \dots, \lambda_n^k)\]
+		und 
+		\[e^{At} = \mathrm{diag}(e^{\lambda_1 t}, \dots, e^{\lambda_n t}).\]
+		\item Ist $A$ nilpotent, also $A^{m+1} = 0$ für ein $m \in \N$, dann gilt
+		\[e^A = \sum_{i=0}^m \frac{1}{k!}A^k.\]
+		\item Für 
+		\[A = \begin{bmatrix}
+			0 & - \omega\\
+			\omega & 0 
+		\end{bmatrix}\]
+		ist
+		\[e^{At} = \begin{bmatrix}
+			\cos \omega t & -\sin \omega t\\
+			\sin \omega t & \cos \omega t
+		\end{bmatrix}.\]
+		Allgemeiner für $A \in M(n, \R)$ und $A = -A^\top$ ist $e^{At} \in \mathrm{SO}(n)$.
+	\end{enumerate}
+\end{beispiel}
+\begin{satz}\label{satz4_13}
+	Für jede $n \times n$-Matrix $A$ über $\K$ gilt
+	\[\det(e^A) = e^{\mathrm{tr}(A)}.\]
+\end{satz}
+\begin{rem}
+	Für $A = \mathrm{diag}(\lambda_1, \dots, \lambda_n)$ gilt
+	\[\det(e^A) = e^{\sum_{i=1}^n \lambda_i} = e^{\mathrm{tr}(A)}.\]
+\end{rem}
