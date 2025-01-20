@@ -1,0 +1,69 @@
+\section{Körpererweiterung}
+Ein Körper ist ein kommutativer von Null verschiedener Ring, in dem jedes Element ungleich Null eine Einheit ist. Wir kennen bereits $\Q, \R, \C, \Z_p$ für $p$ Primzahl sowie den Quotientenkörper $\quot(R)$ und den Quotientenring $R/I$ für einen Integritätsbereich $R$ und $I \unlhd R$ maximal (siehe Proposition \ref{prop6_3}).
+
+Ringhomomorphismen zwischen Körpern heißen auch \textbf{Körperhomomorphismen}. Bijektive Körperhomomorphismen heißen \textbf{Körperisomorphismen}.
+
+Da Körper nur triviale Ideale besitzen, sind Körperhomomorphismus stets injektiv.
+\begin{definition}
+	Seien $K$ und $L$ Körper. 
+	\begin{enumerate}[label=(\alph*)]
+		\item Ist $K \leq L$ ein Unterring, so heißt $K$ \textbf{Teilkörper} von $L$ und $L$ \textbf{Erweiterungskörper} von $K$. Wir sprechen von der \textbf{Körpererweiterung} $K \leq L$ und schreiben $L / K$.
+		\item Ist $L/K$ eine Körpererweiterung, so ist $L$ ein $K$-Vektorraum und $[L:K] := \dim_K(L) \in \N \cup \{\infty\}$ heißt \textbf{Grad der Körpererweiterung} (vgl. Aufgabe M.13.1).  Die Körpererweiterung $L/K$ heißt \textbf{endlich}, wenn $[L:K] < \infty$.
+	\end{enumerate}
+\end{definition}
+\begin{beispiel}\label{beispiel7_2}
+	Es gilt $[\C : \R] = 2$, da $C$ als $\R$-Vektorraum die Basis $\{1,i\}$ hat. Es ist $[\R : \Q] = \infty$. Im Allgemeinen gilt $[L : K] = 1$ nur dann, wenn $L = K$. 
+\end{beispiel}
+\begin{definition}
+	Sei $K$ ein Körper. 
+	\begin{enumerate}[label=(\alph*)]
+		\item Dann heißt der Schnitt
+		\[\Pi(K) := \bigcap_{K' \leq K} K'\]
+		aller Teilkörper der \textbf{Primkörper} von $K$.
+		\item Die \textbf{Charakteristik} von $K$ ist definiert als
+		\[\chr(K) := \begin{cases}
+			0 & \forall n \in \N : n \cdot 1_K := 1_K + \dots + 1_K \neq 0_K,\\
+			\min\{n \in \N \mid n \cdot 1_K = 0_K\} & \text{sonst.}
+		\end{cases}\]
+	\end{enumerate}
+\end{definition}
+\begin{rem}\label{rem7_4}
+	\begin{enumerate}[label=(\roman*)]
+		\item $\Pi(K)$ ist nach Konstruktion der kleinste Teilkörper von $K$. 
+		\item\label{rem7_4_2} Betrachte den Ringhomomorphismus $\varphi_K \colon \Z \to K$ mit
+		\[n \mapsto \begin{cases}
+			n \cdot 1_K & n \geq 1,\\
+			0_K & n = 0,\\
+			-n \cdot (-1_K) & n \leq -1.
+		\end{cases}.\]
+		Dann gilt $\ker(\varphi_K) = \chr(K) \cdot \Z \leq \Z$ (vgl. Aufgabe S.7.2).
+	\end{enumerate}
+\end{rem}
+\begin{satz}\label{satz7_5}
+	Sei $K$ ein Körper. Ist $\chr(K) \neq 0$, so gilt $\chr(K) = p$ für eine Primzahl $p$ und $\Pi(K) \cong \Z_p$. Ist $\chr(K) = 0$, so gilt $\Pi(K) \cong \Q$.
+\end{satz}
+\begin{proof}
+	Nutze Bemerkung \ref{rem7_4} \ref{rem7_4_2}. Ist $\chr(K) = n > 1$, so gilt $\ker(\varphi_K) = n \Z \unlhd \Z$. Der Homomorphiesatz liefert 
+	\[\Z_n = \faktor{\Z}{n \Z} = \faktor{\Z}{\ker(\varphi_K)} \cong \im(\varphi_K) \leq K.\]
+	Da $K$ Körper ist, ist $\Z_n$ nullteilerfrei und $n = p$ somit Primzahl. Insbesondere ist $\Z_p \cong \im(\varphi_K)$ ein Körper mit $\Pi(K) \subseteq \im(\varphi_K)$. Da zudem $1_K \in \Pi(K)$ und $\Pi(K)$ abgeschlossen unter Addition ist, folgt $\Pi(K) = \im(\varphi_K) \cong \Z_p$, wie gewünscht.
+	
+	Sei nun $\chr(K) = 0$ und $\varphi_K \colon \Z \to K$ somit injektiv. Nach Aufgabe M.9.1 gilt 
+	% Diagramm 1 20.01.2025
+	mit $\psi_K\left(\frac{a}{b}\right) = \varphi_K(a) \cdot \varphi_K(b)^{-1}$. Da $\Q$ Körper ist, folgt $\psi_K$ injektiv und $\Q \cong \im(\psi_K) \leq K$. Somit ist $\Pi(K) \subseteq \im(\psi_K)$. Da $\Q$ (wie zuvor auch $\Z_p$) keinen echten Teilkörper hat, gilt $\Pi(K) = \im(\psi_K) \cong \Q$.
+\end{proof}
+\begin{beispiel}\label{beispiel7_6}
+	\begin{enumerate}[label=(\arabic*)]
+		\item $\Q, \R, \C$ haben Charakteristik $0$ und den Primkörper $\Q$. $\Z_p$ mit $p$ prim hat Charakteristik $p$ und ist selbst ein Primkörper.
+		\item Sei $K$ ein Körper und $I \unlhd K[x]$ maximal. Nach Proposition \ref{prop6_3} ist $K[x] / I$ ein Körper und mit Satz \ref{satz7_5} folgt
+		\begin{align*}
+			\chr\left(\faktor{K[x]}{I}\right) &= \chr(K)\\
+			\Pi\left(\faktor{K[x]}{I}\right) &\cong \Pi(K).
+		\end{align*}
+		\begin{proof}
+			Sei $\chr(K) = 0$. Angenommen, es gibt eine Primzahl $p$ mit $p \cdot 1_{K[x] / I} 0_{K[x] / I}$ bzw. $p \cdot (1_K + I) = p\cdot 1_K + I = 0_K + I$. Dann ist $p \cdot 1_K \in I$. Nach Voraussetzung ist aber $p \cdot 1_K \neq 0$ und $p \cdot 1_K$ somit eine Einheit in $K$ bzw. in $K[x]$, sodass $I = K[x]$. Ein Widerspruch. Also $\chr(K[x] / I) = 0$. Der Fall $\chr(K) = p$ folgt analog.
+		\end{proof}
+	\end{enumerate}
+\end{beispiel}
+\begin{kor}\label{kor7_7}
+	Sei $K$ ein endlicher Körper. Dann gibt es eine Primzahl $p$ und $n \in \N$ mit $|K| = p^n$.
+\end{kor}
