@@ -67,3 +67,68 @@ Da Körper nur triviale Ideale besitzen, sind Körperhomomorphismus stets injekt
 \begin{kor}\label{kor7_7}
 	Sei $K$ ein endlicher Körper. Dann gibt es eine Primzahl $p$ und $n \in \N$ mit $|K| = p^n$.
 \end{kor}
+\begin{proof}
+	Da $|K| < \infty$, folgt mit Satz \ref{satz7_5}, dass $\Pi(K) \cong \Z_p$ für $p$ prim. Dadurch wird $K$ zum endlich dimensionalen $\Z_p$-Vektorraum. Ist $\{v_1, \dots, v_n\}$ eine entsprechende Basis von $K$, so folgt 
+	\[K = \left\{\sum_{i=1}^n \lambda_i v_i \mid \lambda_i \in \Z_p\right\}.\]
+	Also $|K| = p^n$, wie gewünscht.
+\end{proof}
+\begin{beispiel}[Der Körper mit vier Elementen]\label{beispiel7_8}
+	Sei $K := \Z_2 [x] / (x^2 + x + \bar{1})$. Da $x^2 + x + \bar{1}$ unzerlegbar in $\Z_2[x]$ ist, ist $K$ ein Körper nach Kapitel 6.
+	
+	Nach Beispiel \ref{beispiel7_6} (2) gilt $\chr(K) = 2$ und $\Pi(K) \cong \Z_2$. Schreibe $I := (x^2 + x + \bar{1}) \unlhd \Z_2[x]$. Als $\Z_2$-Vektorraum hat $K$ die Basis $\{\bar{1} + I, x + I\}$, so dass $K = \{\bar{0} + I, \bar{1} + I, x+I, (x+\bar{1}) + I\}$. 
+	
+	Es gilt z. B. $(x+I)^2 = (x+\bar{1}) + I$ und $(x+I)\cdot ((x + \bar{1}) + I) = \bar{1} + I$ (siehe Aufgabe M.13.3).
+\end{beispiel}
+\underline{Ausblick:} Für jede Primzahl $p$ und $n \in \N$ gibt es bis auf Isomorphie genau einen Körper mit $p^n$ Elementen.
+\begin{definition}
+	Sei $L / K$ eine Körpererweiterung. Ein Element heißt $\alpha \in L$ heißt \textbf{algebraisch über $K$}, wenn es ein Polynom $f \in K[x] \setminus \{0_{K[x]}\}$ mit $f(\alpha) = 0_L$ existiert. Andernfalls heißt $\alpha \in L$ \textbf{transzendent über $K$}. Die Körpererweiterung $L/K$ heißt \textbf{algebraisch}, wenn jedes $\alpha \in L$ algebraisch über $K$ ist.
+\end{definition}
+\begin{beispiel}\label{beispiel7_10}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Ist $L/K$ eine Körpererweiterung, so ist jedes Element $\alpha \in K$ algebraisch über $K$, da es Nullstelle des Polynoms $x - \alpha \in K[x]$ ist.
+		\item $\alpha = \sqrt{2} \in \R$ ist algebraisch über $\Q$, da $\alpha$ Nullstelle von $x^2 - 2 \in \Q[x]$ ist. Die Körpererweiterung $\R/\Q$ ist nicht algebraisch, da mit $\Q$ auch $\Q[x]$ abzählbar ist und jedes Polynom in $\Q[x]$ nur endlich viele Nullstellen hat.
+		Somit gibt es in $\R$ nur abzählbar viele Elemente, die algebraisch über $\Q$ sind. Beispiele transzendenter Elemente über $\Q$ sind $\pi$ und $e$.
+		\item Die Körpererweiterung $\C/\R$ ist algebraisch, da $\alpha = a+ bi \in \C$ Nullstelle von $(x-a)^2 + b^2 \in \R[x]$ ist.
+	\end{enumerate}
+\end{beispiel}
+\begin{definition}
+	Sei $L/K$ eine Körpererweiterung und $M \subseteq L$ eine Teilmenge. 
+	\begin{enumerate}[label=(\alph*)]
+		\item Den Schnitt
+		\[K(M) := \bigcap_{K \leq K' \leq L, M \subseteq K'} K'\]
+		aller Teilkörper $K'$ von $L$, die $K \cup M$ enthalten, nennen wir \textbf{$K$ adjungiert $M$}. $K(M)$ ist der kleinste Zwischenkörper $K \leq K(M) \leq L$ von $L/K$, der $M$ enthält. Ist $M = \{\alpha_1, \dots, \alpha_n\}$ endlich, schreiben wir auch $K(\alpha_1, \dots, \alpha_n)$ statt $K(M)$.
+		\item Eine Körpererweiterung $K(\alpha)/K$ für $\alpha \in L$ nennen wir \textbf{einfach}. Das Element $\alpha$ heißt dann \textbf{primitiv}.
+	\end{enumerate}
+\end{definition}
+\begin{rem}\label{rem7_12}
+	 Sei $L/K$ eine Körpererweiterung. Für $\alpha \in L$ betrachten den Einsetzungshomomorphismus $\varphi_\alpha \colon K[x] \to L$ mit $f \mapsto f(\alpha)$ und $K[\alpha] = \im(\varphi_\alpha) = \{f(\alpha) \mid f \in K[x]\} \leq K(\alpha) \leq L$ (siehe Beispiel \ref{beispiel4_6} (3)).
+	 
+	 $\alpha$ ist transzendent über $K$ genau dann, wenn $\varphi_\alpha$ injektiv ist. In dem Fall gilt $K[\alpha] \cong K[x]$ und 
+	 \[K[\alpha] \cong \quot(K[x]) = \left\{\frac{f}{g} \mid f,g \in K[x], g \neq 0_{K[x]}\right\}\]
+	 mit $[K(\alpha) : K] = \infty$.	 
+\end{rem}
+ Ist $\alpha$ algebraisch, erhalten wir das folgende Resultat:
+\begin{satz}\label{satz7_13}
+	Sei $L /K$ eine Körpererweiterung und $\alpha \in L$ algebraisch über $K$.
+	\begin{enumerate}[label=(\alph*)]
+		\item Es gibt ein eindeutig bestimmtes normiertes Polynom $\mu_\alpha \in K[x] \setminus \{0_{K[x]}\}$ kleinsten Grades, so dass $\mu_\alpha(\alpha) = 0_L$ ($\mu_\alpha$ heißt \textbf{Minimalpolynom} von $\alpha$ über $K$).
+		\item Das Minimalpolynom $\mu_\alpha$ von $\alpha$ über $K$ ist unzerlegbar in $K[x]$. Es ist das eindeutige normierte unzerlegbare Polynom in $K[x]$ mit $\alpha$ als Nullstelle.
+		\item Es gilt $K[x] / (\mu_\alpha) \cong K[\alpha] = K(\alpha)$ und $[K(\alpha) : K] = \deg(\mu_\alpha)$. Insbesondere ist die einfache Körpererweiterung $K(\alpha) / K$ endlich.
+	\end{enumerate}	
+\end{satz}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item Betrachte wieder den Einsetzungshomomorphismus $\varphi_\alpha \colon K[x] \to L$. Da $K[x]$ Hauptidealring ist, gilt $\ker(\varphi_\alpha) = (\mu_\alpha)$ für ein $\mu_\alpha \in K[x]$. Wähle $\mu_\alpha$ normiert. Da $\alpha \in L$ algebraisch über $K$, gilt $\mu_\alpha \neq 0_{K[x]}$. Sei $f \in K[x] \setminus \{0_{K[x]}\}$ mit $f(\alpha) = 0_L$. Dann gilt $f \in \ker(\varphi_\alpha)$ und somit existiert $g \in K[x] \setminus \{0_{K[x]}\}$ mit $f = \mu_\alpha \cdot g$. Die Gradformel liefert $\deg(f) = \deg(g) + \deg(\mu_\alpha) \geq \deg(\mu_\alpha)$. Angenommen, $f$ ist ebenfalls normiertes Polynom kleinsten Grades mit Nullstelle $\alpha$. Dann muss $g$ konstant sein, und da $\mu_\alpha$ und $f$ normiert, folgt $g = 1_K$ bzw. $f = \mu_\alpha$.
+		\item Schreibe $\mu_\alpha = f \cdot g$ mit $f,g \in K[x] \setminus \{0_{K[x]}\}$. Wir müssen zeigen, dass $\deg(f) = 0$ oder $\deg(g) = 0$. Angenommen, $ 0 < \deg(f),\deg(g) < \deg(\mu_\alpha)$. Dann liefert 
+		\[\mu_\alpha (\alpha) = f(\alpha) \cdot g(\alpha) = 0_L,\]
+		dass $\alpha$ Nullstelle von $f$ oder $g$ ist. Dies widerspricht der Minimalität des Grades von $\mu_\alpha$.
+		
+		\item Nach Teil (b) und Kapitel 6 ist $K[x] / (\mu_\alpha)$ ein Körper. Der Homomorphiesatz liefert
+		\[\faktor{K[x]}{(\mu_\alpha)} = \faktor{K[x]}{\ker(\varphi_\alpha)} \cong \im(\varphi_\alpha) = K[\alpha].\]
+		Da $K[\alpha]$ also bereits Körper ist, folgt $K[x] = K(\alpha)$ und 
+		\[[K(\alpha) : K] = \dim_K(K(\alpha)) = \dim_K\left(\faktor{K[x]}{(\mu_\alpha)}\right) = \deg(\mu_\alpha).\]
+	\end{enumerate}
+\end{proof}
+\begin{kor}\label{kor7_14}
+	Sei $L/K$ eine Körpererweiterung und $\alpha \in L$ algebraisch über $K$ mit $\deg(\mu_\alpha) = n$. Dann ist $B = \{1_K, \alpha, \dots, \alpha^{n-1}\}$ eine Basis von $K(\alpha)$ als $K$-Vektorraum.
+\end{kor}
