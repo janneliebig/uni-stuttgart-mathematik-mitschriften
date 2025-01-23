@@ -1,0 +1,73 @@
+\section{Gewöhnliche Differentialgleichungen}
+
+\subsection{Einführung}
+Wir betrachten einerseits Systeme erster Ordnung, d. h.
+\begin{align*}
+	x_1 &= f_1(t, x_1, \dots, x_n)\\
+	&\vdots\\
+	x_n &= f_n(t, x_1, \dots, x_n)
+\end{align*}
+mit gegebenen Funktionen $f_1, \dots, f_n \colon R \subset \R^{n+1} \to \R$ und gesuchten $\CF^1$-Funktionen $x_1, \dots, x_n \colon I \to \R$ und andererseits Differentialgleichungen höherer Ordnung
+\[x^{(n)} = f(t, x^{(1)}, \dots, x^{(n-1)})\]
+mit $f \colon D \subset \R^{n+1} \to \R$ gegeben und gesucht ist $\CF^n \ni x \colon I \to \R$. 
+
+Das zweite System lässt sich immer auf das erste reduzieren.
+\begin{beispiel}
+	Die Newton-Gleichung $\ddot{q} = F(t, q, \dot{q})$ für $q \colon I \to \R$ wird durch Einführen der Funktion $p = \dot{q}$ äquivalent zum System
+	\begin{align*}
+		\dot{q} &= p\\
+		\dot{p} &= F(t,q,p)
+	\end{align*}
+\end{beispiel}
+\subsection{Lineare Systeme}
+Ein lineares System 1. Ordnung ist von der Form
+\begin{equation}\label{eq:5_2_eq0}
+	\dot{x} = A(t)x + b(t), \quad x(t_0) = x_0
+\end{equation}
+mit $A(t) \in M(n, \K)$ und $b(t) \in \K^n$. Das System heißt \textbf{homogen}, wenn $b(t) \equiv 0$, sonst \textbf{inhomogen}.
+
+Sei $J \subset \R$ ein Intervall und $t_0 \in J$. Sei $t \mapsto A(t) \in M(n,\K)$ stetig auf $J$ und sei $x \in \CF^1(J, \K^n)$ eine Lösung des AWP
+\begin{equation}\label{eq:5_2_eq1}
+	\dot{x} = A(t)x, \quad x(t_0) = x_0,
+\end{equation}
+dann gilt
+\begin{align*}
+	x(t) &= x_0 + \int_{t_0}^t \dot{x}(t_1) \d t_1 = x_0 + \int_{t_0}^t \d t_1 A(t_1)x(t_1).
+\end{align*}
+Die Gleichung wollen wir iterieren, d. h. wir nutzen 
+\[x(t_1) = x_0 + \int_{t_0}^{t_1} \d t_2 A(t_2) x(t_2)\]
+und bekommen
+\[x(t) = x_0 + \int_{t_0}^{t} \d t_1 A(t_1) x_0 + \int_{t_0}^{t} \d t_1 \int_{t_0}^{t_1} A(t_1) A(t_2) x(t_2).\]
+Nach $n$ Iterationen:
+\begin{align}\label{eq:5_2_eq2}
+	x(t) = &x_0 + \sum_{k=1}^N \int_{t_0}^{t} \d t_1 \int_{t_0}^{t_1} \d t_2 \dots \int_{t_0}^{t_{k-1}} \d t_k A(t_1) \dots A(t_k) x_0\\
+	 &+ \int_{t_0}^{t} \d t_1 \dots \int_{t_0}^{t_N} \d t_{N+1} A(t_1)\dots A(t_{N+1}) x(t_{N+1}).\nonumber
+\end{align}
+\begin{satz}\label{satz5_1}
+	Sei $t \mapsto A(t) \in M(n,\K)$ stetig auf dem Intervall $J \subset \R$ und $t_0 \in J$. Dann hat das AWP
+	\[\dot{x} = A(t)x, \quad x(t_0) = x_0\]
+	genau eine Lösung, die auf ganz $J$ existiert. Sie ist gegeben durch 
+	\begin{align*}
+		x(t) = x_0 + \sum_{k=1}^{\infty} \int_{t_0}^{t} \d t_1 \int_{t_0}^{t_1} \d t_2 \dots \int_{t_0}^{t_{k-1}} \d t_k A(t_1) \dots A(t_k) x_0.
+	\end{align*}
+\end{satz}
+In der Regel wird angenommen, dass $A(t), b(t)$ stetige Funktionen von $t$ sind. Unter einer Lösung von \eqref{eq:5_2_eq0} versteht man dann eine \underline{differenzierbare} Abbildung $t \mapsto x(t)$, die auf einem Intervall $I \subset \R$ definiert ist und \eqref{eq:5_2_eq0} löst. Dann folgt aus \eqref{eq:5_2_eq0}, dass $t \mapsto x(t)$ stetig differenzierbar ist.
+
+
+\begin{kor}\label{kor5_2}
+	Zusätzlich zu den Annahmen von Satz \ref{satz5_1} sei $A(t)A(s) = A(s)A(t)$ für alle $s,t \in J$. Dann ist die eindeutige Lösung von \eqref{eq:5_2_eq1} gegeben durch
+	\[x(t) = \exp\left(\int_{t_0}^{t} A(s) \d s\right)x_0.\]
+\end{kor}
+\begin{satz}\label{satz5_3}
+	Sei $A \colon J \to M(n, \K)$ stetig und $J \subset \R$ ein Intervall. Dann gilt
+	\begin{enumerate}[label=(\alph*)]
+		\item Die Menge der Lösungen von $\dot{x} = A(t)x$ bilden einen $n$-dimensionalen Vektorraum über $\K$.
+		\item Ist $t \mapsto x(t)$ eine Lösung mit $x(t_0) = 0$, dann ist $x \equiv 0$.
+		\item Für Lösungen $x_1, \dots, x_k$ von $\dot{x}= A(t)x$ sind folgende Aussagen äquivalent:
+		\begin{enumerate}[label=(\roman*)]
+			\item Die Funktionen $x_1, \dots, x_k$ sind linear unabhängig.
+			\item Es gibt ein $t_0 \in J$, so dass $x_1(t_0), \dots, x_k(t_0)$ linear unabhängig sind.
+			\item Für alle $t \in J$ sind $x_1(t), \dots, x_k(t)$ linear unabhängig.
+		\end{enumerate}
+	\end{enumerate}
+\end{satz}
