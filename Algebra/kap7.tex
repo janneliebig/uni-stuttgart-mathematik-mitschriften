@@ -132,3 +132,75 @@ Da Körper nur triviale Ideale besitzen, sind Körperhomomorphismus stets injekt
 \begin{kor}\label{kor7_14}
 	Sei $L/K$ eine Körpererweiterung und $\alpha \in L$ algebraisch über $K$ mit $\deg(\mu_\alpha) = n$. Dann ist $B = \{1_K, \alpha, \dots, \alpha^{n-1}\}$ eine Basis von $K(\alpha)$ als $K$-Vektorraum.
 \end{kor}
+\begin{proof}
+	Nach Satz \ref{satz7_13} gilt $K(\alpha) = K[\alpha] = \{f(\alpha) \mid f \in K[x]\}$. Insbesondere enthält $K(\alpha)$ die lineare Hülle 
+	\begin{align*}
+		\lin_K(1_K, \alpha, \dots, \alpha^{n-1}) &= \{\lambda_0 1_K + \lambda_1 \alpha + \dots + \lambda_{n-1} \alpha^{n-1} \mid \lambda_i \in K\}\\
+		&= \{f(\alpha) \mid f \in K[x], \deg(f) \leq n - 1\}.
+	\end{align*}
+	Sei umgekehrt $f \in K[x]$ gegeben. Division mit Rest liefert $q,r \in K[x]$ mit $f = q \cdot \mu_\alpha + r$ und $\deg(r) < \deg{\mu_\alpha} = n$. Damit gilt 
+	\begin{align*}
+		f(\alpha) = q(\alpha) \cdot \underbrace{\mu_{\alpha}(\alpha)}_{=0_L} + r(\alpha) = r(\alpha) \in \lin_K(1_K, \alpha, \dots, \alpha^{n-1}).
+	\end{align*}
+	Es folgt $K(\alpha) = \lin_K(1_K, \alpha, \dots, \alpha^{n-1})$. Wir zeigen lineare Unabhängigkeit. Seien $\lambda_0, \lambda_1, \dots, \lambda_{n-1} \in K$ mit $\lambda_0 1_K + \lambda_1 \alpha + \dots + \lambda_{n-1} \alpha^{n-1} = 0_L$. Dann ist $f = \lambda_0 + \lambda_1 x + \dots + \lambda_{n-1} x^{n-1} \in K[x]$ mit $f(\alpha) = 0_L$ und 
+	\begin{align*}
+		\deg(f) \leq n - 1 < \deg(\mu_\alpha).
+	\end{align*}
+	Es folgt, dass $f = 0_{K[x]}$ und somit $\lambda_0 = \lambda_1 = \dots = \lambda_{n-1} = 0_K$. 
+\end{proof}
+\begin{beispiel}\label{beispiel7_15}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Das Minimalpolynom von $\alpha = \sqrt{2}$ über $\Q$ ist $\mu_\alpha = x^2 - 2 \in \Q[x]$. Es folgt $\Q(\sqrt{2}) = \Q[\sqrt{2}] = \{a + b\sqrt{2} \mid a,b \in \Q\}$
+		\item Das Minimalpolynom von $\alpha = \sqrt[3]{2}$ über $\Q$ ist $\mu_\alpha = x^3 - 2$. Beachte, dass $x^3 - 2$ nach Eisenstein bezüglich $p=2$ unzerlegbar in $\Z[x]$ ist und somit auch $\Q[x]$ nach Satz \ref{satz6_26}. Es gilt $\Q(\sqrt[3]{2}) = \Q[\sqrt[3]{2}] = \{a + b\sqrt[3]{2} + c\sqrt[3]{4} \mid a,b,c \in \Q\}$.
+		\item Betrachte die sechste Einheitswurzel $\alpha = e^{2\pi/6} \in \Q$. Dann ist $\alpha$ Nullstelle von $f=x^6 - 1 \in \Q[x]$. Da $f = (x^3 - 1)(x^3 + 1)$ ist $f$ nicht Minimalpolynom von $\alpha$ über $\Q$. Mit $\alpha^3 = -1$ ist $\alpha$ Nullstelle von $g = x^3 + 1 = (x+1)(x^2 - x + 1)$ und wir erhalten das Minimalpolynom $\mu_\alpha = x^2 - x + 1$ von $\alpha$ über $\Q$.
+	\end{enumerate}
+\end{beispiel}
+\begin{framed}
+	\textit{Wir wollen den Zusammenhang zwischen endlichen Körpererweiterungen und der Adjunktion algebraischer Elemente besser verstehen.}
+\end{framed}
+\begin{satz}[Gradformel]\label{satz7_16}
+	Sei $K \subseteq L \subseteq M$ Körper. Dann ist die Körpererweiterung $M/K$ endlich genau dann, wenn $M/L$ und $L/K$ endliche Körpererweiterungen sind. In diesem Fall gilt $[M:K] = [M:L] \cdot [L:K]$.
+\end{satz}
+\begin{proof}
+	Ist die $\dim_L(M) = \infty$, so gibt es in $M$ eine unendliche Menge linear unabhängiger Vektoren über $L$. Diese sind auch linear unabhängig über $K$, d.h. $\dim_K(M) = \infty$.
+	
+	Ebenso folgt aus $\dim_K(L) = \infty$, dass $\dim_K(M) = \infty$.
+	
+	Seien $M/L$ und $L/K$ endliche Körpererweiterungen und $\{\alpha_1, \dots, \alpha_n\} \subset L$ eine Basis von $L$ als $K$-Vektorraum sowie $\{\beta_1, \dots, \beta_n\} \subset M$ eine Basis von $M$ als $L$-Vektorraum. 
+	
+	\underline{Genügt zu zeigen:} $B := \{\alpha_i \beta_j \mid i \in \{1, \dots, n\}, j \in \{1, \dots, m\}\}$ ist Basis von $M$ als $K$-Vektorraum. Sei $\gamma \in M$ beliebig. Schreibe $\gamma = \sum_{j=1}^m \mu_j \beta_j$ mit $\mu_1, \dots, \mu_m \in L$. Jedes $\mu_j$ lässt sich schreiben als Linearkombination
+	\[\mu_j = \lambda_{1j} \alpha_1 + \dots + \lambda_{nj} \alpha_n\]
+	mit $\lambda_{1n}, \dots, \lambda_{nj} \in K$. Insgesamt erhalten wir 
+	\[\gamma = \sum_{j=1}^m \mu_j \beta_j = \sum_{j=1}^m \sum_{i=1}^n \lambda_{ij} \alpha_i \beta_j \in \lin_K(B).\]
+	Für lineare Unabhängigkeit  betrachte $\lambda_{ij} \in K$ mit 
+	\[\sum_{j=1}^m \sum_{i=1}^n \lambda_{ij} \alpha_i \beta_j = \sum_{j=1}^m \bigg(\underbrace{\sum_{i=1}^n \lambda_{ij} \alpha_i}_{=0_L} \bigg)\beta_j = 0_M.\]
+	$=0_L$, da $\{\beta_1, \dots, \beta_m\}$ linear unabhängig über $L$ sind. Es folgt
+	\[\lambda_{ij} = 0_K \quad\text{für alle}\quad i \in \{1, \dots, n\}, j \in \{1, \dots, m\},\;\text{da}\;\{\alpha_1,\dots, \alpha_n\} \;\text{linear unabhängig über}\; K.\]
+\end{proof}
+\begin{kor}\label{kor7_17}
+	\begin{enumerate}[label=(\alph*)]
+		\item Ist $L/K$ eine endliche Körpererweiterung, so ist $L/K$ algebraisch über $L = K(\alpha_1, \dots, \alpha_n)$ für geeignete $\alpha_1, \dots, \alpha_n \in L$.
+		\item Ist $L/K$ eine Körpererweiterung mit $\alpha_1, \dots, a_n \in L$ algebraisch über $K$, so ist $K(\alpha_1, \dots, \alpha_n)/K$ endlich und somit algebraisch.
+	\end{enumerate}
+\end{kor}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item Angenommen, es gibt $\alpha \in L$ transzendent über $K$. Wir erhalten Körpererweiterungen $K \leq K(\alpha) \leq L$, wobei $K(\alpha)/K$ nach Bemerkung \ref{rem7_12} nicht endlich ist. Also ist $L/K$ nicht endlich nach Satz \ref{satz7_16}. Ein Widerspruch. Somit ist $L/K$ algebraisch.
+		
+		Zudem gilt $L = K(\alpha_1, \dots, \alpha_n)$ für jede Basis $\{\alpha_1, \dots, \alpha_n\} \subset L$ von $L$ als $K$-Vektorraum.
+		
+		\item Betrachte die endliche Kette von Körpererweiterungen
+		\[K \leq K(\alpha_1) \leq K(\alpha_1)(\alpha_2) = K(\alpha_1, \alpha_2) \leq \dots \leq K(\alpha_1, \dots, \alpha_n).\]
+		Da $\alpha_i \in L$ algebraisch über $K$ ist, ist $\alpha_i$ algebraisch über $K(\alpha_1, \dots, \alpha_{i-1})$. Nach Satz \ref{satz7_13} sind die Körpererweiterungen 
+		\[K(\alpha_1, \dots, \alpha_i) = \faktor{K(\alpha_1, \dots, a_{i-1})(\alpha_i)}{K(\alpha_1, \dots, \alpha_{i-1})} \]
+		endlich. Mit Satz \ref{satz7_16} folgt induktiv, dass auch $K(\alpha_1, \dots, \alpha_n)/K$ endlich ist.
+	\end{enumerate}
+\end{proof}
+\begin{beispiel}\label{beispiel7_18}
+	Betrachte die Körper $\Q \leq \Q(\sqrt{2}) \leq \Q(\sqrt{2}, i)$. Nach Satz \ref{satz7_16} gilt
+	\[[\Q(\sqrt{2},i) : \Q] = [\Q(\sqrt{2}, i) : \Q(\sqrt{2})] \cdot [\Q(\sqrt{2}) : \Q].\]
+	Nach Beispiel \ref{beispiel7_15} (1) gilt $[\Q(\sqrt{2}) : \Q] = 2$ und $\{1, \sqrt{2}\}$ ist Basis von $\Q(\sqrt{2})$ als $\Q$-Vektorraum.
+	Das Minimalpolynom von $\alpha = 1$ über $\Q(\sqrt{2})$ ist $\mu_\alpha = x^2 + 1 \in \Q(\sqrt{2})[x]$, d.h. auch $[\Q(\sqrt{2}, i) : \Q(\sqrt{2})] = 2$ und somit $[\Q(\sqrt{2}, i) : \Q] = 4$.
+	
+	Der Beweis von Satz \ref{satz7_16} zeigt, dass $\{1, \sqrt{2}, i, i \sqrt{2}\}$ eine Basis von $\Q(\sqrt{2}, i)$ als $\Q$-Vektorraum ist.
+\end{beispiel}
