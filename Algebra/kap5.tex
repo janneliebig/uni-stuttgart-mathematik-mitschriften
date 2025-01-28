@@ -1,7 +1,7 @@
 \section{Einheiten, Nullteiler und euklidische Ringe}
 Im Folgenden sei $R \neq \{0_R\}$ ein Ring.
 \begin{definition}
-	Elemente der Menge $R^\times := \{a \in R \mid \exists b \in R : ab = 1_R = ba\}$ heißten \textbf{Einheiten von $R$} oder \textbf{invertierbar}. Ein Ring mit $R^\times = R \setminus \{0_R\}$ heißt \textbf{Schiefkörper}. Ein kommutativer Schiefkörper heißt \textbf{Körper}.
+	Elemente der Menge $R^\times := \{a \in R \mid \exists b \in R : ab = 1_R = ba\}$ heißen \textbf{Einheiten von $R$} oder \textbf{invertierbar}. Ein Ring mit $R^\times = R \setminus \{0_R\}$ heißt \textbf{Schiefkörper}. Ein kommutativer Schiefkörper heißt \textbf{Körper}.
 \end{definition}
 \begin{rem}\label{rem5_2}
 	\begin{enumerate}[label=(\roman*)]
@@ -38,14 +38,16 @@ Im Folgenden sei $R \neq \{0_R\}$ ein Ring.
 			Nach Korollar \ref{kor4_16} gilt $\Z_n \cong \Z_{n_1} \times \Z_{n_2}$ und somit
 			\[\Z_n^\times  \cong (\Z_{n_1} \times \Z_{n_2})^\times = \Z_{n_1}^\times \times \Z_{n_2}^\times.\]
 		\end{proof}
-		Wir wollen im Folgenden wesentliche Eigenschaften von $\Z$ abstrahieren:
-		\begin{itemize}
-			\item Für alle $a,b,c \in \Z$ gilt: $a \cdot b = 0 \;\Rightarrow\; a=0 \lor b=0$.
-			\item Existenz einer Division mit Rest.
-			\item Existenz einer eindeutigen Primfaktorzerlegung.
-		\end{itemize}
 	\end{enumerate}
 \end{beispiel}
+\begin{leftbar}
+		Wir wollen im Folgenden wesentliche Eigenschaften von $\Z$ abstrahieren:
+	\begin{itemize}
+		\item Für alle $a,b,c \in \Z$ gilt: $a \cdot b = 0 \;\Rightarrow\; a=0 \lor b=0$.
+		\item Existenz einer Division mit Rest.
+		\item Existenz einer eindeutigen Primfaktorzerlegung.
+	\end{itemize}
+\end{leftbar}
 \begin{definition}
 	Ein Element $a \in R \setminus \{0_R\}$ heißt \textbf{Nullteiler}, falls ein Element $b \in R \setminus \{0_R\}$ existiert mit $ab = 0_R$ oder $ba = 0_R$. Ein kommutativer Ring ohne Nullteiler heißt \textbf{Integritätsbereich}.
 \end{definition}
@@ -106,18 +108,18 @@ Zurück zu Polynomen und weiter mit
 			\deg(f\cdot g) &\leq \deg(f) + \deg(g).
 		\end{align*}
 		Ist das Produkt der Leitkoeffizienten von $f$ und $g$ ungleich $0_R$, so gilt $\deg(f\cdot g) = \deg(f) + \deg(g)$ - \textbf{Gradformel} genannt.
-		Dies ist stetis erfüllt, wenn $R$ Integritätsbereich ist. Andererseits gilt zum Beispiel in $\Z_6 [x]$:
+		Dies ist stets erfüllt, wenn $R$ Integritätsbereich ist. Andererseits gilt zum Beispiel in $\Z_6 [x]$:
 		\[\deg((\bar{2}x^7 + \bar{1})\cdot(\bar{3}x^2)) = \deg(\bar{3}x^2) = 2 < 9 = \deg(\bar{2}x^7 + \bar{1}) + \deg(\bar{3}x^2).\]
-		\item $R$ ist Integritätsbereich genau dann, wenn $R[x]$ Integritätsbereich (siehe Gradformel und Beispiel 5.5 (1)). In desem Fall gilt $R[x]^\times = R^\times$.
+		\item $R$ ist Integritätsbereich genau dann, wenn $R[x]$ Integritätsbereich (siehe Gradformel und Beispiel \ref{beispiel5_5} (1)). In diesem Fall gilt $R[x]^\times = R^\times$.
 		\begin{proof}
-			Sei $f \in R[x]^\times$, d.h. es existiert $g \in R[x]$ mit $f \cdot g = 1_{R[x]}$. DIe Gradformel liefert $\deg(f) = \deg(g) = 0$, d.h. $f = a_0 \in R$ und $g = b_0 \in R$ mit $a_0 b_0 = 1_R$.
+			Sei $f \in R[x]^\times$, d.h. es existiert $g \in R[x]$ mit $f \cdot g = 1_{R[x]}$. Die Gradformel liefert $\deg(f) = \deg(g) = 0$, d.h. $f = a_0 \in R$ und $g = b_0 \in R$ mit $a_0 b_0 = 1_R$.
 		\end{proof} 
 	\end{enumerate}
 \end{rem}
 
-% Satz 5.10
 \begin{satz}[Division mit Rest in Polynomringen]\label{satz5_10}
-	Seien $f,g \in R[x]$, wobei der Leitkoeffizient $b_m$ von $g$ eine Einheit in $R$ ist. Dann existieren eindeutige $q,r \in R[x]$ mit $\deg(r) < m$.
+	Seien $f,g \in R[x]$, wobei der Leitkoeffizient $b_m$ von $g$ eine Einheit in $R$ ist. Dann existieren eindeutige $q,r \in R[x]$ mit $\deg(r) < m$ und
+	\[f = q \cdot g + r.\]
 \end{satz}
 \begin{proof}
 	\textbf{Existenz: } Induktion nach $n := \deg(f)$.

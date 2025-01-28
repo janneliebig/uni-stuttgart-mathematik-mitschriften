@@ -22,7 +22,7 @@ Allgemeiner erhalten wir
 	Ist umgekehrt $R/I$ ein Integritätsbereich und $ab \in I$, so gilt $(a+I)(b+I) = 0_{R/I}$ und somit $a + I = 0_{R/I}$ oder $b+I = 0_{R/I}$ bzw. $a \in I$ oder $b \in I$. Also ist $I$ Primideal.
 	
 	Für den zweiten Teil nutze, dass
-	\[I\;\text{maximales Ideal} \quad\overset{\text{Satz \ref{satz4_13} (b)}}{\Leftrightarrow}\quad R/I \; \text{hat nur die Ideale}\;\{0_{R/I}\;\text{und}\;R/I\} \quad\overset{\text{Satz \ref{rem5_2} (ii)}}{\Leftrightarrow}\quad R/I \;\text{Körper}.\]
+	\[I\;\text{maximales Ideal} \quad\overset{\text{Satz \ref{satz4_13} (b)}}{\Leftrightarrow}\quad R/I \; \text{hat nur die Ideale}\;\{0_{R/I}\}\;\text{und}\;R/I \quad\overset{\text{Satz \ref{rem5_2} (ii)}}{\Leftrightarrow}\quad R/I \;\text{Körper}.\]
 \end{proof}
 \begin{satz}\label{satz6_4}
 	$R$ besitzt ein maximales Ideal.
@@ -48,7 +48,7 @@ Allgemeiner erhalten wir
 		Der Einsetzungshomomorphismus
 		\[\varphi_x \colon R[x] \to \left(\faktor{R}{I}\right)[x], \quad \sum a_i x^i \mapsto \sum (a_i + I) x^i\]
 		ist surjektiv mit $\ker(\varphi_x) = \{\sum a_i x^i \mid a_i \in I\} =: I(x) \unlhd R[x]$. Satz \ref{satz4_11} (a) liefert $R[x] / I[x] \cong (R/I)[x]$. Nun gilt:
-		\begin{align*}I \;\text{Primideal}  \quad&\overset{\text{Prop. \ref{prop6_3}}}{\Leftrightarrow}\quad \faktor{R}{I}  \quad\overset{\text{Bem. \ref{rem5_9} (ii)}}{\Leftrightarrow}\quad \faktor{R[x]}{I[x]} \; \text{Integritätsbereich}\\
+		\begin{align*}I \;\text{Primideal}  \quad&\overset{\text{Prop. \ref{prop6_3}}}{\Leftrightarrow}\quad \faktor{R}{I} \text{ Integritätsbereich} \quad\overset{\text{Bem. \ref{rem5_9} (ii)}}{\Leftrightarrow}\quad \faktor{R[x]}{I[x]} \; \text{Integritätsbereich}\\
 	  &\overset{\text{Prop \ref{prop6_3}}}{\Leftrightarrow}\quad I[x] \; \text{Primideal}.\end{align*}		
 		Im Allgemeinen ist aber nicht jedes Primideal in $R[x]$ von dieser Form. Für $R=\Z$ gilt $\Z[x] / x \cong \Z$. Somit ist $(x)$ Primideal in $\Z[x]$ nach Proposition \ref{prop6_3}. Aber $(x) = \{a_1 x + a_2 x^2 + \dots + a_n x^n \mid a_i \in \Z, n \in \N\}$ ist nicht von der Form $I[x]$ für $I \unlhd \Z$. Beachte, dass 
 		\begin{align*}
@@ -57,16 +57,18 @@ Allgemeiner erhalten wir
 		Das Primideal $(x)$ ist nicht maximal. Es ist enthalten im maximalen Ideal $(2,x)$ von $\Z[x]$ (siehe Beispiel \ref{beispiel5_15} und Aufgabe W.10.6).
  	\end{enumerate} 
 \end{beispiel}
-{\Large \textit{Wir wollen Primideale und maximale Ideale in Integritätsbereichen mittels ausgezeichneter Elemente besser verstehen.}}
+\begin{leftbar}
+	\textit{Wir wollen Primideale und maximale Ideale in Integritätsbereichen mittels ausgezeichneter Elemente besser verstehen.}
+\end{leftbar}
 
 
 \begin{definition}
-	Sei $R$ Integritätsbereich und $a,b \in $.
+	Sei $R$ Integritätsbereich und $a,b \in R$.
 	\begin{enumerate}[label=(\alph*)]
 		\item Wir sagen $a$ \textbf{teilt} $b$, wenn es ein $c \in R$ gibt mit $a \cdot c = b$. Wir schreiben $a \mid b$.
 		\item Das Element $a$ heißt \textbf{assoziiert} zu $b$, wenn $a \mid b$ und $b \mid a$. Wir schreiben $a \sim b$.
 		\item Ein Element $p \in R \setminus \{0\}$ heißt \textbf{prim} oder \textbf{Primelement}, wenn $p \notin R^\times$ und $p \mid ab$ nur dann, wenn $p \mid a$ oder $p \mid b$.
-		\item Ein Element $u \in R\setminus \{0\}$ heißt \textbf{unzerlegbar} oder \textbf{irreduzibel}, wenn $u \notin R^\times$ und $a = ab$ nur dann, wenn $a \in R^\times$ oder $b \in R^\times$.
+		\item Ein Element $u \in R\setminus \{0\}$ heißt \textbf{unzerlegbar} oder \textbf{irreduzibel}, wenn $u \notin R^\times$ und $u = ab$ nur dann, wenn $a \in R^\times$ oder $b \in R^\times$.
 	\end{enumerate}
 \end{definition}
 \begin{rem}\label{rem6_7}
@@ -132,7 +134,9 @@ Allgemeiner erhalten wir
 	\end{enumerate}
 \end{beispiel}
 
-Wir wollen verstehen, in welchen Integritätsbereichen sich nicht-invertierbare Elemente ungleich Null, auf eindeutige Weise, als endliche Produkte unzerlegbarer Elemente schreiben lassen. 
+\begin{leftbar}
+	Wir wollen verstehen, in welchen Integritätsbereichen sich nicht-invertierbare Elemente ungleich Null, auf eindeutige Weise, als endliche Produkte unzerlegbarer Elemente schreiben lassen. 
+\end{leftbar}
 \begin{definition}
 	Ein Integritätsbereich $R$ heißt \textbf{faktoriell}, wenn gilt
 	\begin{itemize}
@@ -177,7 +181,7 @@ Wir wollen verstehen, in welchen Integritätsbereichen sich nicht-invertierbare 
 	Sei $R$ ein Integritätsbereich und $a,b \in R$.
 	\begin{enumerate}[label=(\alph*)]
 		\item $d \in R$ heißt \textbf{größter gemeinsamer Teiler} von $a$ und $b$, wenn $d \mid a \land d \mid b$ sowie für alle $e \in R$ gilt $e \mid a \land e \mid b$ nur dann, wenn $e \mid d$.
-		\item $m \in R$ heißt  \textbf{kleinstes gemeinsames Vielfaches} von $a$ und $b$, wenn $a \mid m \land b \mid m$ sowie für alle $m \in R$ gilt $a \mid n \land b \mid n$ nur dann, wenn $m \mid n$.
+		\item $m \in R$ heißt  \textbf{kleinstes gemeinsames Vielfaches} von $a$ und $b$, wenn $a \mid m \land b \mid m$ sowie für alle $n \in R$ gilt $a \mid n \land b \mid n$ nur dann, wenn $m \mid n$.
 	\end{enumerate}
 \end{definition}
 \begin{rem}\label{rem6_16}
@@ -265,12 +269,14 @@ Wir zeigen nun, dass für $R$ faktoriell auch $R[x]$ ein faktorieller Ring ist!
 		mit Lemma \ref{lem6_20} \textbf{(b)} impliziert, dass $c := c_1 \cdots c_n \in R$. Ist $c \in R^\times$, so liefert $f = c\cdot p_1 \cdots p_n$ eine gewünschte Zerlegung. Andernfalls schreibe $c = a_1 \cdots a_m$ mit $a_j \in R$ prim. Da die $a_j$ auch prim in $R[x]$ sind, ist $f = a_1 \cdots a_m \cdot p_1 \cdots p_n$ eine gewünschte Zerlegung von $f$ in Primelemente von $R[x]$.
 	\end{enumerate}
 \end{proof}
-\paragraph{Hierarchie kommutativer Ringe. }
+\textbf{Hierarchie kommutativer Ringe. }
 % TODO Grafik VL 13.01.2025
 
 
-Wir wollen noch Kriterien kennenlernen, um zu entscheiden, ob ein gegebenes Polynom (z. B. in $\Z[x]$ oder $\Q[x]$) unzerlegbar ist.
-
+\begin{leftbar}
+	Wir wollen noch Kriterien kennenlernen, um zu entscheiden, ob ein gegebenes Polynom (z. B. in $\Z[x]$ oder $\Q[x]$) unzerlegbar ist.
+	
+\end{leftbar}
 
 \begin{satz}[Eisenstein-Kriterium]\label{satz6_24}
 	Sei $R$ ein faktorieller Ring und $f := \sum_{i=0}^n a_i x^i \in R[x] \setminus R^\times$ primitiv. Gibt es ein Primelement $p \in R$, so dass $p \mid a_0, \dots, a_{n-1}$ und $p^2 \nmid a_0$, so ist $f$ unzerlegbar in $R[x]$.
@@ -329,5 +335,5 @@ Unzerlegbarkeit in $\Z[x]$ lässt sich auch modulo einer Primzahl $p$ untersuche
 	Also ist $g \in R$ Teiler aller Koeffizienten von $f$. Mit $f$ primitiv in $R[x]$ erhalten wir $g \in R^\times = R[x]^\times$, wie gewünscht.
 \end{proof}
 \begin{beispiel}\label{beispiel6_28}
-	Das primitive Polynom $f = x^4 + x^3 + x^2 + x + 1$ ist unzerlegbar in $\Z[x]$ und somit nach Satz \ref{satz6_26} auch in $\Q[x]$ (vgl. Aufgabe M.12.1 (b)). Nach Satz \ref{satz6_27} genügt es zu zeigen, dass $\bar{f} = x^4 + x^3 + x^2 + 1 +\bar{1}$ unzerlegbar in $\Z_2$ ist. Wäre $\bar{f}$ zerlegbar, müsste es einen unzerlegbaren Faktor vom Grad 1 oder 2 haben und somit geteilt werden von $x, x + \bar{1}$ oder $x^2 + x + \bar{1}$. Dies lässt sich mittels Polynomdivision jedoch einfach ausschließen.
+	Das primitive Polynom $f = x^4 + x^3 + x^2 + x + 1$ ist unzerlegbar in $\Z[x]$ und somit nach Satz \ref{satz6_26} auch in $\Q[x]$ (vgl. Aufgabe M.12.1 (b)). Nach Satz \ref{satz6_27} genügt es zu zeigen, dass $\bar{f} = x^4 + x^3 + x^2 +\bar{1}$ unzerlegbar in $\Z_2$ ist. Wäre $\bar{f}$ zerlegbar, müsste es einen unzerlegbaren Faktor vom Grad 1 oder 2 haben und somit geteilt werden von $x, x + \bar{1}$ oder $x^2 + x + \bar{1}$. Dies lässt sich mittels Polynomdivision jedoch einfach ausschließen.
 \end{beispiel}
