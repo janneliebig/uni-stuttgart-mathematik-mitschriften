@@ -240,3 +240,19 @@ Wir zeigen zunächst folgende Hilfsaussage:
 	\[(x_1, \dots, x_s)^{n_s} = (x_1^{n_s}, \dots, x_s^{n_s}) = (\bar{0}, \dots, \bar{0}) = 0_{\Z_{n_1} \times \dots \times \Z_{n_s}},\]
 	d.h. $g^{n_s} = 1_G = 1_K$ für alle $g \in G$. Da das Polynom $x^{n_s} - 1 \in K[x]$ maximal $n_s$ verschiedene Nullstellen hat (vgl. Aufgabe S.9.1), folgt $|G| \leq n_s$. Aber dann muss $s = 1$ und $G$ ist zyklisch.
 \end{proof}
+\begin{proof}[Beweis von Satz \ref{satz7_20}]
+	Setze $q := p^n$ und betrachte das Polynom $x^q - x$ in $\Z_p$. Wiederholte Anwendung von Satz \ref{satz7_19} liefert eine endliche Körpererweiterung $L/\Z_p$, so dass $x^q - x$ in $L[x]$ vollständig in Linearfaktoren zerfällt. Da $\varphi \colon L\to L$ mit $\alpha \mapsto a^q$ ein Körperisomorphismus ist (siehe Aufgabe M.13.4 : $\varphi$ ist die $n$-fache Komposition des Frobenius-Endomorphismuses mit sich selbst), bilden die Fixpunkte $\{\alpha \in L \mid \varphi(\alpha) = \alpha\}$ von $\varphi$, also die Nullstellen von $x^q - x$ in $L$, einen Teilkörper $K$ von $L$ (siehe Aufgabe M.13.5). Ist $\alpha \in L$ eine solche Nullstelle, so gilt in $L[x]$
+	\[x^q - x = (x-\alpha)^q - (x-\alpha) = (x-\alpha)((x-\alpha)^{q-1} - 1),\]
+	d. h. $\alpha$ ist eine einfache Nullstelle des Polynoms und es folgt $|K| = q$.
+	
+	\underline{Noch zu zeigen:} Zwei Körper der Kardinalität $q$ sind isomorph. Sei dazu $K$ ein beliebiger Körper mit $|K| = q$. Dann gilt $\alpha^{q-1} = \alpha^{|K^\times|} = 1_K$ für alle $\alpha \in K^\times$ und somit $\alpha^q - \alpha = 0$ für alle $\alpha \in K$. Nach Voraussetzung ist $\chr(K) = p$ und wir identifizieren den Primkörper $\Pi(K)$ mit $\Z_p$. Dann sind die Minimalpolynome der Elemente von $K$ über $\Z_p$ genau die normierten unzerlegbaren Faktoren des Polynoms $x^q - x \in \Z_p[x]$. Nach Proposition \ref{prop7_21} gibt es $\alpha \in K^\times$ mit $\spn{\alpha} = K^\times$ und $K = \Z_p(\alpha)$. Diese Erzeuger sind genau die Nullstellen der unzerlegbaren Faktoren $f$ vom Grad $n$ des Polynoms $x^q - x \in \Z_p[x]$ mit $K = \Z_p(\alpha) \cong \Z_p[x] / (f)$ (siehe Satz \ref{satz7_13}). Dies zeigt nicht nur die Eindeutigkeit von $K$ bis auf Isomorphie, sondern zudem , wie expliziet in endlichen Körpern rechnen kann.
+\end{proof}
+Wir schauen uns noch Teilkörper endlicher Körper genauer an.
+\begin{satz}\label{satz7_22}
+	Für einen endlichen Körper $L$ erhalten wir mittels $K \mapsto |K|$ eine Bijektion
+	\[\{\text{Teilkörper}\;K \leq L\} \overset{\to}{\sim} \{q \in \N \mid \exists r \in \N : q^r = |L|\}.\]
+	Gegeben zwei endliche Körper lässt sich somit der eine in den anderen einbetten genau dann, wenn die Kardinalität des letzteren eine Potenz der Kardinalität des ersteren ist.
+\end{satz}
+\begin{proof}
+	Für einen Teilkörper $K \leq L$ mit $[L : K] = r$ gilt $|K|^r = |L|$, d. h. die obige Zuordnung ist wohldefiniert. Zudem besteht $K$ genau aus den Nullstellen des Polynoms $x^{|K|} - x$ in $L$ (siehe Beweis von Satz \ref{satz7_20}). Dies liefert Injektivität der Zuordnung. Für Surjektivität betrachte $q,r \in \N$ mit $|L| = q^r$ und finde einen Teilkörper $K \leq L$ mit $|K| = q$. Da $L^\times$ nach Proposition \ref{prop7_21} eine zyklische Gruppe der Ordnung $q^r - 1$ und $q-1$ ein Teiler von $q^r - 1 = (q-1)(q^{r-1} + q^{r-2} + \dots + q + 1)$ ist, gibt es in $L^\times$ $q-1$ Elemente, die Nullstellen des Polynoms $x^q - x$ sind. Die Nullstellen dieses Polynoms in $L$ bilden dann den gesuchten Teilkörper $K \leq L$ mit $q$ Elementen (siehe Beweis von Satz \ref{satz7_20}).
+\end{proof}
