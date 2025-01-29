@@ -204,3 +204,39 @@ Da Körper nur triviale Ideale besitzen, sind Körperhomomorphismus stets injekt
 	
 	Der Beweis von Satz \ref{satz7_16} zeigt, dass $\{1, \sqrt{2}, i, i \sqrt{2}\}$ eine Basis von $\Q(\sqrt{2}, i)$ als $\Q$-Vektorraum ist.
 \end{beispiel}
+\begin{leftbar}
+	Wir wollen algebraische Körpererweiterungen konstruieren, die Nullstellen von Polynomen enthalten.
+\end{leftbar}
+\begin{satz}\label{satz7_19}
+	Sei $K$ ein Körper und $f \in K[x]$ unzerlegbar. Dann gibt es eine algebraische Körpererweiterung $L/K$, so dass $f$ eine Nullstelle $\alpha \in L$ hat und $L = K(\alpha)$ ist. Insbesondere ist $[L:K] = \deg(f)$.
+\end{satz}
+\begin{proof}
+	Setze $L := K[x]/(f)$. Nach Kapitel 6 ist $L$ ein Körper. Die Einschränkung der kanonischen Projektion $\pi \colon K[x] \to L$ auf $K$ liefert einen Körperhomomorphismus $\pi_K \colon K \to L$. Wir identifizieren $K$ mit $\im(\pi_K) \leq L$, so dass $\pi(b) = b$ für alle $b \in K$. 
+	
+	Setze $\alpha := \pi(x) + (f) \in L$ und schreibe $f = \sum_{i} b_i x^i$ für $b_i \in K$. Es folgt
+	\begin{align*}
+		f(\alpha) = \sum_{i} b_i \alpha^i = \sum_i b_i \pi(x)^i = \sum_{i} \pi(x)^i = \pi\left(\sum_{i} x^i\right) = \pi(f) = 0_L.
+ 	\end{align*}
+ 	Also ist $\alpha \in L$ Nullstelle von $f$.
+ 	
+ 	Die kanonische Projektion $\pi$ entspricht dem Einsetzungshomomorphismus $\varphi_\alpha \colon K[x] \to L$. Mit Bemerkung \ref{rem7_12} folgt
+ 	\[L = \im(\pi) = \im(\varphi_\alpha) = K[\alpha] = K(\alpha).\]
+ 	Nach Satz \ref{satz7_13} liefert Normierung von $f$ das Minimalpolynom von $\alpha$ über $K$, so dass $[L:K] = \deg(f)$.
+ 	
+ 	Da $L/K$ endlich ist, $L/K$ auch algebraisch nach Korollar \ref{kor7_17}.
+\end{proof}
+Wir kehren noch einmal zurück zu endlichen Körpern (vgl. Korollar \ref{kor7_7}).
+\begin{satz}\label{satz7_20}
+	Sei $p$ ein Primzahl und $n \in \N$. Dann gibt es bis auf Isomorphie genau einen Körper mit $p^n$ Elementen.
+\end{satz}
+Wir zeigen zunächst folgende Hilfsaussage:
+\begin{prop}\label{prop7_21}
+	Sei $K$ ein Körper und $G \leq K^\times$ eine endliche Untergruppe der Einheitengruppe. Dann ist $G$ zyklisch. Insbesondere ist die Einheitengruppe eines endlichen Körpers zyklisch. 
+\end{prop}
+\begin{proof}
+	Nach Voraussetzung ist $G$ endlich und abelsch. Nutze Korollar \ref{kor2_12} und Aufgabe M.4.1 und schreibe
+	\[G \cong \Z_{n_1} \times \dots \times \Z_{n_s}\]
+	für $1 < n_1 \leq n_2 \leq \dots \leq n_s$ mit $n_1 \mid n_2 \mid \dots \mid n_s$ und $|G| = \prod_{i=1}^{s} n_i$. Für $(x_1, \dots, x_s) \in \Z_{n_1} \times \dots \times \Z_{n_s}$ gilt
+	\[(x_1, \dots, x_s)^{n_s} = (x_1^{n_s}, \dots, x_s^{n_s}) = (\bar{0}, \dots, \bar{0}) = 0_{\Z_{n_1} \times \dots \times \Z_{n_s}},\]
+	d.h. $g^{n_s} = 1_G = 1_K$ für alle $g \in G$. Da das Polynom $x^{n_s} - 1 \in K[x]$ maximal $n_s$ verschiedene Nullstellen hat (vgl. Aufgabe S.9.1), folgt $|G| \leq n_s$. Aber dann muss $s = 1$ und $G$ ist zyklisch.
+\end{proof}
