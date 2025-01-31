@@ -1,16 +1,16 @@
 \section{Gruppen}
 \begin{definition}
 	Eine \textbf{Gruppe} $(G, *)$ ist eine Menge $G$ mit einer binären Verknüpfung 
-	\[* \colon G \times G \to G, (g,h) \mapsto g*h,\]
+	\[* \colon G \times G \to G, \quad(g,h) \mapsto g*h,\]
 	so dass gilt:
 	\begin{enumerate}[label={\bfseries(G\arabic*)}]
-		\item $(a * b) * c  = a * (b * c)$ für alle $a,b,c \in G$ ($*$ assoziativ),
-		\item Es existiert ein $e \in G$, sodass für alle $a \in G$ gilt $a * e = a = e * a$ ($e$ neutrales Element),
-		\item Für alle $a \in G$ existiert ein $a' \in G$, sodass $a * a' = e = a' * a$ ($a'$ inverses Element zu $a$).
+		\item\label{gr1} $(a * b) * c  = a * (b * c)$ für alle $a,b,c \in G$ ($*$ assoziativ),
+		\item\label{gr2} Es existiert ein $e \in G$, sodass für alle $a \in G$ gilt $a * e = a = e * a$ ($e$ neutrales Element),
+		\item\label{gr3} Für alle $a \in G$ existiert ein $a' \in G$, sodass $a * a' = e = a' * a$ ($a'$ inverses Element zu $a$).
 	\end{enumerate}
 	Gilt zusätzlich
 	\begin{enumerate}[start=4, label={\bfseries(G\arabic*)}]
-		\item $a * b = b * a$ für alle $a,b \in G$, so heißt $(G, *)$ \textbf{kommutativ} oder \textbf{abelsch}.
+		\item\label{gr4} $a * b = b * a$ für alle $a,b \in G$, so heißt $(G, *)$ \textbf{kommutativ} oder \textbf{abelsch}.
 	\end{enumerate}
 	Die \textbf{Ordnung} von $(G, *)$ ist $|G|$.
 \end{definition}
@@ -19,12 +19,12 @@
 	\begin{enumerate}[label=(\roman*)]
 		\item Das neutrale Element einer Gruppe $G$ ist eindeutig:
 		
-		Sind $e, f$ neutrale Element in $G$, so gilt $e = e * f = f$ nach (G2).
+		Sind $e, f$ neutrale Element in $G$, so gilt $e = e * f = f$ nach \ref{gr2}.
 		
 		\item Inverse Elemente in $G$ sind eindeutig:
 		
 		Seien $a'$ und $a''$ Inverse zu $a \in G$. Dann gilt
-		\[a' \overset{(G2)}{=}  a' * e \overset{(G3)}{=} a' * (a * a'') \overset{(G1)}{=}  ( a' * a) * a'' \overset{(G3)}{=} = e * a'' \overset{(G2)}{=} a''\]
+		\[a' \overset{\text{\ref{gr2}}}{=}  a' * e \overset{\text{\ref{gr3}}}{=} a' * (a * a'') \overset{\text{\ref{gr1}}}{=}  ( a' * a) * a'' \overset{\text{\ref{gr3}}}{=} = e * a'' \overset{\text{\ref{gr2}}}{=} a''\]
 		
 		\item Für inverse Elemente in $G$ gilt $(a')' = a$ und $(a * b)' = b' * a'$.
 	\end{enumerate}
@@ -38,12 +38,12 @@
 			
 			Zum Beispiel $V = M_n (K) := \{ n\times n\text{-Matrizen über einem Körper } K\}$.
 			
-			\item $\mathrm{GL}_n(K) := \{\text{invertierbare } n\times n\text{-Matrizen über einem Körper } K\}$ bildet eine Gruppe bzgl. Matrizenmultiplikation - die \textbf{allgemeine lineare Gruppe}. Diese ist für $n \geq 2$ nicht abelsch. 
+			\item $\GL_n(K) := \{\text{invertierbare } n\times n\text{-Matrizen über einem Körper } K\}$ bildet eine Gruppe bzgl. Matrizenmultiplikation - die \textbf{allgemeine lineare Gruppe}. Diese ist für $n \geq 2$ nicht abelsch. 
 			
 			Weitere Beispiele: 
 			\begin{itemize}
-				\item $\mathrm{SL}_n(K) := \{A \in \mathrm{GL}_n(K) \mid \det A = 1\}$ - die \textbf{spezielle lineare Gruppe}.
-				\item $\mathrm{O}_n(K) := \{A \in \mathrm{GL}_n(K) \mid AA^\top = E_n\}$ - die \textbf{orthogonale Gruppe}.
+				\item $\SL_n(K) := \{\mat{A} \in \GL_n(K) \mid \det \mat{A} = 1\}$ - die \textbf{spezielle lineare Gruppe}.
+				\item $\mathsf{O}_n(K) := \{\mat{A} \in \GL_n(K) \mid \mat{AA}^\top = \mat{E}_n\}$ - die \textbf{orthogonale Gruppe}.
 			\end{itemize}
 			
 			\item $G = \{e\}$ ist die \textbf{triviale Gruppe}.
@@ -93,7 +93,7 @@
 				\sigma(a_r) &= a_1\\
 			\end{align*}
 			und $\sigma(a) = a$ für alle $a \in \{1, \dots, n\} \setminus \{a_1, \dots, a_r\}$. Zykel der Länge 2 heißen \textbf{Transpositionen}. Zwei Zykel $(a_1 \dots a_r)$ und $(b_1 \dots b_s)$ heißen \textbf{disjunkt}, falls 
-			\[\{a_1, \dots, a_r\} \cap \{b_1, \dots, b_r\} = \emptyset.\]
+			\[\{a_1, \dots, a_r\} \cap \{b_1, \dots, b_s\} = \emptyset.\]
 			Disjunkte Zykel kommutieren und jede Permutation lässt sich eindeutig als Komposition disjunkter Zykel schreiben.
 			
 			Zum Beispiel 
@@ -134,7 +134,7 @@
 		\[\varphi(g) \varphi(g^{-1}) = \varphi(gg^{-1}) = \varphi(1_G) = 1_H = \dots = \varphi(g^{-1}) \varphi(g).\]
 		Nutze Bemerkung \ref{rem1_2} (ii) zum Beweis der Eindeutigkeit.
 		
-		\item Isomorphie ist eine Äquivalenzrelation. Isomorphe Gruppen betrachten wir als wesensgleich, in Hinblick auf Eigenschaften, Multiplikationstafeln, Eindeutigkeitsaussagen etc.
+		\item Isomorphie ist eine Äquivalenzrelation. Isomorphe Gruppen betrachten wir als wesensgleich in Hinblick auf Eigenschaften, Multiplikationstafeln, Eindeutigkeitsaussagen etc.
 		
 		\item Sei $G$ eine Gruppe und $H \subseteq G$. Dann ist $H \leq G$ Untergruppe genau dann, wenn 
 		\begin{itemize}
@@ -147,18 +147,18 @@
 
 \begin{beispiel}\label{beispiel1_6}
 	\begin{enumerate}
-		\item $\det \colon \GL_n(K) \to K \setminus \{0\}$ ist ein Gruppenhomomorphismus, da $\det(AB) = \det(A)\det(B)$ für alle $A,B \in \GL_n(K)$. $\SL_n(K) \leq \GL_n(K)$ und $\mathrm{O} \leq \GL_n(K)$ sind Untergruppen.
+		\item $\det \colon \GL_n(K) \to K \setminus \{0\}$ ist ein Gruppenhomomorphismus, da $\det(\mat{AB}) = \det(\mat{A})\det(\mat{B})$ für alle $\mat{A},\mat{B} \in \GL_n(K)$. $\SL_n(K) \leq \GL_n(K)$ und $\mathrm{O} \leq \GL_n(K)$ sind Untergruppen.
 		
 		\item $\exp \colon \R \to \R_{>0}$ ist ein Gruppenisomorphismus, da $\exp(x+y) = \exp(x)\exp(y)$ für alle $x,y \in \R$.
 		
 		\item Sei $G = \{\id, \gamma_A, \gamma_B\}$ die Symmetriegruppe eines Rechtecks wie in Beispiel \ref{beispiel1_3} (4). Dann ist $G$ isomorph zum direkten Produkt $S_1 \times S_2$. Ein Isomorphismus ist gegeben durch $G \to S_1 \times S_2$ mit
 		\begin{align*}
-			\id &\mapsto (\id, \id)\\
-			\gamma_A &\mapsto (\id, (12))\\
-			\gamma_B &\mapsto ((12), \id)\\
-			\gamma_{180^\circ} &\mapsto ((12), (12))
+			\id &\mapsto (\id, \id),\\
+			\gamma_A &\mapsto (\id, (12)),\\
+			\gamma_B &\mapsto ((12), \id),\\
+			\gamma_{180^\circ} &\mapsto ((12), (12)).
 		\end{align*}
-		\textbf{vergleiche Multiplikationstafeln}.
+	 	Vergleiche Multiplikationstafeln.
 		
 		\item Für $n \in \N$ ist $\varphi \colon S_n \to S_{n+1}$ mit 
 		\[\varphi(\sigma) = \begin{pmatrix}
@@ -176,9 +176,9 @@
 			L_g &\colon G \to G, \quad h \mapsto gh\\
 			R_g &\colon G \to G, \quad h \mapsto hg,
 		\end{align*}
-		genannt \textbf{Links-} und \textbf{Rechtsmultiplikation mit $g$}, sind im Allgemeinen keine Gruppenhomomorphismus, aber bijektiv!
+		genannt \textbf{Links-} und \textbf{Rechtsmultiplikation mit $g$}, sind im Allgemeinen keine Gruppenhomomorphismen, aber bijektiv!
 		
-		\item Sei $\varphi \colon G \to H$ ein Gruppenhomomorphismus. Dann sind $Ker(\varphi) := \{g \in G \mid \varphi(g) = 1_H\}$ (\textbf{Kern von $\varphi$}) und $\im(\varphi) = \{\varphi(g) \mid g \in G\}$ (\textbf{Bild von $\varphi$}) Untergruppen von $G$ bzw. $H$. Zudem ist $\varphi$ injektiv genau dann, wenn $Ker(\varphi) = \{1_G\}$.
+		\item Sei $\varphi \colon G \to H$ ein Gruppenhomomorphismus. Dann sind $\ker(\varphi) := \{g \in G \mid \varphi(g) = 1_H\}$ (\textbf{Kern von $\varphi$}) und $\im(\varphi) = \{\varphi(g) \mid g \in G\}$ (\textbf{Bild von $\varphi$}) Untergruppen von $G$ bzw. $H$. Zudem ist $\varphi$ injektiv genau dann, wenn $\ker(\varphi) = \{1_G\}$.
 		
 		\begin{proof}
 			\glqq{}Nur dann\grqq: Sei $g \in G$ mit $\varphi(g) = 1_H$. Da $\varphi(1_G) = 1_H$, folgt $g = 1_G$.
@@ -232,7 +232,7 @@
 		gH &:= \{gh \mid h \in H\} &&\textbf{(Linksnebenklasse von $H$ in $G$)}\\
 		Hg &:= \{hg \mid h \in H\} &&\textbf{(Rechtsnebenklasse von $H$ in $G$)}
 	\end{align*}
-	Schreibe $G / H = \{gH \mid g \in G\}$ und $H \backslash G = \{Hg \mid g \in G\}$. Definiere $[G : H] := \left|\sfrac{G}{H}\right|$.
+	Schreibe $G / H = \{gH \mid g \in G\}$ und $H \backslash G = \{Hg \mid g \in G\}$. Definiere $[G : H] := \left|G/H\right|$.
 \end{definition}
 \begin{rem}
 	\begin{enumerate}[label=(\roman*)]
@@ -262,10 +262,11 @@
 	gilt, d.h. $[G:H] = r$. Dann gilt
 	\[|G| = \sum_{j=1}^{r} |g_jH| = \sum_{j=1}^r |H| = r|H| = [G:H] \cdot |H|.\]
 \end{proof}
-\begin{center}
+\begin{leftbar}
 	Definiert $g_1H * g_2H := g_1g_2H$ eine Gruppenstruktur auf der $G/H$?
-\end{center}
+
 \underline{Problem:} Wohldefiniertheit.
+\end{leftbar}
 \begin{beispiel}
 	Sei $G = S_3$ und $H = \{\id, (12)\}$. Da $|G|= 6$ und $|H| = 2$, folgt mit Satz \ref{satz1_11}, dass $[G:H] = 3$. Es gibt also 3 Linksnebenklassen:
 	\[\id H = H, \quad (23)H = \{(23), (132)\} \quad\text{und}\quad (13)H = \{(13), (123)\}\]
@@ -274,9 +275,10 @@
 	und
 	\[(23)H = (132)H * (13)H = (12)H.\]
 	$(123)H \neq (12)H$ und wir folgern:
-	
-	Wir brauchen eine stärkere Bedingung als $H \leq G$ Untergruppe.
 \end{beispiel}
+\begin{leftbar}
+	Wir brauchen eine stärkere Bedingung als $H \leq G$ Untergruppe.
+\end{leftbar}
 \begin{definition}
 	Sei $G$ eine Gruppe und $H \leq G$. 
 	\begin{enumerate}[label=(\alph*)]
@@ -321,9 +323,25 @@
 		da z.B. $(13)H_1 (13) = H_3$.
 		
 		\item Die symmetrische Gruppe $S_3$ hat folgende Untergruppen:
-		\begin{center}
-			\includegraphics[scale=0.2]{images/beispiel1_15-4}
-		\end{center}
+		%\begin{center}
+		%	\includegraphics[scale=0.2]{images/beispiel1_15-4}
+		%\end{center}
+		% https://q.uiver.app/#q=WzAsNixbMywwLCJTXzMiXSxbMCwyLCJBXzMgPSBcXHtcXGlkLCAoMTIzKSwgKDEzMilcXH0iXSxbMiwyLCJIXzEgPSBcXHtcXGlkLCAoMTIpXFx9Il0sWzQsMiwiSF8yID0gXFx7XFxpZCwgKDEzKVxcfSJdLFs2LDIsIkhfMyA9IFxce1xcaWQsICgyMylcXH0iXSxbMyw0LCJcXHtcXGlkXFx9Il0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsNCwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+		\[\begin{tikzcd}[column sep=tiny]
+			&&& {S_3} \\
+			\\
+			{A_3 = \{\id, (123), (132)\}} && {H_1 = \{\id, (12)\}} && {H_2 = \{\id, (13)\}} && {H_3 = \{\id, (23)\}} \\
+			\\
+			&&& {\{\id\}}
+			\arrow[no head, from=1-4, to=3-1]
+			\arrow[no head, from=1-4, to=3-3]
+			\arrow[no head, from=1-4, to=3-5]
+			\arrow[no head, from=1-4, to=3-7]
+			\arrow[no head, from=3-1, to=5-4]
+			\arrow[no head, from=3-3, to=5-4]
+			\arrow[no head, from=3-5, to=5-4]
+			\arrow[no head, from=3-7, to=5-4]
+		\end{tikzcd}\]
 		
 		Es gilt $A_3 \unlhd S_3$. $H_1, H_2, H_3$ sind jedoch keine Normalteiler, da zum Beispiel $(13)H_1(13) = H_3$.
 	\end{enumerate}
@@ -403,7 +421,7 @@
 \begin{proof}
 	Betrachte die Abbildung $\bar{\varphi} \colon G/\ker(\varphi) \to \im(\varphi)$ mit $g\ker(\varphi) \mapsto \varphi(g)$. 
 	
-	$\bar{\varphi}$ ist wohldefiniert, da für $g\ker(\varpi) = g'\ker(\varphi)$ gilt: Es existiert ein $x \in \ker(\varphi)$ mit $g = g'x$ und somit 
+	$\bar{\varphi}$ ist wohldefiniert, da für $g\ker(\varphi) = g'\ker(\varphi)$ gilt: Es existiert ein $x \in \ker(\varphi)$ mit $g = g'x$ und somit 
 	\[\varphi(g) = \varphi(g'x) = \varphi(g')\varphi(x) = \varphi(g') 1_H = \varphi(g')\]
 	
 	$\bar{\varphi}$ ist Gruppenhomomorphismus, da für $g, g' \in G$ gilt:

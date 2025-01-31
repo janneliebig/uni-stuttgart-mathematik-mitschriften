@@ -69,7 +69,6 @@ Falls $G = \langle S \rangle$, so heißt $S$ \textbf{Erzeugendensystem} von $G$.
 \end{proof}
 \begin{definition}
 	Sei $G$ eine Gruppe und $g \in G$. Die \textbf{Ordnung von $g$} ist definiert als die Ordnung $\spn{g}$, der von $g$ erzeugten zyklischen Untergruppe von $G$.
-	
 	Wir schreiben $\ord(g)$ für die Ordnung von $g$. 
 \end{definition}
 \begin{rem}
@@ -144,7 +143,7 @@ Falls $G = \langle S \rangle$, so heißt $S$ \textbf{Erzeugendensystem} von $G$.
 	im Kern von $\varphi_{S_i}$, da
 	\[d_ib_1 + db_i = (n_i - q_id)a_i + d(a_1 + q_ia_i) = n_ia_i + n_1a_1\]
 	und weil $(n_1, \dots, n_k) \in \ker(\varphi_S)$. Wegen der Minimalität von $d$ ist $1 \leq d_i < d$ ausgeschlossen, d.h.
-	\[d_i = 0 \quad\text{und}\quad d \big| n_i.\]
+	\[d_i = 0 \quad\text{und}\quad d \mid n_i.\]
 	Setze nun $x_i = \frac{n_i}{d}$ für $1 \leq i \leq k$. Insbesondere $x_1 = 1$. Dann wird $G$ von der Menge
 	\[\bigg\{\underbrace{\sum_{i=1}^k x_ia_i}_{=: a} , a_2, \dots, a_k\bigg\}\]
 	mit $\spn{a} \cap \spn{\{a_2, \dots, a_k\}} = \{0_G\}$. Denn ein Element im Schnitt hat die Form 
@@ -172,7 +171,7 @@ Die endlichen einfachen Gruppen sind von der Form
 	\item Zyklische Gruppe $\Z_p$ mit $p$ Primzahl.
 	\item Alternierende Gruppen $A_n$ für $n \geq 5$.
 	\item Endliche Gruppen vom Lie-Typ, z.B.
-	\[\mathsf{PSL}_(K) := \faktor{\SL_n(K)}{Z(\SL_n(K))} = \faktor{\SL_n(K)}{\{\lambda E_n \mid \lambda^n = 1\}}\]
+	\[\mathsf{PSL}_{(K)} := \faktor{\SL_n(K)}{Z(\SL_n(K))} = \faktor{\SL_n(K)}{\{\lambda \mat{E}_n \mid \lambda^n = 1\}}\]
 	für $n > 2$ und einen endlichen Körper $K$.
 	\item 26 sporadische Gruppen mit bis zu ungefähr $8 \cdot 10^{53}$ Elementen, die sogenannten Monster!
 \end{enumerate}

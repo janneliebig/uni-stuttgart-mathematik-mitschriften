@@ -2,8 +2,8 @@
 \begin{definition}
 	Sei $G$ eine Gruppe und $X \neq \emptyset$ eine Menge. Dann heißt $X$ \textbf{$G$-Menge}, wenn es eine Abbildung $* \colon G \times X \to X$, $(g,x) \mapsto g*x$ gibt mit 
 		\begin{enumerate}[label={\bfseries(O\arabic*)}]
-		\item $1_G * x = x$ für alle $x \in X$. (Das neutrale Element operiert neutral)
-		\item $g * (h * x) = (gh)*x$ für alle $g, h \in G$ und alle $x \in X$.
+		\item\label{opr1} $1_G * x = x$ für alle $x \in X$. (Das neutrale Element operiert neutral)
+		\item\label{opr2} $g * (h * x) = (gh)*x$ für alle $g, h \in G$ und alle $x \in X$.
 	\end{enumerate} 
 	Wir sagen \textbf{$G$ operiert auf $X$} und schreiben oft $\cdot$ statt $*$.
 \end{definition}
@@ -19,7 +19,7 @@ Ist die Abbildung $\tau$ injektiv bzw. ist $g = 1_G$ das einzige Element aus $G$
 
 \begin{beispiel}\label{beispiel3_3}
 	\begin{enumerate}[label=(\arabic*)]
-		\item $G$ operiert auf sich selbst durch Linksmultiplikation. Sei $X = G$ und $G \times X \to X$ mit $(g,x) \mapsto gx$. \textbf{(O1)} und \textbf{(O2)} sind erfüllt, da $G$ eine Gruppe ist. Die Operation ist treu $\rightsquigarrow$ siehe Satz von Cayley (Satz \ref{satz1_7}).
+		\item $G$ operiert auf sich selbst durch Linksmultiplikation. Sei $X = G$ und $G \times X \to X$ mit $(g,x) \mapsto gx$. \ref{opr1} und \ref{opr2} sind erfüllt, da $G$ eine Gruppe ist. Die Operation ist treu $\rightsquigarrow$ siehe Satz von Cayley (Satz \ref{satz1_7}).
 		
 		\item Sei $H \subseteq G$. Dann operiert $G$ auf $G/H$ durch $G \times (G/H) \to G/H$ mit $(g,xH) \mapsto (gx)H$. Diese Operation ist im Allgemeinen nicht treu, da für $g \in G$ gilt $(gx)H = xH$ für alle $x \in G$ genau dann, wenn $x^{-1} g x \in H$ für alle $x \in G$, was genau dann der Fall ist, wenn $g \in x H x^{-1}$ für alle $x \in G$. Für $H \unlhd G$ zum Beispiel gilt $xHx^{-1} = H$ für alle $x \in G$.
 		
@@ -30,7 +30,7 @@ Ist die Abbildung $\tau$ injektiv bzw. ist $g = 1_G$ das einzige Element aus $G$
 			(\bar{1}, v_3) &\mapsto v_4\\
 			(\bar{1}, v_4) &\mapsto v_1.
 		\end{align*}
-		Mit Hilfe von \textbf{(O1)} und \textbf{(O2)} legt dies die gewünschte Abbildung $G \times X \to X$ fest.
+		Mit Hilfe von \ref{opr1} und \ref{opr2} legt dies die gewünschte Abbildung $G \times X \to X$ fest.
 	\end{enumerate}
 \end{beispiel}
 \begin{definition}
@@ -130,7 +130,7 @@ Ist die Abbildung $\tau$ injektiv bzw. ist $g = 1_G$ das einzige Element aus $G$
 		Nach Korollar \ref{kor3_8} gilt für ein Repräsentantensystem $\{x_i\}_{i \in I}$ der Bahnen von $X$:
 		\[|X| \equiv |X^G| + \sum_{x_i \notin X^G} [G : \stab_G(x_i)].\]
 			Nach Satz \ref{satz1_11} teilt $[G: \stab_G(x_i) ]$ die Ordnung von $G$. Für $x_i \notin G$ ist $[G : \stab_G(x_i)] > 1$ und somit gilt
-			\[p \big| [G : \stab_G(x_i)].\]
+			\[p \mid [G : \stab_G(x_i)].\]
 	\end{proof}
 	\item Für eine $p$-Gruppe $G$ ist das Zentrum $Z(G) \neq \{1_G\}$.
 	\begin{proof}
