@@ -152,7 +152,7 @@ Da Körper nur triviale Ideale besitzen, sind Körperhomomorphismus stets injekt
 	\begin{enumerate}[label=(\arabic*)]
 		\item Das Minimalpolynom von $\alpha = \sqrt{2}$ über $\Q$ ist $\mu_\alpha = x^2 - 2 \in \Q[x]$. Es folgt $\Q(\sqrt{2}) = \Q[\sqrt{2}] = \{a + b\sqrt{2} \mid a,b \in \Q\}$
 		\item Das Minimalpolynom von $\alpha = \sqrt[3]{2}$ über $\Q$ ist $\mu_\alpha = x^3 - 2$. Beachte, dass $x^3 - 2$ nach Eisenstein bezüglich $p=2$ unzerlegbar in $\Z[x]$ ist und somit auch $\Q[x]$ nach Satz \ref{satz6_26}. Es gilt $\Q(\sqrt[3]{2}) = \Q[\sqrt[3]{2}] = \{a + b\sqrt[3]{2} + c\sqrt[3]{4} \mid a,b,c \in \Q\}$.
-		\item Betrachte die sechste Einheitswurzel $\alpha = e^{2\pi/6} \in \Q$. Dann ist $\alpha$ Nullstelle von $f=x^6 - 1 \in \Q[x]$. Da $f = (x^3 - 1)(x^3 + 1)$ ist $f$ nicht Minimalpolynom von $\alpha$ über $\Q$. Mit $\alpha^3 = -1$ ist $\alpha$ Nullstelle von $g = x^3 + 1 = (x+1)(x^2 - x + 1)$ und wir erhalten das Minimalpolynom $\mu_\alpha = x^2 - x + 1$ von $\alpha$ über $\Q$.
+		\item Betrachte die sechste Einheitswurzel $\alpha = e^{i 2\pi/6} \in \Q$. Dann ist $\alpha$ Nullstelle von $f=x^6 - 1 \in \Q[x]$. Da $f = (x^3 - 1)(x^3 + 1)$ ist $f$ nicht Minimalpolynom von $\alpha$ über $\Q$. Mit $\alpha^3 = -1$ ist $\alpha$ Nullstelle von $g = x^3 + 1 = (x+1)(x^2 - x + 1)$ und wir erhalten das Minimalpolynom $\mu_\alpha = x^2 - x + 1$ von $\alpha$ über $\Q$.
 	\end{enumerate}
 \end{beispiel}
 \begin{leftbar}
@@ -250,7 +250,7 @@ Wir zeigen zunächst folgende Hilfsaussage:
 Wir schauen uns noch Teilkörper endlicher Körper genauer an.
 \begin{satz}\label{satz7_22}
 	Für einen endlichen Körper $L$ erhalten wir mittels $K \mapsto |K|$ eine Bijektion
-	\[\{\text{Teilkörper}\;K \leq L\} \overset{\to}{\sim} \{q \in \N \mid \exists r \in \N : q^r = |L|\}.\]
+	\[\{\text{Teilkörper}\;K \leq L\} \overset{\sim}{\longrightarrow} \{q \in \N \mid \exists r \in \N : q^r = |L|\}.\]
 	Gegeben zwei endliche Körper lässt sich somit der eine in den anderen einbetten genau dann, wenn die Kardinalität des letzteren eine Potenz der Kardinalität des ersteren ist.
 \end{satz}
 \begin{proof}
