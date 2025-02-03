@@ -1,0 +1,63 @@
+\section{Algebraischer Abschluss}
+\begin{definition}
+	\begin{enumerate}[label=(\alph*)]
+		\item Ein Körper $K$ heißt \textbf{algebraisch abgeschlossen}, wenn jedes Polynom $f \in K[x] \setminus K$ eine Nullstelle in $K$ hat.
+		\item Sei $L/K$ eine Körpererweiterung. Dann heißt $L$ \textbf{algebraischer Abschluss} von $K$, wenn $L/K$ algebraisch und $L$ algebraisch abgeschlossen ist.
+	\end{enumerate}
+\end{definition}
+\begin{beispiel}\label{beispiel8_2}
+	\begin{enumerate}[label=(\arabic*)]
+		\item Nach dem Fundamentalsatz der Algebra ist $\C$ algebraisch abgeschlossen. $\C$ ist zudem ein algebraischer Abschluss von $\R$.
+		\item Sei $K \leq \C$ ein Teilkörper. Dann ist 
+		\[\bar{K} := \{z \in \C \mid z \; \text{ist algebraisch über} \; K\}\]
+		algebraischer Abschluss von $K$.
+		\begin{proof}
+			Für $a,b \in \bar{K}$ ist $a \pm b, a \cdot b, a^{-1} \in K(a,b)$. Nach Korollar \ref{kor7_17} ist die Körpererweiterung $K(a,b)/K$ algebraisch, d. h. $K(a,b) \subseteq \bar{K}$ und $\bar{K}$ ist ein Körper. Nach Definition ist $\bar{K} / K$ algebraisch. 
+			
+			Sei $f \in \bar{K}[x] \setminus \bar{K}$ mit Nullstelle $\alpha$ in $\C$. Da $\bar{K}[\alpha] / \bar{K}$ und $\bar{K}/K$ algebraische Körpererweiterungen sind, ist auch $\bar{K}(\alpha) /K$ algebraisch (siehe Aufgabe M.14.2). Insbesondere ist $\alpha$ algebraisch über $K$, d. h. $\alpha$ liegt bereits in $\bar{K}$. Also ist $\bar{K}$ algebraisch abgeschlossen und somit ein algebraischer Abschluss von $K$.
+		\end{proof}
+	\end{enumerate}
+\end{beispiel}
+\begin{thm}\label{thm8_3}
+	Sei $K$ ein Körper.
+	\begin{enumerate}[label=(\alph*)]
+		\item Es existiert eine algebraische Körpererweiterung $L/K$, so dass jedes $f \in K[x] \setminus K$ eine Nullstelle in $L$ hat.
+		\item $K$ hat einen algebraischen Abschluss. 
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+		\item\label{proof8_3_a}  Setze $I := K[x] \setminus K$ und $R := K[x_i \mid i \in I]$. Elemente in $R$ sind Polynome in endlich vielen Variablen $x_i$, d. h. von der Form
+		\[\sum_{r = (r_1, \dots, r_s) \in \N_0^s} \lambda_r \cdot x_{i_1}^{r_1} \cdot \hdots \cdot x_{i_s}^{r_s}\]
+		mit $\lambda_r \in K$ und nur endlich vielen $\lambda_r \neq 0_K$. $R$ verallgemeinert den Polynomring in endlich vielen Variablen, den man durch sukzessive Adjunktion neuer Variablen erhält. $R$ ist ein faktorieller Ring mit $R^\times = K^\times$.
+		
+		Setze $A := (f(x_f) \mid f \in I) \unlhd R$.
+		
+		\underline{Behauptung:} $A \neq R$. Angenommen $1_R \in A$. Dann existieren $f_j = f_j (x_{f_j}) \in A$ und $g_j \in R$ mit 
+		\[1_R = \sum_{j=1}^n f_j g_j.\]
+		Wiederholte Anwendung von Satz \ref{satz7_19} liefert eine Körpererweiterung $F/K$, so dass $f_j$ eine Nullstelle $\alpha_j \in F$ hat. Sei $\phi \colon R \to F[x_i \mid i \in I]$ der Einsetzungshomomorphismus mit $\phi(\lambda) = \lambda$ für $\lambda \in K$, $\phi(x_{f_j}) = a_j$ und $\phi(x_f) = x_f$ sonst. Dann folgt
+		\[1_{F[x_i \mid x \in I]} = \phi(1_R) = \sum_{j=1}^n \underbrace{\phi(f_j)}_{=f_j(\alpha_j) = 0_F} \cdot \phi(g_j) = 0_{F[x_i \mid i \in I]}.\]
+		Ein Widerspruch.
+		
+		Betrachte nun den Ring $R/A$. Nach Satz \ref{satz6_4} besitzt dieser ein maximales Ideal und mit Hilfe der Idealkorrespondenz erhalten wir $M \unlhd R$ maximal mit $A \subseteq M \subseteq R$. Setze $L := R/M$ und identifiziere $K$ mit dem Bild der Einbettung $K \to R \overset{\pi}{\to} R/M = L$. Sei nun $f \in K[x] \setminus K$ mit $f = \sum \lambda_j x^j$ für $\lambda_j \in K$. Dann gilt
+		\[f(\pi(x_f)) = f(x_f + M) = \underbrace{f(x_f)}_{\in A \subseteq M} + M.\]
+		Also hat $f$ eine Nullstelle in $L$. Zudem ist $L/K$ algebraisch, da für $\alpha \in L$ gilt $\alpha \in K(\{x_f + M \mid f \in J\})$ mit $J \subseteq I$ endlich, wobei die Elemente $x_f + M$ algebraisch über $K$ sind (siehe oben).
+		\item Setze $K_0 := K$. Teil \ref{proof8_3_a} liefert eine algebraische Körpererweiterung $K_1 / K_0$, so dass alle Polynom in $K_0[x] \setminus K_0$ eine Nullstelle in $K_1$ haben.
+		
+		Wiederholte Anwendung liefert eine Kette von Körpererweiterungen 
+		\[K_0 \leq K_1 \leq \dots\]
+		mit $K_i/K_{i-1}$ algebraisch. Setze $\bar{K} := \bigcup_{i \geq 0} K_i$. $\bar{K}$ ist ein Körper und $\bar{K} / K$ ist algebraisch, da für $\alpha \in \bar{K}$ gilt $\alpha \in K_j$ für ein $j \in \N_0$ und $K_j / K$ algebraisch ist (siehe M.14.2). Sei nun $f = \sum_{i=0}^n \lambda_i x^i \in \bar{K}[x] \setminus \bar{K}$. Dann gibt es ein $j \in \N_0$ mit $\lambda_0, \dots, \lambda_n \in K_j$, d. h. $f \in K_j[x]$. Nach Konstruktion hat $f$ eine Nullstelle in $K_{j+1} \subseteq \bar{K}$. Somit $\bar{K}$ algebraisch abgeschlossen.
+	\end{enumerate}
+\end{proof}
+\begin{rem}\label{rem8_4}
+	\begin{enumerate}[label=(\roman*)]
+		\item Der algebraische Abschluss eines Körpers ist im Wesentlichen eindeutig:
+		
+		Sind $L_1$ und $L_2$ algebraische Abschlüsse von $K$, so existiert ein Isomorphismus $L_1 \cong L_2$, der eingeschränkt auf $K$ die Identität ist.
+		\item Algebraisch abgeschlossene Körper haben unendlich viele Elemente.
+		\begin{proof}
+			Betrachte dazu einen endlichen Körper $K$ und das Polynom $f = 1_K + \prod_{\alpha \in K}^{x - \alpha} \in K[x] \setminus K$. Da $f(\alpha) = 1_K$ für alle $\alpha \in K$, hat $f$ keine Nullstelle in $K$, d. h. $K$ ist nicht algebraisch abgeschlossen.
+		\end{proof}
+		Der algebraische Abschluss $\bar{\Z_p}$ von $\Z_p$ für eine Primzahl $p$ hat abzählbar viele Elemente und enthält eine Kopie aller Körper mit $p^n$ Elementen für $n \in \N$.
+	\end{enumerate}
+\end{rem}
