@@ -511,7 +511,12 @@ Der Beweis zeigt zudem, dass $H \unlhd G \;\Leftrightarrow\; H/N \unlhd G/N$.
 
 \begin{rem}\label{rem1_24}
 	Die Bijektion in Satz \ref{satz1_23} ist inklusionserhaltend und zeigt, dass die kanonische Projektion $\pi \colon G \to G/N$ einen Isomorphismus von Untergruppenverbänden induziert:
-	\begin{center}
-		\includegraphics[scale=0.8]{images/2024-10-28_g3}
-	\end{center}
+	\[
+	% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZARgBoAGAXVJADcBDAGwFcYkQBxEAX1PU1z5CKcqWLU6TVuwASPPiAzY8BImQBMEhizaIQAOXn9lQtWK1TdII4oErhydeZrbpem0sGqUAFmeSdWQB6Q15jLwcAVgoLQL0OEI87UxQANn9XKySTb2RozRdLdgAdYuBiAH1gBP1uUu5siKJo8UK4624JGCgAc3giUAAzACcIAFskURAcCCQyEAALGHoodkgwNjCQEfG5mhmkJ0Xl1b11zYUdicQpg8QAZhollbWCC6HR66O7x+OXs7eNiuk32s0Qfj+p3AgK2wMQ3zBEOeUPOQM+SAhd0isPRiGi0zB6Uhrw2aN2iCJdwA7E8TiT3ttcfi7gAOWn-aGknHktkEpA04kArmXXGUsEATnZKJhIp5oKQksFnM2lG4QA
+	\begin{tikzcd}
+		& G \arrow[ld, no head] \arrow[d, no head] \arrow[rd, no head] &               &  &                                             & \faktor{G}{N} \arrow[rd, no head] \arrow[d, no head]         &    \\
+		H \arrow[rd, no head] & {}                                                           & {} \arrow[rr]{}{\pi} &  & \faktor{H}{N} \arrow[ru, no head] \arrow[rd, no head] & {}                                                 & {} \\
+		& N \arrow[u, no head] \arrow[ru, no head]                     &               &  &                                             & \{1_{G/N}\} \arrow[ru, no head] \arrow[u, no head] &   
+	\end{tikzcd}
+	\]
 \end{rem}
