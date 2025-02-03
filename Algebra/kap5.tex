@@ -7,26 +7,26 @@ Im Folgenden sei $R \neq \{0_R\}$ ein Ring.
 	\begin{enumerate}[label=(\roman*)]
 		\item $(R^\times)$ bildet eine Gruppe, die \textbf{Einheitengruppe in $R$}.
 		\item Sei $R$ kommutativ. Es gilt $R$ ist genau dann ein Körper, wenn $R$ nur die Ideale $\{0_R\}$ und $R$ hat.
-		\begin{proof}
+		\begin{inlproof}
 			\glqq{}$\Leftarrow$\grqq: Sei $\{0_R\} \neq I \unlhd R$ und $x \in I \setminus \{0_R\}$. Nach Voraussetzung ist $x$ invertierbar, so dass $xx^{-1} = 1_R \in I$. Also $I=R$.
 			
 			\glqq{}$\Rightarrow$\grqq: Sei $a \in R \setminus \{0_R\}$ und $I = (a) \unlhd R$. Da $I \neq \{0_R\}$, gilt $I=R$ und somit existiert $b \in R$ mit $ab = 1_R$. Also $a \in R^\times$.
-		\end{proof}
+		\end{inlproof}
 	\end{enumerate}
 \end{rem}
 \begin{beispiel}\label{beispiel5_3}
 	\begin{enumerate}[label=(\arabic*)]
 		\item Es ist $\Z^\times = \{1,-1\}$ und $\Q^\times = \Q \setminus \{0\}$.
 		\item Es gilt $\Z[i]^\times = \{1,-1,i,-i\}$ (als Gruppe isomorph zu $\Z_4$).
-		\begin{proof}
+		\begin{inlproof}
 			Sei $w \in \Z[i]^\times$ und $z \in \Z[i]$ mit $wz = 1$. Komplexe Konjugation liefert $1 = 1\cdot 1 = wz \overline{wz} = |w|^2 \cdot |z|^2$, d.h. $1 = |w|^2 = |a + ib|^2 = a^2 + b^2$ für $a,b \in \Z$. Also entweder $a = \pm 1$ und $b = 0$ oder $a = 0$ und $b = \pm 1$.
-		\end{proof}
+		\end{inlproof}
 		\item Es gilt $\Z_n^\times = \{\bar{a} \in \Z_n \mid \ggt(a,n) =1\}$ für $n > 1$. Insbesondere ist $\Z_n$ ein Körper genau dann, wenn $n$ Primzahl.
-		\begin{proof}
+		\begin{inlproof}
 			Sei $\bar{a} \in \Z_n^\times$. Dann existiert $\bar{b} \in \Z_n$ mit $\bar{a}\cdot\bar{b} = \overline{ab} = \bar{1}$, d.h. $ab \equiv 1 \mod n$. Also existiert $c \in \Z$ mit $ab + cn = 1$ und $\ggt(a,n) = 1$. Sei $\ggt(a,n) = 1$. Dann existieren $b,c \in \Z$ mit $ab + cn = 1$. Daraus folgt
 			\[\bar{a}\cdot\bar{b} = \overline{ab} = \overline{1 -cn} = \bar{1} - \overline{cn} = \bar{1}.\]
 			Also $\bar{a} \in \Z_n^\times$.
-		\end{proof}
+		\end{inlproof}
 		Die Zuordnung $n \mapsto |\Z_n^\times|$ definiert eine Abbildung $\varphi \colon \N\to\N$, die \textbf{Eulersche $\varphi$-Funktion} genannt wird. Es gilt $\varphi(1) := 1$ sowie
 		\begin{align*}
 			&\varphi(2) = |\Z_2^\times| = 1& &\varphi(4) = |\Z_4^\times| = 2& &\varphi(6) = |\Z_6^\times| = 2&\\
@@ -34,10 +34,10 @@ Im Folgenden sei $R \neq \{0_R\}$ ein Ring.
 		\end{align*}
 		$\varphi$ ist multiplikativ, d.h. für $n = n_1 n_2$ mit $\ggt(n_1, n_2) = 1$ gilt:
 		\[\varphi(n) = \varphi(n_1) \cdot \varphi(n_2).\]
-		\begin{proof}
+		\begin{inlproof}
 			Nach Korollar \ref{kor4_16} gilt $\Z_n \cong \Z_{n_1} \times \Z_{n_2}$ und somit
 			\[\Z_n^\times  \cong (\Z_{n_1} \times \Z_{n_2})^\times = \Z_{n_1}^\times \times \Z_{n_2}^\times.\]
-		\end{proof}
+		\end{inlproof}
 	\end{enumerate}
 \end{beispiel}
 \begin{leftbar}
@@ -56,9 +56,9 @@ Im Folgenden sei $R \neq \{0_R\}$ ein Ring.
 		\item Jeder Körper $K$ ist Integritätsbereich, da für $a,b \in K$ mit $b \neq 0_K$ gilt: $ab = 0_K \;\Rightarrow\; abb^{-1} = 0_K b^{-1} = 0_K$. Allgemein sind Einheiten niemals Nullteiler.
 		
 		Ist $R$ Integritätsbereich und $S \leq R$, so ist auch $S$ Integritätsbereich. Insbesondere ist zum Beispiel $\Z[\sqrt{n}] \leq \C$ ein Integritätsbereich für $n \in \Z$. Endliche Integritätsbereiche sind Körper. Insbesondere ist $\Z_n$ ein Integritätsbereich genau dann, wenn $n$ Primzahl (siehe Beispiel \ref{beispiel5_3} (3)).
-		\begin{proof}
+		\begin{inlproof}
 			Betrachte $a \in R \setminus \{0_R\}$ und die Abbildung $\varphi_a \colon R \to R$ mit $r \mapsto ar$. $\varphi_a$ ist injektiv, da aus $ar_1 = ar_2$ folgt $0_R = ar_1 - ar_2 = a(r_1 - r_2)$ und somit $r_1 - r_2 = 0_R$ bzw. $r_1 = r_2$. Da $R$ endlich, ist $\varphi_a$ sogar bijektiv, d.h. es existiert $r \in R$ mit $\varphi_a(r) = ar = 1_R$. Also ist $a \in R^\times$ und $R$ ein Körper.
-		\end{proof}
+		\end{inlproof}
 		\item Sind $R$ und $S$ nicht-triviale Ringe, so hat $R \times S$ stets Nullteiler, da $(r,0_S) \cdot (0_R, S) = 0_{R \times S}$ für $r \neq 0_R$ und $s \neq 0_S$.
 		\item Die Standardmatrizen $\mat{E}_{ij}$ sind Nullteiler in $M_n(K)$ für $n \geq 2$ und einem Körper $K$.
 	\end{enumerate}
@@ -111,9 +111,9 @@ Zurück zu Polynomen und weiter mit
 		Dies ist stets erfüllt, wenn $R$ Integritätsbereich ist. Andererseits gilt zum Beispiel in $\Z_6 [x]$:
 		\[\deg((\bar{2}x^7 + \bar{1})\cdot(\bar{3}x^2)) = \deg(\bar{3}x^2) = 2 < 9 = \deg(\bar{2}x^7 + \bar{1}) + \deg(\bar{3}x^2).\]
 		\item $R$ ist Integritätsbereich genau dann, wenn $R[x]$ Integritätsbereich (siehe Gradformel und Beispiel \ref{beispiel5_5} (1)). In diesem Fall gilt $R[x]^\times = R^\times$.
-		\begin{proof}
+		\begin{inlproof}
 			Sei $f \in R[x]^\times$, d.h. es existiert $g \in R[x]$ mit $f \cdot g = 1_{R[x]}$. Die Gradformel liefert $\deg(f) = \deg(g) = 0$, d.h. $f = a_0 \in R$ und $g = b_0 \in R$ mit $a_0 b_0 = 1_R$.
-		\end{proof} 
+		\end{inlproof} 
 	\end{enumerate}
 \end{rem}
 
@@ -122,7 +122,7 @@ Zurück zu Polynomen und weiter mit
 	\[f = q \cdot g + r.\]
 \end{satz}
 \begin{proof}
-	\textbf{Existenz: } Induktion nach $n := \deg(f)$.
+	\underline{Existenz:} Induktion nach $n := \deg(f)$.
 	
 	Ist $n < m$, wähle $q = 0_{R[x]}$ und $r=f$. Sei also $n \geq m$. Für $f = \sum_i a_i x^i$ setze $f_1 := f - a_n b_m^{-1} x^{n-m} g \in R[x]$. Dann ist $\deg(f_1) < \deg(f)$. Nach Induktionsvoraussetzung existieren $q_1, r_1 \in R[x]$ mit $\deg(r_1) < m$ und $f_1 = q_1 \cdot g + r_1$. Es folgt, dass 
 	\begin{align*}
@@ -146,20 +146,20 @@ Wir interessieren uns allgemeiner für Ringe, die eine Division mit Rest zulasse
 		\[a= (\underbrace{ab^{-1}}_{=:q})b + \underbrace{0_K}_{=:r}.\]
 		Also ist $K$ euklidisch mit beliebiger Gradfunktion
 		\item $\Z$ mit $\delta(n) := |n|$ für $n \in \Z\setminus\{0\}$ ist euklidisch.
-		\begin{proof}
+		\begin{inlproof}
 			Seien $a,b \in \Z$ mit $b \neq 0$. Sei $r := \min\{m \in \N_0 \mid m = a-nb, n \in \Z\}$. Wähle $q := \frac{a-r}{b} \in \Z$. Es folgt $a = qb + r$ mit $0 \leq r < |b|$.
-		\end{proof}
+		\end{inlproof}
 		Die Eindeutigkeit von $q$ und $r$ bei der Division mit Rest ist weder gefordert noch ist sie hier gegeben! Zum Beispiel gilt
 		\[7 = 2 \cdot 3 + 1 = 3 \cdot 3 + (-2).\]
 		\item Ist $K$ ein Körper, so ist $K[x]$ euklidisch mit $\delta(f) := \deg(f)$ für $f \in K[x] \setminus \{0_{K[x]}\}$ (siehe Satz \ref{satz5_10}).
 		\item $\Z[i]$ mit $\delta(a + bi) := a^2 + b^2$ für $a+bi \in \Z[i] \setminus \{0\}$ ist euklidisch. 
-		\begin{proof}
+		\begin{inlproof}
 			Für alle $z = x+yi \in \C$ existieren $a,b \in \Z$ mit $|x-a| \leq 1/2$ und $|y-b| \leq 1/2$.  Dann gilt $|z-(a+bi)|^2 = |(x-a) + (y-b)i|^2 \leq 2 \cdot 1/4 < 1$. Insbesondere gibt es für $f,g \in \Z[i]$ mit $g \neq 0$ ein $q := a + bi \in \Z[i]$, so dass 
 			\begin{align*}
 				\left|\frac{f}{g} - q\right|^2 < 1.
 			\end{align*}
 			Setze $r := f - qg \in \Z[i]$. Falls $r \neq 0$, so gilt $\delta(r) = |f-qg|^2 < |g|^2 = \delta(g)$, wie gewünscht. 
-		\end{proof}
+		\end{inlproof}
 		Dies lässt sich veranschaulichen mit $f = 2+i$, $g = -1 -i$. $fg^{-1} = -3/2 + 1/2 i$.
 		% TODO Bild Komplexe Zahlenebene
 		Wähle z.B. $q_1 = -1 + i$ und $r_1 = f-q_1 g = 2+i -2= i$ oder $q_2 = -2$ und $r_2 = (2+i)-(2+ 2i) = -i$.
@@ -178,9 +178,9 @@ Wir interessieren uns allgemeiner für Ringe, die eine Division mit Rest zulasse
 	\begin{enumerate}[label=(\arabic*)]
 		\item Ein Körper $K, \Z, K[x]$ und $\Z[i]$ sind Hauptidealringe nach Beispiel \ref{beispiel5_12}.
 		\item $\Z[x]$ ist kein Hauptidealring und insbesondere nicht euklidisch. 
-		\begin{proof}
+		\begin{inlproof}
 			Betrachte $I := (2,x) \unlhd \Z[x]$. Da $1 \notin I$, ist $I \neq \Z[x]$. Angenommen $I = (f)$ für ein Polynom $f \in \Z[x] \setminus \{0\}$. Dann existiert $g \in \Z[x]$ mit $f \cdot g = 2$. Mit der Gradformel folgt $\deg(f) = 0$, also $f = a_0 \in \Z$ mit $a_0 \mid 2$. Da $I \neq \Z[x]$, ist $a_0 \in \{\pm 1\}$ ausgeschlossen. Also $a_0 \in \{\pm 2\}$. Aber dann gilt $x \notin (a_0) = (f) = I$. Ein Widerspruch.
-		\end{proof}
+		\end{inlproof}
 		\item $\Z\left[\frac{1}{2} + \frac{1}{2}\sqrt{-19}\right]$ ist nicht euklidisch, aber ein Hauptidealring,
 		
 		$\Z\left[\frac{1}{2} + \frac{1}{2}\sqrt{-11}\right]$ hingegen ist euklidisch.

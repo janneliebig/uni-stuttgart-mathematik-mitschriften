@@ -29,9 +29,9 @@ Falls $G = \langle S \rangle$, so heißt $S$ \textbf{Erzeugendensystem} von $G$.
 		$(\Z_m, +) = \spn{\bar{1}}$ ist eine zyklische Gruppe der Ordnung $m$.
 		
 		\item Sei $G$ eine Gruppe mit $|G| = p$ Primzahl. Dann ist $G$ zyklisch.
-		\begin{proof}
+		\begin{inlproof}
 			Sei $1_G \neq g \in G$ und betrachte $\spn{g} \leq G$. Nach Satz \ref{satz1_11} $|\spn{g}|$ teilt $|G| = p$. Da $\spn{g} > 1$ nach Voraussetzung folgt $|\spn{g}| = p$. Somit $G = \spn{g}$.
-		\end{proof}
+		\end{inlproof}
 	\end{enumerate}
 \end{beispiel}
 \begin{satz}\label{satz2_4}
@@ -88,9 +88,9 @@ Falls $G = \langle S \rangle$, so heißt $S$ \textbf{Erzeugendensystem} von $G$.
 	\end{enumerate}
 \end{beispiel}
 
-\begin{center}
-	\textit{Welche Gruppen können wir aus zyklischen Gruppen zusammensetzen?}
-\end{center}
+\begin{leftbar}
+	Welche Gruppen können wir aus zyklischen Gruppen zusammensetzen?
+\end{leftbar}
 
 \begin{definition}
 	Eine Gruppe $G$ heißt \textbf{inneres direktes Produkt} von $G_1$ und $G_2$, falls
@@ -126,7 +126,7 @@ Falls $G = \langle S \rangle$, so heißt $S$ \textbf{Erzeugendensystem} von $G$.
 \begin{proof}
 	Sei $(G, +)$ abelsche Gruppe, erzeugt von $S = \{a_1, \dots, a_k\} \subseteq G$. 
 	
-	\textbf{Induktion über $k$:} Für $k = 1$ ist $G$ zyklisch.
+	\underline{Induktion über $k$:} Für $k = 1$ ist $G$ zyklisch.
 	
 	Betrachte den surjektiven Gruppenhomomorphismus
 	\[\varphi_S \colon \Z^k \to G \quad\text{mit}\quad(n_1, \dots, n_k) \mapsto n_1a_1 + \dots + n_ka_k.\]
@@ -220,9 +220,11 @@ Die endlichen einfachen Gruppen sind von der Form
 		\item Jede Gruppe $G$ hat die Normalreihe $\{1_G\} \unlhd G$.
 		\item Jede endliche Gruppe $G$ hat eine Kompositionsreihe.
 		
-		Induktion nach $|G|$. Ist $G$ einfach, dann ist $\{1_G\} \unlhd G$ Kompositionsreihe. Ist andernfalls $N \unlhd G$ maximaler echter Normalteiler. nach Satz \ref{satz1_23} ist $G/N$ einfach und $N$ hat nach Induktionsvoraussetzung eine Kompositionsreihe
-		\[\{1_G\} = N_0 \unlhd N_1 \unlhd \dots \unlhd N_t = N.\]
-		Dann ist $\{1_G\} = N_0 \unlhd N_1 \unlhd \dots \unlhd N_t = N \unlhd G$ eine Kompositionsreihe von $G$.
+		\begin{inlproof}
+			Induktion nach $|G|$. Ist $G$ einfach, dann ist $\{1_G\} \unlhd G$ Kompositionsreihe. Ist andernfalls $N \unlhd G$ maximaler echter Normalteiler. nach Satz \ref{satz1_23} ist $G/N$ einfach und $N$ hat nach Induktionsvoraussetzung eine Kompositionsreihe
+			\[\{1_G\} = N_0 \unlhd N_1 \unlhd \dots \unlhd N_t = N.\]
+			Dann ist $\{1_G\} = N_0 \unlhd N_1 \unlhd \dots \unlhd N_t = N \unlhd G$ eine Kompositionsreihe von $G$.
+		\end{inlproof}
 		
 		\item Die Gruppe $\Z$ hat keine Kompositionsreihe (nutze Klassifikation der Untergruppen von $\Z$).
 	\end{enumerate}
@@ -236,13 +238,13 @@ Die endlichen einfachen Gruppen sind von der Form
 		\item $\{1_G\} = G_0 \unlhd G_1 \unlhd \dots \unlhd G_r = G$,
 		\item $\{1_G\} = H_0 \unlhd H_1 \unlhd \dots \unlhd H_s = G$.
 	\end{enumerate}
-	\textbf{Induktion nach $r$: } Für $r = 1$ ist $G$ einfach. Also auch $G = H_1$.
+	\underline{Induktion nach $r$:} Für $r = 1$ ist $G$ einfach. Also auch $G = H_1$.
 	
 	Sei $r > 1$. 
 	
-	\textbf{Fall 1: } $G_{r-1} = H_{s-1}$. Dann hat $G_{r-1}$ die Kompositionsreihen $\{1_G\} = G_0 \unlhd \dots \unlhd G_{r-1}$ und $\{1_G\} = H_0 \unlhd \dots \unlhd H_{s-1} = G_{r-1}$. Nach Induktionsvoraussetzung sind diese beiden und somit auch die ursprünglichen beiden Kompositionsreihen \textbf{(I)} und \textbf{(II)} von $G$ äquivalent.
+	\underline{Fall 1:} $G_{r-1} = H_{s-1}$. Dann hat $G_{r-1}$ die Kompositionsreihen $\{1_G\} = G_0 \unlhd \dots \unlhd G_{r-1}$ und $\{1_G\} = H_0 \unlhd \dots \unlhd H_{s-1} = G_{r-1}$. Nach Induktionsvoraussetzung sind diese beiden und somit auch die ursprünglichen beiden Kompositionsreihen \textbf{(I)} und \textbf{(II)} von $G$ äquivalent.
 	
-	\textbf{Fall 2: } $G_{r-1} \neq H_{s-1}$. Betrachte $G_{r-1} \unlhd G_{r-1}\dots H_{s-1} \unlhd G$. Da $G_{r-1} \neq H_{s-1}$ und $G_r / G_{r-1}$ und $G/H_{s-1}$ einfach, folgt mit Satz \ref{satz1_23}, dass $G_{r-1}H_{s-1} = G$. Sei $J = G_{r-1} \cap H_{s-1}$ mit $J \unlhd G$. Nach Satz \ref{satz1_21} (a) gilt
+	\underline{Fall 2:} $G_{r-1} \neq H_{s-1}$. Betrachte $G_{r-1} \unlhd G_{r-1}\dots H_{s-1} \unlhd G$. Da $G_{r-1} \neq H_{s-1}$ und $G_r / G_{r-1}$ und $G/H_{s-1}$ einfach, folgt mit Satz \ref{satz1_23}, dass $G_{r-1}H_{s-1} = G$. Sei $J = G_{r-1} \cap H_{s-1}$ mit $J \unlhd G$. Nach Satz \ref{satz1_21} (a) gilt
 	\[\faktor{G}{G_{r-1}} = \faktor{G_{r-1}H_{s-1}}{G_{r-1}} \cong \faktor{H_{s-1}}{J}\]
 	sowie 
 	\[\faktor{G}{H_{s-1}} = \faktor{H_{s-1} G_{r-1}}{H_{s-1}} \cong \faktor{G_{r-1}}{J}\]
@@ -261,7 +263,9 @@ Die endlichen einfachen Gruppen sind von der Form
 	Die symmetrische Gruppe $S_3$ hat die Kompositionsreihe $\{\id\} \unlhd A_3 \unlhd S_3$, deren Kompositionsfaktoren auch isomorph zu $\Z_2$ und $\Z_3$ sind. Aber $\Z_6 \cong \Z_2 \times \Z_3 \not\cong S_3$!
 \end{beispiel}
 % Vorlesung vom 11.11.2024:
-Wir haben gesehen, dass sich endliche abelsche Gruppen, auf im Wesentlichen, eindeutige Art und Weise, aus einfachen Gruppen zusammenkleben lassen. Aber welche Gruppen können wir aus einfachen zyklischen Gruppen zusammenkleben?
+\begin{leftbar}
+	Wir haben gesehen, dass sich endliche abelsche Gruppen, auf im Wesentlichen, eindeutige Art und Weise, aus einfachen Gruppen zusammenkleben lassen. Aber welche Gruppen können wir aus einfachen zyklischen Gruppen zusammenkleben?
+\end{leftbar}
 \begin{definition}
 	Eine Gruppe $G$ heißt \textbf{auflösbar}, wenn $G$ eine Normalreihe mit abelschen Faktoren hat, d.h. es gibt eine Folge von Untergruppen
 	\[\{1_G\} = G_0 \unlhd G_1 \unlhd \dots \unlhd G_n = G\]
@@ -278,9 +282,9 @@ Wir haben gesehen, dass sich endliche abelsche Gruppen, auf im Wesentlichen, ein
 			Da $G$ einfach, existiert nur die triviale Normalreihe $\{1_G\} \unlhd G$. Da $G$ auflösbar ist, folgt, dass $G$ abelsch ist und abelsche Gruppen ohne echten Normalteiler sind isomorph zu $\Z_p$.
 		\end{proof}
 		\item Die alternierende Gruppe $A_n$ mit $n \in \N$ ist auflösbar genau dann, wenn $n \leq 4$.
-		\begin{proof}
+		\begin{inlproof}
 			Für $n \leq 3$ ist $A_n$ abelsch und dadurch auflösbar. Für $n = 4$ betrachte die Normalreihe $\{1_G\} \unlhd V_4 \unlhd A_4$ mit Faktoren $V_4 \cong \Z_2 \times \Z_2$ und $A_4 / V_4 \cong \Z_3$ (siehe Aufgabe S.2.2.). Für $n \geq 5$ nutze Beispiel \ref{beispiel2_13}.
-		\end{proof}
+		\end{inlproof}
 		\item Man kann zeigen, dass endliche Gruppen ungerader Ordnung stets auflösbar sind. (\textbf{Satz von Feit-Thompson} (1963))
 		\item Die kleinste nicht auflösbare Gruppe ist die $A_5$.
 	\end{enumerate}

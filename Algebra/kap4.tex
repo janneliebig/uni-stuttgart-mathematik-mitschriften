@@ -24,11 +24,16 @@ Für $a \cdot b$ schreiben wir auch $ab$.
 \begin{rem}\label{rem4_2}
 	\begin{enumerate}[label=(\roman*)]
 		\item Es gilt $a \cdot 0 = 0 = 0 \cdot a$ für alle $a \in R$.
-		\[a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0 \;\Rightarrow\; a \cdot 0 = 0\]
+		\begin{inlproof}
+			\[a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0 \;\Rightarrow\; a \cdot 0 = 0\]
+		\end{inlproof}
 		$0 \cdot a = 0$ folgt analog.
 		\item Es gilt $(-a)b = -(ab) = a(-b)$ für alle $a,b,c \in R$.
-		\[(-a)b + ab = (-a + a) b = 0 \cdot b = 0\]
-		Daraus folgt $(-a)b = -(ab)$ und die zweite Gleichung analog.
+		\begin{inlproof}
+			\[(-a)b + ab = (-a + a) b = 0 \cdot b = 0\]
+				Daraus folgt $(-a)b = -(ab)$ und die zweite Gleichung analog.
+		\end{inlproof}
+	
 		\item Das Einselement in $R$ ist eindeutig. Ist $1_R = 0_R$, so gilt $R = \{0_R\}$.
 	\end{enumerate}
 \end{rem}
@@ -100,13 +105,13 @@ Für $a \cdot b$ schreiben wir auch $ab$.
 		\begin{align*}
 			\varphi_s\left( \left(\sum_i a_i x^i\right) \cdot \left(\sum_i b_i x^i\right)\right) &= \varphi_s\left(\sum_i \left(\sum_{p=0}^i a_p b_{i-p}\right)x^i\right)\\
 			&= \sum_i \varphi\left(\sum_{p=0}^i a_p b_{i-p}\right) s^i\\
-			&= \sum_i \sum_{p=0}^i \varphi(ap)\varphi(b_{i-p}) s^i\\
+			&= \sum_i \sum_{p=0}^i \varphi(a_p)\varphi(b_{i-p}) s^i\\
 			&= \sum_i \left(\sum_i \varphi(a_i) s^i\right) \left(\sum_{i} \varphi(b_i) s^i\right)\\
-			&= \varphi_s\left(\sum_i a_ix^i\right) \varphi_s\left(\sum_i b_ix^i\right)
+			&= \varphi_s\left(\sum_i a_ix^i\right) \varphi_s\left(\sum_i b_ix^i\right).
 		\end{align*}
 		$\varphi_s$ ist der eindeutige Ringhomomorphismus mit $\varphi_s(x) = s$, der das folgende Diagramm kommutieren lässt.
 		\[
-		\begin{tikzcd}
+		\begin{tikzcd}[column sep=huge, row sep=huge]
 			R \arrow{r}{\varphi} \arrow[swap]{d}{\text{Inklusion}} & S \\
 			R[x] \arrow{ur}{\varphi_s}
 		\end{tikzcd}
@@ -231,9 +236,9 @@ Analog zur Gruppentheorie gilt:
 \begin{beispiel}\label{beispiel4_12}
 	Betrachte den Einsetzungshomomorphismus $\varphi_i \colon \R[x] \to \C$ mit $f \mapsto f(i)$ (siehe Beispiel \ref{beispiel4_6} (3)). Wir haben durch Inklusion
 	\[
-	\begin{tikzcd}
+	\begin{tikzcd}[row sep=huge, column sep=huge]
 		\R \arrow{r}{\varphi = \text{Inklusion}} \arrow[swap]{d}{\text{Inklusion}} & \C\\
-		R[x] \arrow{ur}{\varphi_i} 
+		R[x] \arrow[swap]{ur}{\varphi_i} 
 	\end{tikzcd}
 	\]
 	mit $\im(\varphi_i) = \R[i] = \C$. Es gilt $\ker(\varphi_i) = (x^2 + 1) \unlhd \R[x]$ (dazu später mehr) und mit Satz \ref{satz4_11} (a) folgt $R[x] /(x^2 + 1) \cong \C$.

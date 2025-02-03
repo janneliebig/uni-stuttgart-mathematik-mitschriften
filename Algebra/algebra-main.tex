@@ -81,6 +81,11 @@
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{kor}[thm]{Korollar}
 
+\newenvironment{inlproof}{%
+	\def\FrameCommand{\vrule width .8pt \hspace{.6pt}\vrule width .4pt \hspace{8pt}}% choose the values as you like
+	\MakeFramed {\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+
 
 % Beweisende: Schwarzes Quadrat
 %\renewcommand{\qedsymbol}{$\blacksquare$}

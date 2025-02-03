@@ -180,11 +180,11 @@
 		
 		\item Sei $\varphi \colon G \to H$ ein Gruppenhomomorphismus. Dann sind $\ker(\varphi) := \{g \in G \mid \varphi(g) = 1_H\}$ (\textbf{Kern von $\varphi$}) und $\im(\varphi) = \{\varphi(g) \mid g \in G\}$ (\textbf{Bild von $\varphi$}) Untergruppen von $G$ bzw. $H$. Zudem ist $\varphi$ injektiv genau dann, wenn $\ker(\varphi) = \{1_G\}$.
 		
-		\begin{proof}
+		\begin{inlproof}
 			\glqq{}Nur dann\grqq: Sei $g \in G$ mit $\varphi(g) = 1_H$. Da $\varphi(1_G) = 1_H$, folgt $g = 1_G$.
 			
 			\glqq{}Dann\grqq: Seien $a,b \in G$ mit $\varphi(a) = \varphi(b)$. Da $1_H = \varphi(a) \varphi(b)^{-1} = \varphi(ab^{-1})$, folgt $ab^{-1} = 1_G$ und somit $a = b$.
-		\end{proof}
+		\end{inlproof}
 	\end{enumerate}
 \end{beispiel}
 
@@ -246,9 +246,9 @@
 			G &= \bigcup_{g \in G} gH = \bigsqcup_{N \in G/H} N,\\
 			G &= \bigcup_{g \in G} Hg = \bigsqcup_{N \in H \backslash G} N
 		\end{align*}
-		\begin{proof}
+		\begin{inlproof}
 			Für $[a] = \{b \mid a_1 \sim_1 b\}$ gilt: $b \in [a] \Leftrightarrow a^{-1}b \in H \;\Leftrightarrow\; \exists h \in H : a^{-1}b = h \;\Leftrightarrow\; \exists h \in H : b = ah \;\Leftrightarrow\; b \in aH$.
-		\end{proof}
+		\end{inlproof}
 	\end{enumerate}
 \end{rem}
 \begin{satz}[Satz von Lagrange]\label{satz1_11}
@@ -308,17 +308,17 @@
 		\item Ist $G$ abelsch, so ist jede Untergruppe Normalteiler.
 		
 		\item Sei $H \leq G$ mit $[G : H] = 2$, dann gilt $H \unlhd G$. 
-		\begin{proof}
+		\begin{inlproof}
 			\[[G:H] = 2 \;\implies\; G/H = \{H, G\backslash H\}\]
 			Damit stimmen Links- und Rechtsnebenklassen überein.			
-		\end{proof}
+		\end{inlproof}
 		Betrachte zum Beispiel die alternierende Gruppe $A_n \leq S_n$ mit $A_n = \{\sigma \in S_n \mid \sgn(\sigma) = 1\}$ für $n \geq 2$. Für $\pi \in S_n$ mit $\sgn(\pi) = -1$ gilt
 		\[\pi A_n = \{\sigma \in S_n \mid \sgn(\sigma) = -1\}\]
-		\begin{proof}
+		\begin{inlproof}
 			$\subseteq$: Gilt, da $\sgn$ Gruppenhomomorphimus ist.
 			
 			$\supseteq$: Sei $\sigma \in S_n$ mit $\sgn(\sigma) = -1$. Dann gilt $\sigma = \pi(\pi^{-1} \sigma) \in \pi A_n$, da $\sgn(\pi^{-1} \sigma) = \sgn(\pi^{-1})\sgn(\sigma) = (-1)^2 = 1$.
-		\end{proof}
+		\end{inlproof}
 		Es folgt, dass $[S_n : A_n] = 2$ und damit $A_n \unlhd S_n$. Insbesondere ist nach Satz \ref{satz1_11} $|A_n| = n! / 2$, 
 		da z.B. $(13)H_1 (13) = H_3$.
 		
@@ -449,10 +449,13 @@
 		\[(h_1h_2)(h'_1h'_2) = h_1(\underbrace{h_2h'_1}_{\in H_1H_2}) h'_2 \in H_1 H_2 \]
 		Für $h_1 \in H_1, h_2 \in H_2$ gilt $(h_1h_2)^{-1} = h_2^{-1} h_1^{-1} \in H_2 H_1 = H_1 H_2$. Da $H_1 \unlhd G$, gilt auch $H_1 \unlhd H_1H_2$.
 		
-		Betrachte nun den Homomorphismus
-		\begin{center}
-			\includegraphics[scale=0.8]{images/2024-10-28_g1}
-		\end{center}
+		Betrachte nun den Homomorphismus		
+		\[
+		\begin{tikzcd}[column sep=huge, row sep=huge]
+			H_2 \arrow{r}{\varphi} \arrow[swap]{d}{(\textbf{Inklusion})\;i} & \faktor{H_1H_2}{H_1} \\
+			H_1H_2 \arrow[swap]{ur}{\pi \; (\textbf{kanonische Bijektion})}
+		\end{tikzcd}
+		\]
 		mit $\varphi(h_2) = h_2H_1$. Dann gilt
 		\[\ker(\varphi) = \{h_2 \in H_2 \mid h_2 H_1 = H_1\} = H_1 \cap H_2\]
 		Da $\varphi$ nach Konstruktion surjektiv, (nutze $H_1 H_2 = H_2 H_1$), folgt mit Satz \ref{satz1_20}
@@ -460,9 +463,12 @@
 		\item Nach Voraussetzung gilt $H_1 \unlhd H_2$. Die Faktorgruppe $H_2 / H_1$ wird zur Untergruppe von $G/H_1$. Es gilt sogar $H_2/H_1 \unlhd G/H_1$, da für alle $g \in G, h_2 \in H_2$ gilt:
 		\[gH_1 h_2H_1 g^{-1} H_1 = \underbrace{gh_2g^{-1}}_{\in H_2, \text{ da } H_2 \unlhd G} H_1.\]
 		Betrachte nun den Homomorphismus
-		\begin{center}
-			\includegraphics[scale=0.8]{images/2024-10-28_g2}
-		\end{center}
+		\[
+		\begin{tikzcd}[column sep=huge, row sep=huge]
+			G \arrow{r}{\varphi} \arrow[swap]{d}{\text{(kanonische Projektion)}\;\pi_1} & \faktor{\sfrac{G}{H_1}}{\sfrac{H_2}{H_1}} \\
+			\faktor{G}{H_1} \arrow[swap]{ur}{\pi_2 \; \text{(kanonische Projektion)}}
+		\end{tikzcd}
+		\]
 		
 
 		mit $\varphi(g) = gH_1(H_2/H_1)$. Dann gilt

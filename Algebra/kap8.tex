@@ -11,11 +11,11 @@
 		\item Sei $K \leq \C$ ein Teilkörper. Dann ist 
 		\[\bar{K} := \{z \in \C \mid z \; \text{ist algebraisch über} \; K\}\]
 		algebraischer Abschluss von $K$.
-		\begin{proof}
+		\begin{inlproof}
 			Für $a,b \in \bar{K}$ ist $a \pm b, a \cdot b, a^{-1} \in K(a,b)$. Nach Korollar \ref{kor7_17} ist die Körpererweiterung $K(a,b)/K$ algebraisch, d. h. $K(a,b) \subseteq \bar{K}$ und $\bar{K}$ ist ein Körper. Nach Definition ist $\bar{K} / K$ algebraisch. 
 			
 			Sei $f \in \bar{K}[x] \setminus \bar{K}$ mit Nullstelle $\alpha$ in $\C$. Da $\bar{K}[\alpha] / \bar{K}$ und $\bar{K}/K$ algebraische Körpererweiterungen sind, ist auch $\bar{K}(\alpha) /K$ algebraisch (siehe Aufgabe M.14.2). Insbesondere ist $\alpha$ algebraisch über $K$, d. h. $\alpha$ liegt bereits in $\bar{K}$. Also ist $\bar{K}$ algebraisch abgeschlossen und somit ein algebraischer Abschluss von $K$.
-		\end{proof}
+		\end{inlproof}
 	\end{enumerate}
 \end{beispiel}
 \begin{thm}\label{thm8_3}
@@ -55,9 +55,9 @@
 		
 		Sind $L_1$ und $L_2$ algebraische Abschlüsse von $K$, so existiert ein Isomorphismus $L_1 \cong L_2$, der eingeschränkt auf $K$ die Identität ist.
 		\item Algebraisch abgeschlossene Körper haben unendlich viele Elemente.
-		\begin{proof}
+		\begin{inlproof}
 			Betrachte dazu einen endlichen Körper $K$ und das Polynom $f = 1_K + \prod_{\alpha \in K}^{x - \alpha} \in K[x] \setminus K$. Da $f(\alpha) = 1_K$ für alle $\alpha \in K$, hat $f$ keine Nullstelle in $K$, d. h. $K$ ist nicht algebraisch abgeschlossen.
-		\end{proof}
+		\end{inlproof}
 		Der algebraische Abschluss $\bar{\Z_p}$ von $\Z_p$ für eine Primzahl $p$ hat abzählbar viele Elemente und enthält eine Kopie aller Körper mit $p^n$ Elementen für $n \in \N$.
 	\end{enumerate}
 \end{rem}

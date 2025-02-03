@@ -59,9 +59,9 @@ Da Körper nur triviale Ideale besitzen, sind Körperhomomorphismen stets injekt
 			\chr\left(\faktor{K[x]}{I}\right) &= \chr(K)\\
 			\Pi\left(\faktor{K[x]}{I}\right) &\cong \Pi(K).
 		\end{align*}
-		\begin{proof}
+		\begin{inlproof}
 			Sei $\chr(K) = 0$. Angenommen, es gibt eine Primzahl $p$ mit $p \cdot 1_{K[x] / I} 0_{K[x] / I}$ bzw. $p \cdot (1_K + I) = p\cdot 1_K + I = 0_K + I$. Dann ist $p \cdot 1_K \in I$. Nach Voraussetzung ist aber $p \cdot 1_K \neq 0$ und $p \cdot 1_K$ somit eine Einheit in $K$ bzw. in $K[x]$, sodass $I = K[x]$. Ein Widerspruch. Also $\chr(K[x] / I) = 0$. Der Fall $\chr(K) = p$ folgt analog.
-		\end{proof}
+		\end{inlproof}
 	\end{enumerate}
 \end{beispiel}
 \begin{kor}\label{kor7_7}
@@ -225,7 +225,9 @@ Da Körper nur triviale Ideale besitzen, sind Körperhomomorphismen stets injekt
  	
  	Da $L/K$ endlich ist, $L/K$ auch algebraisch nach Korollar \ref{kor7_17}.
 \end{proof}
-Wir kehren noch einmal zurück zu endlichen Körpern (vgl. Korollar \ref{kor7_7}).
+\begin{leftbar}
+	Wir kehren noch einmal zurück zu endlichen Körpern (vgl. Korollar \ref{kor7_7}).
+\end{leftbar}
 \begin{satz}\label{satz7_20}
 	Sei $p$ ein Primzahl und $n \in \N$. Dann gibt es bis auf Isomorphie genau einen Körper mit $p^n$ Elementen.
 \end{satz}

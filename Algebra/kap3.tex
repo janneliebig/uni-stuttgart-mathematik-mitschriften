@@ -51,7 +51,7 @@ Ist die Abbildung $\tau$ injektiv bzw. ist $g = 1_G$ das einzige Element aus $G$
 		\[[x] = \{y \in X \mid x \sim y\} = \{y \in X \mid \exists g \in G : gx = y\} = \{gx \mid g \in G\} = Gx.\]
 		Insbesondere ist $X$ die disjunkte Vereinigung von Bahnen
 		
-		\item Für $x in X$ ist $\stab_G(x) \leq G$, da
+		\item Für $x \in X$ ist $\stab_G(x) \leq G$, da
 		\begin{align*}
 			1_G &\in \stab_G(x)\\
 			\forall g,h \in \stab_G(x) &: (gh)x = g(hx) = gx = x\\
@@ -126,12 +126,12 @@ Ist die Abbildung $\tau$ injektiv bzw. ist $g = 1_G$ das einzige Element aus $G$
 \begin{rem}\label{rem3_11}
 \begin{enumerate}[label=(\roman*)]
 	\item 	Ist $G$ eine $p$-Gruppe und $X$ eine endliche $G$-Menge, so gilt $|X| \equiv |X^G| \mod p$.
-	\begin{proof}
+	\begin{inlproof}
 		Nach Korollar \ref{kor3_8} gilt für ein Repräsentantensystem $\{x_i\}_{i \in I}$ der Bahnen von $X$:
 		\[|X| \equiv |X^G| + \sum_{x_i \notin X^G} [G : \stab_G(x_i)].\]
 			Nach Satz \ref{satz1_11} teilt $[G: \stab_G(x_i) ]$ die Ordnung von $G$. Für $x_i \notin G$ ist $[G : \stab_G(x_i)] > 1$ und somit gilt
 			\[p \mid [G : \stab_G(x_i)].\]
-	\end{proof}
+	\end{inlproof}
 	\item Für eine $p$-Gruppe $G$ ist das Zentrum $Z(G) \neq \{1_G\}$.
 	\begin{proof}
 		Die Klassengleichung aus Korollar \ref{kor3_8} liefert 
@@ -189,7 +189,7 @@ Ist die Abbildung $\tau$ injektiv bzw. ist $g = 1_G$ das einzige Element aus $G$
 		
 		Angenommen $p$ teilt nicht $|Z(G)|$. Da $p$ aber $|G|$ teil, existiert ein $i \in I$, so dass $p$ nicht $[G : C_G(x_i)]=\frac{|G|}{|C_G(x_i)|}$ teilt. Somit gilt $|C_G(x_i)| = p^n \cdot q'$ mit $\ggt(p, q') = 1$ und $|C_G(x_i)| < |G|$. Nach Induktionsvoraussetzung hat $C_G(x_i)$ eine Untergruppe der Ordnung $p^k$ für alle $k \in \{1, \dots, n\}$. Also gilt dies auch für $G$.
 		
-		\underline{Fall 2: }
+		\underline{Fall 2:}
 		
 		Angenommen $p$ teilt $|Z(G)|$. Schreibe 
 		\[Z(G) \cong \Z_{n_1} \times \dots \times \Z_{n_s}\]

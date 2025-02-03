@@ -80,9 +80,9 @@ Allgemeiner erhalten wir
 		\end{align*}  
 		Vergleiche Aufgabe M.8.5. Assoziiertheit ist eine Äquivalenzrelation.
 		\item Primelemente sind stets unzerlegbar.
-		\begin{proof}
-			Sei $p \in R$ prim mit $p = ab$ für $a,b \in R$. Folglich gilt $p \mid a$ oder $p \mid b$. O. B. d. A. gelte $p \mid a$ , d. h. es existiert $c \in R$, so dass $pc = a$. Also ist $p = ab = pcb$. Da $R$ Integritätsbereich folgt $cb = 1_R$ und $b \in R^\times$. Somit ist $p$ unzerlegbar.
-		\end{proof}
+		\begin{inlproof}
+			Sei $p \in R$ prim mit $p = ab$ für $a,b \in R$. Folglich gilt $p \mid a$ oder $p \mid b$. O. B. d. A. gelte $p \mid a$, d. h. es existiert $c \in R$, so dass $pc = a$. Also ist $p = ab = pcb$. Da $R$ Integritätsbereich folgt $cb = 1_R$ und $b \in R^\times$. Somit ist $p$ unzerlegbar.
+		\end{inlproof}
 		Die Umkehrung gilt im Allgemeinen nicht (siehe Beispiel \ref{beispiel6_8} (2)).
 	\end{enumerate}
 \end{rem}
@@ -91,11 +91,11 @@ Allgemeiner erhalten wir
 		\item In $\Z$ sind $n$ und $-n$ assoziiert für $n \in \Z \setminus \{0\}$. Die Primelemente sind genau die unzerlegbaren Elemente und gegeben durch
 		\[\{\pm p \mid p \;\text{Primzahlen}\}.\]
 		\item $2 \in \Z[\sqrt{-5}]$ ist unzerlegbar, aber nicht prim.
-		\begin{proof}
+		\begin{inlproof}
 			Betrachte $N \colon \Z[\sqrt{-5}] \to \N_0$ mit $a+b\sqrt{-5} \mapsto a^2 + 5b^2$. Wie in Beispiel \ref{beispiel5_15} (3), folgt
 			\[\Z[\sqrt{-5}]^\times = \{x \in \Z[\sqrt{-5}] \mid N(x) = 1\} = \{\pm 1\} \not\ni 2.\]
 			Schreibe $2 = xy$ mit $x,y \in \Z[\sqrt{-5}]$. Dann gilt $4 = N(2) = N(xy) = N(x)N(y)$. Da es kein $a,b \in \Z$ mit $N(a+b\sqrt{-5}) = a^2 + 5b^2 = 2$, folgt $N(x) = 1$ oder $N(y) = 1$, d. h. 2 ist unzerlegbar. Aber $2 \mid (1 + \sqrt{-5})(1 - \sqrt{-5}) = 6 = 2 \cdot 3$ und $2 \mid x$ mit $x \in \Z[\sqrt{-5}]$ bedeutet, dass $y \in \Z[\sqrt{-5}]$ existiert mit $2y = x$ und somit $N(x) = N(2y) = N(2) N(y) = 4 \cdot N(y)$, also insbesondere $4 \mid N(x)$. Da $N(1 \pm \sqrt{-5}) = 6$, teilt 2 weder $1 + \sqrt{-5}$ noch $1 - \sqrt{-5}$ und ist daher nicht prim.
-		\end{proof}
+		\end{inlproof}
 	\end{enumerate}
 \end{beispiel}
 \begin{prop}\label{prop6_9}
@@ -173,9 +173,9 @@ Allgemeiner erhalten wir
 \begin{rem}\label{rem6_14}
 	Sei $R$ ein faktorieller Ring und $p \in R$. Dann gilt 
 	\[p \text{ prim} \quad\Leftrightarrow\quad p \text{ unzerlegbar}.\]
-	\begin{proof}
+	\begin{inlproof}
 		\glqq{}$\Leftarrow$\grqq: Seien $a, b \in R$ mit $p \mid ab$, d. h. es existiert $c \in R$ mit $pc = ab$. Betrachte Zerlegungen von $a,b,c$ in unzerlegbare Elemente. Da $R$ faktoriell und $p$ unzerlegbar ist, muss $p$ bis auf Assoziiertheit in der Zerlegung von $ab$ vorkommen und somit in der von $a$ oder von $b$. Also $p \mid a$ oder $p \mid b$.
-	\end{proof}
+	\end{inlproof}
 \end{rem}
 \begin{definition}\label{definition6_15}
 	Sei $R$ ein Integritätsbereich und $a,b \in R$.
@@ -188,20 +188,25 @@ Allgemeiner erhalten wir
 	\begin{enumerate}[label=(\roman*)]
 		\item Existieren $\ggt$ und $\kgv$, so sind sie nur eindeutig bis auf Multiplikation mit einer Einheit.
 		\item In einem faktoriellen Ring existieren stets $\ggt$ und $\kgv$. 
+		\begin{inlproof}
+				Sei $P_R$ ein Repräsentantensystem der Klassen assoziierter Primelemente und seien $a,b \in R\setminus\{0_R\}$ mit $a = \Sigma_a p_1^{a_1} \cdots p_n^{a_n}$ und $b = \Sigma_b p_1^{b_1} \cdots p_n^{b_n}$ für $a_i,b_i \in \N_0, \Sigma_a, \Sigma_b \in R^\times, p_i \in P_R$ mit $p_i \not\sim p_j$ für $i \neq j$. Dann ist $\prod_i p_i^{\min(a_i,b_i)}$ ein $\ggt$ und $\prod_i p_i^{\max(a_i,b_i)}$ ein $\kgv$ der Elemente $a$ und $b$.
+		\end{inlproof}
 		
-		Sei $P_R$ ein Repräsentantensystem der Klassen assoziierter Primelemente und seien $a,b \in R\setminus\{0_R\}$ mit $a = \Sigma_a p_1^{a_1} \cdots p_n^{a_n}$ und $b = \Sigma_b p_1^{b_1} \cdots p_n^{b_n}$ für $a_i,b_i \in \N_0, \Sigma_a, \Sigma_b \in R^\times, p_i \in P_R$ mit $p_i \not\sim p_j$ für $i \neq j$. Dann ist $\prod_i p_i^{\min(a_i,b_i)}$ ein $\ggt$ und $\prod_i p_i^{\max(a_i,b_i)}$ ein $\kgv$ der Elemente $a$ und $b$.
 		\item In einem euklidischen Ring lässt sich ein $\ggt$ mit Hilfe des euklidischen Algorithmus bestimmen, also durch wiederholte Division mit Rest (vgl. Beispiel \ref{beispiel4_17} und Aufgabe V.8.1, M.11.5, M.11.6).
 	\end{enumerate}
 \end{rem}
 \begin{beispiel}\label{beispiel6_17}
 	In $\Z[\sqrt{-5}]$ existiert kein $\ggt$ von $x = 6$ und $y = 2 + 2\sqrt{-5}$.
-	\begin{proof}
+	\begin{inlproof}
 	Angenommen, $d$ sei ein solcher $\ggt$. Sei $N \colon \Z[\sqrt{-5}] \to \N_0$ mit $a + b \sqrt{-5} \mapsto a^2 + 5b^2$ wie in Beispiel \ref{beispiel6_8} (2). Dann gilt $N(d) \mid N(x) = 36$ und $N(d) \mid N(y) = 24$.
 	
 	Da 2 sowohl $x$ als auch $y$ teilt, folgt $2 \mid d$ und somit $4 = N(2) \mid N(d)$. Ebenso teilt $1 + \sqrt{-5}$ sowohl $x$ als auch $y$, so dass $6 = N(1 + \sqrt{-5}) \mid N(d)$. Es folgt $N(d)= 12$. Aber es existieren keine $a,b \in \Z$ mit $N(a + b\sqrt{-5}) = 12$. Ein Widerspruch.
-	\end{proof}
+	\end{inlproof}
 \end{beispiel}
-Wir zeigen nun, dass für $R$ faktoriell auch $R[x]$ ein faktorieller Ring ist!
+
+\begin{leftbar}
+	Wir zeigen nun, dass für $R$ faktoriell auch $R[x]$ ein faktorieller Ring ist!
+\end{leftbar}
 \begin{definition}\label{definition6_18}
 	Sei $R$ ein faktorieller Ring und $f = \sum_{i=0}^n a_i x^i \in R[x]$. Die Menge aller $\ggt$ von $a_0, a_1, \dots, a_n$ heißt \textbf{Inhalt} von $f$. Wir schreiben $\cont_R(f)$. Wir nennen $f$ \textbf{primitiv}, wenn $\cont_R(f) = R^\times$.
 \end{definition}
@@ -231,9 +236,9 @@ Wir zeigen nun, dass für $R$ faktoriell auch $R[x]$ ein faktorieller Ring ist!
 \end{beispiel}
 \begin{rem}\label{rem6_22}
 	Sei $R$ Integritätsbereich und $p \in R$ prim. Dann ist $p$ auch prim im Polynomring $R[x]$.
-	\begin{proof}
+	\begin{inlproof}
 		Betrachte dazu das Primideal $I = (p) \unlhd R$. Nach Beispiel \ref{beispiel6_5} (2) induziert $I$ das Primideal $I(x) := \{\sum_i a_i x^i \mid a_i \in I\} \unlhd R[x]$. Aber es gilt $I(x) = (p)$ in $R[x]$. Somit ist $p$ Primelement in $R[x]$ nach Proposition \ref{prop6_9}.
-	\end{proof}
+	\end{inlproof}
 \end{rem}
 
 \begin{thm}[Lemma von Gauß]\label{thm6_23}
@@ -299,7 +304,9 @@ Wir zeigen nun, dass für $R$ faktoriell auch $R[x]$ ein faktorieller Ring ist!
 \begin{beispiel}\label{beispiel6_25}
 	Sei $f = x^5 - 4x + 2$ in $\Z[x]$. Das Polynom $f$ ist primitiv und die Primzahl $p = 2$ teilt alle Koeffizienten bis auf den Leitkoeffizienten und den konstanten Teil von $f$ nur einfach. Nach Satz \ref{satz6_24} ist $f$ unzerlegbar in $\Z[x]$.
 \end{beispiel}
-Das Eisenstein-Kriterium lässt sich jedoch nicht unmittelbar nutzen, um Unzerlegbarkeit in $K[x]$ für einen Körper $K$ zu untersuchen. Wir können uns aber wie folgt behelfen:
+\begin{leftbar}
+	Das Eisenstein-Kriterium lässt sich jedoch nicht unmittelbar nutzen, um Unzerlegbarkeit in $K[x]$ für einen Körper $K$ zu untersuchen. Wir können uns aber wie folgt behelfen:
+\end{leftbar}
 \begin{satz}\label{satz6_26}
 	Sei $R$ ein faktorieller Ring mit Quotientenkörper $\quot(R)$. Dann ist $f \in R[x] \setminus R$ unzerlegbar in $R[x]$ genau dann, wenn $f$ primitiv in $R[x]$ ist und unzerlegbar in $\quot(R)[x]$.
 \end{satz}
