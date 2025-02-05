@@ -105,3 +105,30 @@ gebildet aus $n$ Lösungen von $\dot{x} = A(t) x$ heißt \textbf{Wronski-Determi
 \begin{rem}
 	Für $A(t) \equiv A$ folgt das aus Satz \ref{satz4_13}.
 \end{rem}
+
+\paragraph{Inhomogene Systeme. } Sei $t \mapsto A(t) \in M(n\times n, \K$ und $t \mapsto b(t) \in \K^n$ stetige Funktionen auf einem Intervall $J \subset \R$. Wir lösen
+\begin{equation}\label{eq:5_2_eq6}
+	\dot{x} = A(t) x + b(t)
+\end{equation}
+durch \textit{Variation der Konstanten}. D. h. in der allgemeinen Lösung des homogenen Systems $\dot{x} = A(t) x$ ersetzen wir $c \in \K^n$ durch eine differenzierbare Abbildung $t \mapsto c(t) \in \K^n$. Wir setzen $x(t) = X(t) c(t)$ in \eqref{eq:5_2_eq6} ein und bekommen
+\begin{align*}
+	A(t) x + b(t) = A(t) X(t) c(t) + b(t) = \dot{x}(t) = \frac{\d}{\d t} (X(t) c(t)) = (\dot{X}c + X\dot{x}) = (AXc + X\dot{x}) (t)
+\end{align*}
+also
+\[b(t) = X(t) \dot{c}(t) \;\implies\; \dot{c}(t) = X(t)^{-1} b(t)\]
+und somit
+\[x(t) = X(t)c(t) = X(t)(c(t_0) + \int_{t_0}^t \dot{c}(s) \d s).\]
+\begin{satz}\label{satz5_5}
+	Sei $X(t)$ Fundamentalmatrix des homogenenen Systems $\dot{x}=A(t)x$. Dann ist
+	\begin{equation}\label{eq:5_2_eq7}
+		x(t) = X(t) \left(c+\int_{t_0}^t X(s)^{-1}b(s) \d s\right) \quad c \in \K^n
+	\end{equation}
+	die allgemeine Lösung der inhomogenen Gleichung $\dot{x} = A(t)x + b(t)$. Durch eine Anfangsbedingung wird der Vektor $c$ eindeutig bestimmt.
+\end{satz}
+\begin{beispiel}
+	Wenn $A \in M(n, \K)$ invertierbar ist und $b \in \K^n$, dann hat
+	\[\dot{x} = Ax + b\]
+	die spezielle Lösung $x_p = -A^{-1} b$ und die allgemeine Lösung $x(t) = e^{At}c - A^{-1} b$.
+\end{beispiel}
+\subsection{Lineare Systeme mit konstanten Koeffizienten}
+Wir betra
